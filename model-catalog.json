@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-05-17",
+  "models": [
+    {
+      "id": "gemini-flash",
+      "kind": "transcription",
+      "label": "Gemini 3 Flash",
+      "provider": "gemini",
+      "modelID": "gemini-3-flash-preview",
+      "status": "preview",
+      "recommended": true,
+      "settingsHint": "速度快，適合一般會議與較低成本流程",
+      "capabilities": {
+        "supportsMeetingBackground": true,
+        "supportsFileUpload": true,
+        "defaultChunkDurationSeconds": 1800,
+        "maxUploadBytes": null
+      }
+    },
+    {
+      "id": "gemini-pro",
+      "kind": "transcription",
+      "label": "Gemini 3 Pro",
+      "provider": "gemini",
+      "modelID": "gemini-3-pro-preview",
+      "fallbackModelIDs": [
+        "gemini-3-flash-preview"
+      ],
+      "status": "preview",
+      "recommended": false,
+      "settingsHint": "品質優先，適合專有名詞多或內容複雜的會議",
+      "capabilities": {
+        "supportsMeetingBackground": true,
+        "supportsFileUpload": true,
+        "defaultChunkDurationSeconds": 1800,
+        "maxUploadBytes": null
+      }
+    },
+    {
+      "id": "gemini-flash-analysis",
+      "kind": "analysis",
+      "label": "Gemini 3 Flash",
+      "provider": "gemini",
+      "modelID": "gemini-3-flash-preview",
+      "status": "preview",
+      "recommended": true,
+      "settingsHint": "速度快，適合一般會議紀錄整理",
+      "capabilities": {
+        "supportsMeetingBackground": true,
+        "supportsFileUpload": false,
+        "defaultChunkDurationSeconds": 1800,
+        "maxUploadBytes": null
+      }
+    },
+    {
+      "id": "gemini-pro-analysis",
+      "kind": "analysis",
+      "label": "Gemini 3 Pro",
+      "provider": "gemini",
+      "modelID": "gemini-3-pro-preview",
+      "fallbackModelIDs": [
+        "gemini-3-flash-preview"
+      ],
+      "status": "preview",
+      "recommended": false,
+      "settingsHint": "品質優先，適合長會議、策略討論或專有名詞多的紀錄",
+      "capabilities": {
+        "supportsMeetingBackground": true,
+        "supportsFileUpload": false,
+        "defaultChunkDurationSeconds": 1800,
+        "maxUploadBytes": null
+      }
+    }
+  ]
+}
