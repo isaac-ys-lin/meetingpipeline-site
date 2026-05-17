@@ -23,7 +23,7 @@
       "kind": "transcription",
       "label": "Gemini 3 Pro",
       "provider": "gemini",
-      "modelID": "gemini-3-pro-preview",
+      "modelID": "gemini-3.1-pro-preview",
       "fallbackModelIDs": [
         "gemini-3-flash-preview"
       ],
@@ -58,7 +58,7 @@
       "kind": "analysis",
       "label": "Gemini 3 Pro",
       "provider": "gemini",
-      "modelID": "gemini-3-pro-preview",
+      "modelID": "gemini-3.1-pro-preview",
       "fallbackModelIDs": [
         "gemini-3-flash-preview"
       ],
