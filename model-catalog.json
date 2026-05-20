@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-05-17",
+  "updatedAt": "2026-05-20",
   "models": [
     {
       "id": "gemini-flash",
       "kind": "transcription",
-      "label": "Gemini 3 Flash",
+      "label": "Gemini 3.1 Flash-Lite",
       "provider": "gemini",
-      "modelID": "gemini-3-flash-preview",
-      "status": "preview",
+      "modelID": "gemini-3.1-flash-lite",
+      "status": "stable",
       "recommended": true,
       "settingsHint": "速度快，適合一般會議與較低成本流程",
       "capabilities": {
@@ -21,13 +21,11 @@
     {
       "id": "gemini-pro",
       "kind": "transcription",
-      "label": "Gemini 3 Pro",
+      "label": "Gemini 3.5 Flash",
       "provider": "gemini",
-      "modelID": "gemini-3.1-pro-preview",
-      "fallbackModelIDs": [
-        "gemini-3-flash-preview"
-      ],
-      "status": "preview",
+      "modelID": "gemini-3.5-flash",
+      "fallbackModelIDs": ["gemini-3.1-flash-lite"],
+      "status": "stable",
       "recommended": false,
       "settingsHint": "品質優先，適合專有名詞多或內容複雜的會議",
       "capabilities": {
@@ -40,11 +38,11 @@
     {
       "id": "gemini-flash-analysis",
       "kind": "analysis",
-      "label": "Gemini 3 Flash",
+      "label": "Gemini 3.1 Flash-Lite",
       "provider": "gemini",
-      "modelID": "gemini-3-flash-preview",
-      "status": "preview",
-      "recommended": true,
+      "modelID": "gemini-3.1-flash-lite",
+      "status": "stable",
+      "recommended": false,
       "settingsHint": "速度快，適合一般會議紀錄整理",
       "capabilities": {
         "supportsMeetingBackground": true,
@@ -56,14 +54,12 @@
     {
       "id": "gemini-pro-analysis",
       "kind": "analysis",
-      "label": "Gemini 3 Pro",
+      "label": "Gemini 3.5 Flash",
       "provider": "gemini",
-      "modelID": "gemini-3.1-pro-preview",
-      "fallbackModelIDs": [
-        "gemini-3-flash-preview"
-      ],
-      "status": "preview",
-      "recommended": false,
+      "modelID": "gemini-3.5-flash",
+      "fallbackModelIDs": ["gemini-3.1-flash-lite"],
+      "status": "stable",
+      "recommended": true,
       "settingsHint": "品質優先，適合長會議、策略討論或專有名詞多的紀錄",
       "capabilities": {
         "supportsMeetingBackground": true,
