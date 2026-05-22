@@ -326,6 +326,13 @@ code {
   overflow: hidden;
 }
 
+.guide-figure img {
+  background: var(--accent-soft);
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
 .figure-fallback {
   background: var(--accent-soft);
   display: grid;
