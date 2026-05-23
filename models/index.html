@@ -6,7 +6,7 @@
     <title>MeetingPipeline 模型與成本</title>
     <meta name="description" content="MeetingPipeline 使用的 Gemini 模型、音訊 token 算法與會議紀錄成本估算。">
     <link rel="icon" href="../app-icon.png" type="image/png">
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../styles.css?v=20260523">
   </head>
   <body>
     <a class="skip-link" href="#main-content">跳到主要內容</a>
@@ -29,12 +29,12 @@
             <p class="eyebrow">最後更新：2026 年 5 月 23 日</p>
             <h1>MeetingPipeline 模型與成本。</h1>
             <p class="lede">
-              MeetingPipeline 目前提供 Gemini 3.1 Flash-Lite 與 Gemini 3.5 Flash。這頁把適合情境、音訊 token 算法、逐字稿輸出與會議紀錄分析成本放在一起看。
+              MeetingPipeline 目前提供 Gemini 3.1 Flash-Lite 與 Gemini 3.5 Flash。這頁提供適合情境、音訊 token 算法、逐字稿輸出與會議紀錄分析成本的完整分析。
             </p>
 
             <div class="meta-box" aria-label="重點摘要">
               <p><strong>目前模型：</strong>MeetingPipeline 提供 Gemini 3.1 Flash-Lite 與 Gemini 3.5 Flash；實際選用哪個模型由使用者依會議情境決定。</p>
-              <p><strong>估算限制：</strong>Google 價格、免費額度與速率限制會調整。本頁只用公開 paid tier 數字抓量級，並非保證費用。</p>
+              <p><strong>估算限制：</strong>若使用免費 API key 並仍在 Google 免費額度內，通常不會產生 API 費用；本頁用公開 paid tier 數字抓付費量級。Google 價格、免費額度與速率限制會調整，並非保證費用。</p>
             </div>
 
             <h2>MeetingPipeline 使用的兩個模型</h2>
@@ -77,62 +77,142 @@
 
             <h2>成本怎麼算</h2>
             <p>
-              Gemini 音訊理解使用固定 token 算法：每秒音訊約 32 input tokens。1 分鐘約 1,920 tokens，1 小時約 115,200 tokens。MeetingPipeline 的完整流程還包含逐字稿輸出，以及把逐字稿送回模型整理成會議紀錄。
+              Gemini 音訊理解以時間計算 token：每秒音訊約 32 input tokens。1 分鐘約 1,920 tokens，1 小時約 115,200 tokens。MeetingPipeline 會先取得逐字稿，再把逐字稿、會議背景與模板送到模型整理成會議紀錄。
+            </p>
+            <p>
+              長音訊可能會分段處理。同一段音訊在流程中被再次引用時，Google 帳單可能以 cached audio input 計算。本頁用這個情境估算常見量級，也列出未命中 cached input 時的保守上限。
             </p>
             <div class="formula-box" aria-label="成本公式">
-              <p><strong>轉錄成本</strong> = 音訊 input tokens × 轉錄模型音訊 input 單價 + 逐字稿 output tokens × 轉錄模型 output 單價</p>
-              <p><strong>分析成本</strong> = (逐字稿 tokens + 會議背景 / 模板 tokens) × 分析模型文字 input 單價 + 會議紀錄 output tokens × 分析模型 output 單價</p>
+              <p><strong>轉錄成本</strong> = 音訊 normal input + 可能的 cached audio input + 逐字稿文字 input + 逐字稿 JSON output。</p>
+              <p><strong>分析成本</strong> = (完整逐字稿 + 會議背景 / 模板 / 分析指令) × 分析模型 input 單價 + 會議紀錄 output tokens × 分析模型 output 單價。</p>
               <p><strong>總成本</strong> = 轉錄成本 + 分析成本</p>
             </div>
 
             <h2>成本估算假設</h2>
-            <ul>
-              <li>使用 Google Gemini API Standard paid tier 公開價格。</li>
-              <li>轉錄模型：Gemini 3.1 Flash-Lite，音訊 input USD 0.50 / 1M tokens，文字 input USD 0.25 / 1M tokens，output USD 1.50 / 1M tokens。</li>
-              <li>分析模型：Gemini 3.5 Flash，input USD 1.50 / 1M tokens，output USD 9.00 / 1M tokens。</li>
-              <li>每 1 小時會議粗估產生 12,000 transcript output tokens。</li>
-              <li>會議背景、模板與分析指令粗估固定 2,000 input tokens。</li>
-              <li>每 1 小時會議粗估輸出 4,000 meeting notes output tokens。</li>
-              <li>NTD 換算以 1 USD 約 NTD 30～33 粗估。</li>
-            </ul>
+            <div class="assumption-grid" aria-label="成本估算假設摘要">
+              <section>
+                <span class="assumption-label">價格基準</span>
+                <strong>Google paid tier</strong>
+                <p>Flash-Lite 音訊 input USD 0.50 / 1M，cached audio USD 0.05 / 1M，output USD 1.50 / 1M。3.5 Flash input USD 1.50 / 1M，output USD 9.00 / 1M。</p>
+              </section>
+              <section>
+                <span class="assumption-label">1 小時音訊</span>
+                <strong>約 115,200 tokens</strong>
+                <p>以每秒 32 audio tokens 粗估。長音訊可能會分段處理；若同一段音訊在流程中重複引用，可能出現 cached audio input。</p>
+              </section>
+              <section>
+                <span class="assumption-label">逐字稿 output</span>
+                <strong>約 18,000 tokens</strong>
+                <p>以 1 小時會議中約 36～42 分鐘有人說話估算，並把時間戳、說話者標記與結構化輸出一起算進去。</p>
+              </section>
+            </div>
 
-            <h2>範例流程成本估算</h2>
+            <div class="cost-flow" aria-label="1 小時成本估算流程">
+              <div>
+                <span>Audio</span>
+                <strong>115,200 tokens</strong>
+                <p>1 小時音訊 input</p>
+              </div>
+              <div>
+                <span>Transcript</span>
+                <strong>18,000 tokens</strong>
+                <p>逐字稿 JSON output</p>
+              </div>
+              <div>
+                <span>Analysis</span>
+                <strong>20,000 / 6,000</strong>
+                <p>input / output tokens</p>
+              </div>
+            </div>
+
+            <p class="note">
+              會議紀錄分析粗估使用 20,000 input tokens，並輸出 6,000 output tokens。訪談型會議、多人快速討論或逐字稿很密時可能更高；簡報停頓、沉默較多或輸出較精簡時可能更低。下方表格是方便閱讀的粗估，實際帳單以 Google 為準。NTD 換算以 1 USD 約 NTD 30～33 計算。
+            </p>
+
+            <h2>1 小時會議流程拆解</h2>
             <p id="default-cost-caveat">
-              以下用「3.1 Flash-Lite 轉錄 + 3.5 Flash 分析」作為範例估算。實際結果會因語速、語言、說話人數、會議背景、模板長度、輸出詳略與 Google 最新價格而不同。
+              以下用「3.1 Flash-Lite 轉錄 + 3.5 Flash 分析」作為範例估算。實際結果會因語速、語言、說話人數、會議背景、模板長度、輸出詳略、cached input 命中情況與 Google 最新價格而不同。
             </p>
             <div class="table-wrap" role="region" aria-describedby="default-cost-caveat" aria-label="MeetingPipeline 範例流程成本估算" tabindex="0">
               <table class="cost-table">
-                <caption>範例流程粗估，含 USD 與 NTD 換算</caption>
+                <caption>1 小時範例流程粗估，含 USD 與 NTD 換算</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">流程</th>
+                    <th scope="col">估算 tokens</th>
+                    <th scope="col">計算方式</th>
+                    <th scope="col">估算成本</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>音訊 input</td>
+                    <td>115,200 normal audio + 115,200 cached audio</td>
+                    <td>同一段音訊在流程中再次引用時，以 cached audio input 抓量級。</td>
+                    <td>約 USD 0.063 (NTD 1.9～2.1 元)</td>
+                  </tr>
+                  <tr>
+                    <td>逐字稿文字 input</td>
+                    <td>約 4,000 input tokens</td>
+                    <td>會議背景、時間資訊與必要的分段上下文。</td>
+                    <td>約 USD 0.001 (低於 NTD 0.1 元)</td>
+                  </tr>
+                  <tr>
+                    <td>逐字稿 JSON output</td>
+                    <td>約 18,000 output tokens</td>
+                    <td>包含完整逐字稿、時間戳、說話者標記與 JSON 結構。</td>
+                    <td>約 USD 0.027 (NTD 0.8～0.9 元)</td>
+                  </tr>
+                  <tr>
+                    <td>會議紀錄分析</td>
+                    <td>約 20,000 input / 6,000 output tokens</td>
+                    <td>把逐字稿、會議背景、模板與分析指令整理成決策、風險、待辦與正式紀錄。</td>
+                    <td>約 USD 0.084 (NTD 2.5～2.8 元)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>基本總額</strong></td>
+                    <td>1 小時會議</td>
+                    <td>3.1 Flash-Lite 轉錄 + 3.5 Flash 分析，含 cached audio input。</td>
+                    <td><strong>約 USD 0.175 (NTD 5.3～5.8 元)</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2>不同長度的成本範例</h2>
+            <div class="table-wrap" role="region" aria-label="不同長度的 MeetingPipeline 成本範例" tabindex="0">
+              <table class="cost-table">
+                <caption>範例流程粗估，含 cached audio input 與未命中時的保守上限</caption>
                 <thead>
                   <tr>
                     <th scope="col">音訊長度</th>
-                    <th scope="col">音訊 input tokens</th>
-                    <th scope="col">逐字稿 output tokens</th>
-                    <th scope="col">分析 input / output tokens</th>
-                    <th scope="col">估算總額</th>
+                    <th scope="col">轉錄流程</th>
+                    <th scope="col">逐字稿 / 分析 tokens</th>
+                    <th scope="col">含 cached audio input</th>
+                    <th scope="col">未命中 cached input</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>30 分鐘</td>
-                    <td>57,600</td>
-                    <td>6,000</td>
-                    <td>8,000 / 2,000</td>
-                    <td>約 USD 0.068 (NTD 2.0～2.2 元)</td>
+                    <td>短音訊流程</td>
+                    <td>9,000 逐字稿 output；11,000 / 3,000 分析 tokens</td>
+                    <td>約 USD 0.086 (NTD 2.6～2.8 元)</td>
+                    <td>約 USD 0.086 (NTD 2.6～2.8 元)</td>
                   </tr>
                   <tr>
                     <td>60 分鐘</td>
-                    <td>115,200</td>
-                    <td>12,000</td>
-                    <td>14,000 / 4,000</td>
-                    <td>約 USD 0.133 (NTD 4.0～4.4 元)</td>
+                    <td>一般長音訊流程</td>
+                    <td>18,000 逐字稿 output；20,000 / 6,000 分析 tokens</td>
+                    <td>約 USD 0.175 (NTD 5.3～5.8 元)</td>
+                    <td>約 USD 0.227 (NTD 6.8～7.5 元)</td>
                   </tr>
                   <tr>
                     <td>120 分鐘</td>
-                    <td>230,400</td>
-                    <td>24,000</td>
-                    <td>26,000 / 8,000</td>
-                    <td>約 USD 0.262 (NTD 7.9～8.6 元)</td>
+                    <td>較長音訊流程</td>
+                    <td>36,000 逐字稿 output；38,000 / 12,000 分析 tokens</td>
+                    <td>約 USD 0.348 (NTD 10.4～11.5 元)</td>
+                    <td>約 USD 0.451 (NTD 13.5～14.9 元)</td>
                   </tr>
                 </tbody>
               </table>
@@ -154,24 +234,38 @@
                   <tr>
                     <td>全部 Flash-Lite</td>
                     <td>轉錄與分析都用 <code>gemini-3.1-flash-lite</code></td>
-                    <td>約 USD 0.085 (NTD 2.6～2.8 元)</td>
-                    <td>最低成本，適合一般短會議或先跑草稿。</td>
+                    <td>約 USD 0.105 (NTD 3.2～3.5 元)</td>
+                    <td>最低成本，適合一般短會議或先跑草稿；分析能力較保守。</td>
                   </tr>
                   <tr>
                     <td>範例組合</td>
                     <td>3.1 Flash-Lite 轉錄，3.5 Flash 分析</td>
-                    <td>約 USD 0.133 (NTD 4.0～4.4 元)</td>
+                    <td>約 USD 0.175 (NTD 5.3～5.8 元)</td>
                     <td>保留低成本轉錄，同時讓會議紀錄整理使用較強模型。</td>
                   </tr>
                   <tr>
                     <td>全部 3.5 Flash</td>
                     <td>轉錄與分析都用 <code>gemini-3.5-flash</code></td>
-                    <td>約 USD 0.338 (NTD 10.1～11.2 元)</td>
+                    <td>約 USD 0.442 (NTD 13.3～14.6 元)</td>
                     <td>成本最高，適合專有名詞多、內容複雜且願意提高預算的會議。</td>
                   </tr>
                 </tbody>
               </table>
             </div>
+
+            <h2>其他成本：會議背景與檢核</h2>
+            <p>
+              匯入音檔時，可以補上會議背景，例如客戶名稱、產品、議題或常用縮寫。這些上下文會幫助模型辨識專有名詞、人物、產品與常見用語，讓逐字稿更接近實際會議內容。
+            </p>
+            <p>
+              這些上下文會增加少量文字 input tokens，但成本通常很低。以 2,000 input tokens 粗估，Flash-Lite 文字 input 約 USD 0.0005，不到 NTD 0.02 元；若進入 3.5 Flash 分析，約 USD 0.003，也大約是 NTD 0.09～0.10 元。
+            </p>
+            <p class="cost-callout">
+              <strong>事實檢核成本：</strong>若另外執行事實檢核，1 小時會議可再抓約 <strong>USD 0.051 (NTD 1.5～1.7 元)</strong> 的量級。
+            </p>
+            <p>
+              本頁的 cached audio input 只用來抓成本量級；MeetingPipeline 不會替使用者建立後端快取。若 Google 對音訊重複引用或快取命中採用不同計算，請以你的 Google 帳單與官方 pricing 為準。
+            </p>
             <h2>官方來源</h2>
             <ul>
               <li><a href="https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite" rel="noreferrer">Gemini 3.1 Flash-Lite 模型文件</a></li>

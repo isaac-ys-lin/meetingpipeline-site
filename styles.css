@@ -466,6 +466,126 @@ code {
   margin-top: 2px;
 }
 
+.assumption-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 22px;
+}
+
+.assumption-grid section {
+  background:
+    linear-gradient(180deg, color-mix(in oklch, var(--accent-soft) 58%, white), white 96%),
+    var(--sheet);
+  border: 1px solid color-mix(in oklch, var(--accent) 18%, var(--rule));
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 20px rgb(31 43 54 / 0.04);
+  display: grid;
+  grid-template-rows: auto 52px 1fr;
+  min-height: 180px;
+  padding: 18px 18px 20px;
+  position: relative;
+}
+
+.assumption-grid section::before {
+  background: var(--accent);
+  border-radius: 999px;
+  content: "";
+  height: 4px;
+  left: 18px;
+  position: absolute;
+  right: 18px;
+  top: 0;
+}
+
+.assumption-label,
+.cost-flow span {
+  color: var(--accent-ink);
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.assumption-grid strong,
+.cost-flow strong {
+  color: var(--ink);
+  display: block;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.assumption-grid p,
+.cost-flow p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.cost-flow {
+  counter-reset: cost-step;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 18px;
+}
+
+.cost-flow div {
+  background: color-mix(in oklch, var(--accent-soft) 48%, white);
+  border: 1px solid color-mix(in oklch, var(--accent) 18%, var(--rule));
+  border-radius: var(--radius-md);
+  min-height: 132px;
+  padding: 18px;
+  position: relative;
+}
+
+.cost-flow div::before {
+  align-items: center;
+  background: var(--sheet);
+  border: 1px solid color-mix(in oklch, var(--accent) 24%, var(--rule));
+  border-radius: 999px;
+  color: var(--accent-ink);
+  content: counter(cost-step);
+  counter-increment: cost-step;
+  display: inline-flex;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 800;
+  height: 28px;
+  justify-content: center;
+  margin-bottom: 12px;
+  width: 28px;
+}
+
+.cost-flow span {
+  color: var(--accent-ink);
+  margin-bottom: 8px;
+}
+
+.note {
+  background: color-mix(in oklch, var(--accent-soft) 30%, white);
+  border: 1px solid color-mix(in oklch, var(--accent) 16%, var(--rule));
+  border-radius: var(--radius-md);
+  color: var(--muted);
+  font-size: 15px;
+  max-width: none;
+  padding: 14px 16px;
+}
+
+.cost-callout {
+  background: color-mix(in oklch, var(--warning-soft) 72%, white);
+  border: 1px solid color-mix(in oklch, oklch(68% 0.12 78) 38%, var(--rule));
+  border-radius: var(--radius-md);
+  color: var(--ink);
+  font-size: 16px;
+  padding: 14px 16px;
+}
+
+.cost-callout strong {
+  color: var(--accent-ink);
+}
+
 .formula-box {
   background: color-mix(in oklch, var(--accent-soft) 42%, white);
   border: 1px solid var(--rule);
@@ -517,8 +637,16 @@ code {
   .intro,
   .link-grid,
   .model-grid,
+  .assumption-grid,
+  .cost-flow,
   .comparison-grid {
     grid-template-columns: 1fr;
+  }
+
+  .cost-flow div,
+  .cost-flow div:first-child,
+  .cost-flow div:last-child {
+    border-radius: var(--radius-md);
   }
 
   .step-list li {
