@@ -411,6 +411,75 @@ code {
   font-size: 15px;
 }
 
+.model-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 22px;
+}
+
+.model-card {
+  background: color-mix(in oklch, var(--accent-soft) 30%, white);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+
+.model-card h3 {
+  margin-top: 4px;
+}
+
+.model-card p {
+  font-size: 15px;
+}
+
+.model-kicker {
+  color: var(--accent-ink);
+  font-family: var(--font-mono);
+  font-size: 12px !important;
+  letter-spacing: 0.04em;
+  margin-top: 0;
+  text-transform: uppercase;
+}
+
+.model-card dl,
+.model-card dd {
+  margin: 0;
+}
+
+.model-card dl {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.model-card dt {
+  color: var(--accent-ink);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.model-card dd {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.formula-box {
+  background: color-mix(in oklch, var(--accent-soft) 42%, white);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  margin-top: 20px;
+  padding: 18px 20px;
+}
+
+.formula-box p {
+  color: var(--ink);
+  font-size: 15px;
+  margin-top: 8px;
+}
+
 .site-footer {
   border-top: 1px solid var(--rule);
   color: var(--muted);
@@ -447,6 +516,7 @@ code {
 
   .intro,
   .link-grid,
+  .model-grid,
   .comparison-grid {
     grid-template-columns: 1fr;
   }

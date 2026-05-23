@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MeetingPipeline 模型與成本</title>
+    <meta name="description" content="MeetingPipeline 使用的 Gemini 模型、音訊 token 算法與會議紀錄成本估算。">
+    <link rel="icon" href="../app-icon.png" type="image/png">
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">跳到主要內容</a>
+    <div class="page-shell">
+      <div class="frame">
+        <header class="site-header">
+          <a class="brand" href="../" aria-label="MeetingPipeline home">
+            <img class="brand-icon" src="../app-icon.png" alt="" width="32" height="32">
+            <span>MeetingPipeline</span>
+          </a>
+          <nav class="nav" aria-label="主要連結">
+            <a href="../gemini-api-key/">Gemini API Key 教學</a>
+            <a href="../models/" aria-current="page">模型與成本</a>
+            <a href="../privacy/">隱私政策</a>
+            <a href="../support/">支援</a>
+          </nav>
+        </header>
+        <main id="main-content">
+          <article class="content guide">
+            <p class="eyebrow">最後更新：2026 年 5 月 23 日</p>
+            <h1>MeetingPipeline 模型與成本。</h1>
+            <p class="lede">
+              MeetingPipeline 目前提供 Gemini 3.1 Flash-Lite 與 Gemini 3.5 Flash。這頁把適合情境、音訊 token 算法、逐字稿輸出與會議紀錄分析成本放在一起看。
+            </p>
+
+            <div class="meta-box" aria-label="重點摘要">
+              <p><strong>目前模型：</strong>MeetingPipeline 提供 Gemini 3.1 Flash-Lite 與 Gemini 3.5 Flash；實際選用哪個模型由使用者依會議情境決定。</p>
+              <p><strong>估算限制：</strong>Google 價格、免費額度與速率限制會調整。本頁只用公開 paid tier 數字抓量級，並非保證費用。</p>
+            </div>
+
+            <h2>MeetingPipeline 使用的兩個模型</h2>
+            <div class="model-grid">
+              <section class="model-card">
+                <h3>Gemini 3.1 Flash-Lite</h3>
+                <dl>
+                  <div>
+                    <dt>Model code</dt>
+                    <dd><code>gemini-3.1-flash-lite</code></dd>
+                  </div>
+                  <div>
+                    <dt>輸入 / 輸出上限</dt>
+                    <dd>1,048,576 input tokens / 65,536 output tokens</dd>
+                  </div>
+                  <div>
+                    <dt>適合情境</dt>
+                    <dd>一般會議、較長音檔、先用低成本取得逐字稿。</dd>
+                  </div>
+                </dl>
+              </section>
+              <section class="model-card">
+                <h3>Gemini 3.5 Flash</h3>
+                <dl>
+                  <div>
+                    <dt>Model code</dt>
+                    <dd><code>gemini-3.5-flash</code></dd>
+                  </div>
+                  <div>
+                    <dt>輸入 / 輸出上限</dt>
+                    <dd>1,048,576 input tokens / 65,536 output tokens</dd>
+                  </div>
+                  <div>
+                    <dt>適合情境</dt>
+                    <dd>長會議、策略討論、專有名詞多，需要較完整的會議紀錄。</dd>
+                  </div>
+                </dl>
+              </section>
+            </div>
+
+            <h2>成本怎麼算</h2>
+            <p>
+              Gemini 音訊理解使用固定 token 算法：每秒音訊約 32 input tokens。1 分鐘約 1,920 tokens，1 小時約 115,200 tokens。MeetingPipeline 的完整流程還包含逐字稿輸出，以及把逐字稿送回模型整理成會議紀錄。
+            </p>
+            <div class="formula-box" aria-label="成本公式">
+              <p><strong>轉錄成本</strong> = 音訊 input tokens × 轉錄模型音訊 input 單價 + 逐字稿 output tokens × 轉錄模型 output 單價</p>
+              <p><strong>分析成本</strong> = (逐字稿 tokens + 會議背景 / 模板 tokens) × 分析模型文字 input 單價 + 會議紀錄 output tokens × 分析模型 output 單價</p>
+              <p><strong>總成本</strong> = 轉錄成本 + 分析成本</p>
+            </div>
+
+            <h2>成本估算假設</h2>
+            <ul>
+              <li>使用 Google Gemini API Standard paid tier 公開價格。</li>
+              <li>轉錄模型：Gemini 3.1 Flash-Lite，音訊 input USD 0.50 / 1M tokens，文字 input USD 0.25 / 1M tokens，output USD 1.50 / 1M tokens。</li>
+              <li>分析模型：Gemini 3.5 Flash，input USD 1.50 / 1M tokens，output USD 9.00 / 1M tokens。</li>
+              <li>每 1 小時會議粗估產生 12,000 transcript output tokens。</li>
+              <li>會議背景、模板與分析指令粗估固定 2,000 input tokens。</li>
+              <li>每 1 小時會議粗估輸出 4,000 meeting notes output tokens。</li>
+              <li>NTD 換算以 1 USD 約 NTD 30～33 粗估。</li>
+            </ul>
+
+            <h2>範例流程成本估算</h2>
+            <p id="default-cost-caveat">
+              以下用「3.1 Flash-Lite 轉錄 + 3.5 Flash 分析」作為範例估算。實際結果會因語速、語言、說話人數、會議背景、模板長度、輸出詳略與 Google 最新價格而不同。
+            </p>
+            <div class="table-wrap" role="region" aria-describedby="default-cost-caveat" aria-label="MeetingPipeline 範例流程成本估算" tabindex="0">
+              <table class="cost-table">
+                <caption>範例流程粗估，含 USD 與 NTD 換算</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">音訊長度</th>
+                    <th scope="col">音訊 input tokens</th>
+                    <th scope="col">逐字稿 output tokens</th>
+                    <th scope="col">分析 input / output tokens</th>
+                    <th scope="col">估算總額</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>30 分鐘</td>
+                    <td>57,600</td>
+                    <td>6,000</td>
+                    <td>8,000 / 2,000</td>
+                    <td>約 USD 0.068 (NTD 2.0～2.2 元)</td>
+                  </tr>
+                  <tr>
+                    <td>60 分鐘</td>
+                    <td>115,200</td>
+                    <td>12,000</td>
+                    <td>14,000 / 4,000</td>
+                    <td>約 USD 0.133 (NTD 4.0～4.4 元)</td>
+                  </tr>
+                  <tr>
+                    <td>120 分鐘</td>
+                    <td>230,400</td>
+                    <td>24,000</td>
+                    <td>26,000 / 8,000</td>
+                    <td>約 USD 0.262 (NTD 7.9～8.6 元)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2>1 小時會議的模型組合比較</h2>
+            <div class="table-wrap" role="region" aria-label="1 小時會議模型組合比較" tabindex="0">
+              <table class="cost-table">
+                <caption>同一組 token 假設下的模型組合差異，含 USD 與 NTD 換算</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">組合</th>
+                    <th scope="col">用途</th>
+                    <th scope="col">估算總額</th>
+                    <th scope="col">取捨</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>全部 Flash-Lite</td>
+                    <td>轉錄與分析都用 <code>gemini-3.1-flash-lite</code></td>
+                    <td>約 USD 0.085 (NTD 2.6～2.8 元)</td>
+                    <td>最低成本，適合一般短會議或先跑草稿。</td>
+                  </tr>
+                  <tr>
+                    <td>範例組合</td>
+                    <td>3.1 Flash-Lite 轉錄，3.5 Flash 分析</td>
+                    <td>約 USD 0.133 (NTD 4.0～4.4 元)</td>
+                    <td>保留低成本轉錄，同時讓會議紀錄整理使用較強模型。</td>
+                  </tr>
+                  <tr>
+                    <td>全部 3.5 Flash</td>
+                    <td>轉錄與分析都用 <code>gemini-3.5-flash</code></td>
+                    <td>約 USD 0.338 (NTD 10.1～11.2 元)</td>
+                    <td>成本最高，適合專有名詞多、內容複雜且願意提高預算的會議。</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h2>官方來源</h2>
+            <ul>
+              <li><a href="https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite" rel="noreferrer">Gemini 3.1 Flash-Lite 模型文件</a></li>
+              <li><a href="https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash" rel="noreferrer">Gemini 3.5 Flash 模型文件</a></li>
+              <li><a href="https://ai.google.dev/gemini-api/docs/pricing" rel="noreferrer">Gemini API pricing</a></li>
+              <li><a href="https://ai.google.dev/gemini-api/docs/tokens" rel="noreferrer">Gemini token counting</a></li>
+              <li><a href="https://ai.google.dev/gemini-api/docs/audio" rel="noreferrer">Gemini audio understanding</a></li>
+            </ul>
+          </article>
+        </main>
+        <footer class="site-footer">
+          <span>OurMarginTable</span>
+          <span><a href="../support/">支援</a></span>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
