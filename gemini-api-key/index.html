@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MeetingPipeline Gemini API Key 教學</title>
+    <meta name="description" content="MeetingPipeline 使用者建立 Gemini API key、理解免費額度、長音訊成本與隱私資料流的教學。">
+    <link rel="icon" href="../app-icon.png" type="image/png">
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">跳到主要內容</a>
+    <div class="page-shell">
+      <div class="frame">
+        <header class="site-header">
+          <a class="brand" href="../" aria-label="MeetingPipeline home">
+            <img class="brand-icon" src="../app-icon.png" alt="" width="32" height="32">
+            <span>MeetingPipeline</span>
+          </a>
+          <nav class="nav" aria-label="主要連結">
+            <a href="../gemini-api-key/" aria-current="page">Gemini API Key 教學</a>
+            <a href="../privacy/">隱私政策</a>
+            <a href="../support/">支援</a>
+          </nav>
+        </header>
+        <main id="main-content">
+          <article class="content guide">
+            <p class="eyebrow">最後更新：2026 年 5 月 22 日</p>
+            <h1>Gemini API Key 申請與成本教學。</h1>
+            <p class="lede">
+              MeetingPipeline 採用使用者自備 Gemini API key。你可以在 Google AI Studio 建立 key，再貼到 app 的 Settings 內使用。
+            </p>
+
+            <div class="meta-box" aria-label="重點摘要">
+              <p><strong>先看這裡：</strong>免費額度、速率限制與價格會由 Google 調整；本頁只提供操作方向與粗估方式，實際限制與費用請以 Google 官方頁面為準。</p>
+              <p><strong>隱私重點：</strong>MeetingPipeline 不內建帳號、不內建 key。音檔、逐字稿、會議背景與生成結果會送到 Gemini API 完成功能。</p>
+            </div>
+
+            <h2>建立 Gemini API key</h2>
+            <ol class="step-list">
+              <li>
+                <strong>打開 Google AI Studio。</strong>
+                <span>前往 <a href="https://aistudio.google.com/" rel="noreferrer">Google AI Studio</a>，使用你的 Google 帳號登入。</span>
+              </li>
+              <li>
+                <strong>進入 API key 頁面。</strong>
+                <span>在 AI Studio 找到 API key 相關入口，或直接參考 Google 的 <a href="https://ai.google.dev/gemini-api/docs/api-key?hl=zh-tw" rel="noreferrer">Gemini API key 官方文件</a>。</span>
+              </li>
+              <li>
+                <strong>建立新的 key。</strong>
+                <span>依照 Google AI Studio 畫面建立 key。請把 key 視為密碼，不要貼到公開文件、截圖、聊天訊息或客服回報內。</span>
+              </li>
+              <li>
+                <strong>貼到 MeetingPipeline。</strong>
+                <span>打開 MeetingPipeline 的 Settings，把 key 貼到 Gemini API key 欄位。key 只會存在 iOS Keychain。</span>
+              </li>
+            </ol>
+
+            <figure class="guide-figure">
+              <img src="../assets/gemini-api-key/01-ai-studio-api-keys-redacted.png" alt="Google AI Studio API Keys 頁面，API key、帳號與專案資訊已遮蔽">
+              <figcaption>API Keys 頁面會列出你已建立的 key。公開截圖前，請遮蔽 API key、Google 帳號、project id 與 billing 相關資訊。</figcaption>
+            </figure>
+            <figure class="guide-figure">
+              <img src="../assets/gemini-api-key/02-create-key-redacted.png" alt="Google AI Studio 建立 API key 對話框，專案資訊已遮蔽">
+              <figcaption>Create API key 對話框會要求選擇 project。建立後請立即把 key 當成密碼保存，不要把完整 key 貼到聊天、文件或客服回報。</figcaption>
+            </figure>
+
+            <h2>免費 key 與免費額度</h2>
+            <p>
+              Google AI Studio 通常可建立免費使用的 Gemini API key，部分模型也會提供免費層級或試用額度。不過免費額度、每日請求數、每分鐘請求數、區域與模型可用性都可能調整；請以 Google 的官方價格與限制頁面為準。
+            </p>
+            <p>
+              這些免費層級不保證可以免費轉錄固定幾小時，也不代表每個帳號、專案或模型都有相同額度。建議先從短音檔測試，確認 key 可用、模型可用、速率限制沒有被打到，再處理長會議音檔。
+            </p>
+
+            <figure class="guide-figure">
+              <img src="../assets/gemini-api-key/03-active-limits-redacted.png" alt="Google AI Studio Rate Limit 頁面，帳號與專案資訊已遮蔽">
+              <figcaption>Rate Limit 頁面會顯示目前 project 的 active limits 與近期用量。實際限制會依帳號、project、模型與 Google 政策調整。</figcaption>
+            </figure>
+
+            <h2>長音訊 token 估算</h2>
+            <p>
+              Gemini 音訊文件提供的估算是每秒 32 個 input tokens。因此：
+            </p>
+            <ul>
+              <li>1 分鐘音訊約 <strong>1,920 input tokens</strong>。</li>
+              <li>1 小時音訊約 <strong>115,200 input tokens</strong>。</li>
+            </ul>
+            <p>
+              MeetingPipeline 處理長音訊時，音訊 input tokens 是主要成本之一；後續逐字稿整理、摘要、決策、風險、待辦與事實檢核也會產生文字 input / output tokens。
+            </p>
+
+            <h2>粗略成本範例</h2>
+            <p id="cost-caveat">
+              以下使用 2026 年 5 月 22 日 Google Gemini API pricing 頁面的 Standard paid tier 數字做粗估，實際費用會受模型、地區、免費額度、快取、輸出長度與 Google 最新價格影響。請把它當成抓量級的工具，不要當帳單保證；正式費率請以 Google pricing 與 billing 頁面為準。
+            </p>
+            <div class="table-wrap" role="region" aria-describedby="cost-caveat" aria-label="Gemini 模型成本粗估" tabindex="0">
+              <table class="cost-table">
+                <caption>Gemini API 音訊 input 與 output 成本粗估，非帳單保證</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">模型</th>
+                    <th scope="col">公開方案數字</th>
+                    <th scope="col">1 小時音訊 input 粗估</th>
+                    <th scope="col">另外注意</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Gemini 3.1 Flash-Lite</td>
+                    <td>音訊 input 約 USD 0.50 / 1M tokens；output 約 USD 1.50 / 1M tokens。</td>
+                    <td>115,200 tokens 約 USD 0.058。</td>
+                    <td>適合先做低成本長音訊測試；輸出越長，output 成本越高。</td>
+                  </tr>
+                  <tr>
+                    <td>Gemini 3.5 Flash</td>
+                    <td>input 約 USD 1.50 / 1M tokens；output 約 USD 9.00 / 1M tokens。</td>
+                    <td>115,200 tokens 約 USD 0.173。</td>
+                    <td>若用於整理與分析，請把輸出 tokens 一起估入。</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2>MeetingPipeline 的設計取向</h2>
+            <div class="comparison-grid">
+              <section>
+                <h3>使用者自備 key</h3>
+                <p>MeetingPipeline 不代管 Gemini 帳號，也不內建共用 key。你的用量、費率與限制由你的 Google API 使用情況決定。</p>
+              </section>
+              <section>
+                <h3>本機保存紀錄</h3>
+                <p>會議紀錄、逐字稿、生成結果與處理狀態保存在你的裝置上，方便稍後查看、重試與分享。</p>
+              </section>
+              <section>
+                <h3>長音訊 m4a path</h3>
+                <p>MeetingPipeline 針對長音訊與 m4a 匯入流程設計，適合把完整會議整理成可回看的紀錄。</p>
+              </section>
+              <section>
+                <h3>一次解鎖</h3>
+                <p>App 採一次性解鎖模式；Gemini API 使用費則由 Google 依你的 key 與方案計算。</p>
+              </section>
+            </div>
+
+            <h2>會送到 Gemini 的資料</h2>
+            <p>
+              為了完成轉錄、會議紀錄整理、分析與事實檢核，MeetingPipeline 會把匯入的音檔、逐字稿、你輸入的會議背景，以及 Gemini 產生或 app 整理出的生成結果送到 Google Gemini API。
+            </p>
+            <p>
+              Gemini API key 只存在 iOS Keychain，不會寫進會議紀錄、逐字稿、Markdown 匯出檔或 app 內的會議資料。更多資料處理方式請看 <a href="../privacy/">MeetingPipeline 隱私政策</a>。
+            </p>
+
+            <h2>官方文件</h2>
+            <ul>
+              <li><a href="https://ai.google.dev/gemini-api/docs/api-key?hl=zh-tw" rel="noreferrer">Gemini API key 文件</a></li>
+              <li><a href="https://ai.google.dev/gemini-api/docs/pricing" rel="noreferrer">Gemini API pricing</a></li>
+              <li><a href="https://ai.google.dev/gemini-api/docs/rate-limits" rel="noreferrer">Gemini API rate limits</a></li>
+              <li><a href="https://ai.google.dev/gemini-api/docs/audio" rel="noreferrer">Gemini API audio 文件</a></li>
+            </ul>
+          </article>
+        </main>
+        <footer class="site-footer">
+          <span>營運者：OurMarginTable</span>
+          <span><a href="../support/">支援</a></span>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
