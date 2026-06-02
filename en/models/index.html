@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MeetingPipeline Models &amp; Costs</title>
+    <meta name="description" content="MeetingPipeline Gemini model choices, audio token estimates, meeting-background input, and cost ranges.">
+    <link rel="icon" href="../../app-icon.png" type="image/png">
+    <link rel="stylesheet" href="../../styles.css?v=20260602">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <div class="page-shell">
+      <div class="frame">
+        <header class="site-header">
+          <a class="brand" href="../" aria-label="MeetingPipeline home">
+            <img class="brand-icon" src="../../app-icon.png" alt="" width="32" height="32">
+            <span>MeetingPipeline</span>
+          </a>
+          <nav class="nav" aria-label="Primary navigation">
+            <a href="../gemini-api-key/">Gemini API Key Guide</a>
+            <a href="../models/" aria-current="page">Models &amp; Costs</a>
+            <a href="../privacy/">Privacy Policy</a>
+            <a href="../support/">Support</a>
+            <a class="language-switch" href="../../models/">繁中</a>
+          </nav>
+        </header>
+        <main id="main-content">
+          <article class="content guide">
+            <p class="eyebrow">Last updated: May 31, 2026</p>
+            <h1>MeetingPipeline Models &amp; Costs.</h1>
+            <p class="lede">
+              MeetingPipeline currently uses Gemini models for transcription and meeting-note analysis. This page explains audio token estimates, meeting-background input, and cost ranges.
+            </p>
+
+            <div class="meta-box" aria-label="Key points">
+              <p><strong>Current models:</strong> MeetingPipeline can use Gemini models for transcription and analysis. Your selected model, Google project, and billing setup control the final cost.</p>
+              <p><strong>Estimate limits:</strong> If your API key is still inside Google's free tier, you may not incur API charges. Google pricing, free quotas, and rate limits can change, so use this page as a practical estimate rather than a guaranteed bill.</p>
+            </div>
+
+            <h2>How audio cost is estimated</h2>
+            <p>
+              Gemini audio understanding is commonly estimated by duration: one second of audio is roughly 32 input tokens. One minute is about 1,920 tokens, and one hour is about 115,200 tokens. MeetingPipeline then uses the transcript, meeting background, and templates to produce meeting notes.
+            </p>
+            <p>
+              Longer audio may be processed in stages. The actual bill depends on model choice, transcript density, generated output length, cached input behavior, and Google's current Gemini API pricing.
+            </p>
+
+            <h2>Meeting background and review costs</h2>
+            <p>
+              Meeting background usually adds a small number of text input tokens. It can improve names, acronyms, product terms, and agenda-specific wording, while the exact bill remains controlled by your Google project and Gemini API pricing.
+            </p>
+            <p>
+              Fact-checking or additional review passes can add more input and output tokens. If you run extra checks after the first meeting-note draft, estimate them as separate Gemini API calls.
+            </p>
+
+            <h2>Typical cost drivers</h2>
+            <div class="assumption-grid" aria-label="Cost estimate drivers">
+              <section>
+                <span class="assumption-label">Audio length</span>
+                <strong>About 115,200 tokens per hour</strong>
+                <p>Audio input scales mostly with duration, before model-specific billing details are applied.</p>
+              </section>
+              <section>
+                <span class="assumption-label">Transcript density</span>
+                <strong>More speech means more output</strong>
+                <p>Fast multi-speaker meetings usually produce more transcript and analysis tokens.</p>
+              </section>
+              <section>
+                <span class="assumption-label">Generated notes</span>
+                <strong>Detailed drafts cost more</strong>
+                <p>Longer meeting notes, action items, risks, and fact-checking drafts add output tokens.</p>
+              </section>
+            </div>
+
+            <h2>Official sources</h2>
+            <ul>
+              <li><a href="https://ai.google.dev/gemini-api/docs/pricing" rel="noreferrer">Gemini API pricing</a></li>
+              <li><a href="https://ai.google.dev/gemini-api/docs/tokens" rel="noreferrer">Gemini token counting</a></li>
+              <li><a href="https://ai.google.dev/gemini-api/docs/audio" rel="noreferrer">Gemini audio understanding</a></li>
+            </ul>
+          </article>
+        </main>
+        <footer class="site-footer">
+          <span>MeetingPipeline</span>
+          <span>
+            <a href="../gemini-api-key/">Gemini API Key Guide</a>
+            · <a href="../models/">Models &amp; Costs</a>
+            · <a href="../privacy/">Privacy Policy</a>
+            · <a href="../support/">Support</a>
+          </span>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

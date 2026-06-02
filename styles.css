@@ -119,6 +119,7 @@ a:focus-visible {
 }
 
 .nav {
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
   gap: 8px 18px;
@@ -135,6 +136,42 @@ a:focus-visible {
   color: var(--ink);
   font-weight: 700;
   text-decoration-color: var(--accent);
+}
+
+.nav .language-switch {
+  align-items: center;
+  border: 1px solid color-mix(in oklch, var(--accent) 30%, var(--rule));
+  border-radius: 999px;
+  color: var(--accent-ink);
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1;
+  margin-left: 6px;
+  min-height: 32px;
+  min-width: 52px;
+  padding: 0 12px;
+  position: relative;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav .language-switch::before {
+  background: var(--rule);
+  content: "";
+  height: 22px;
+  left: -16px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+}
+
+.nav .language-switch:hover {
+  background: var(--accent-soft);
+  border-color: color-mix(in oklch, var(--accent) 55%, var(--rule));
+  color: var(--accent-ink);
 }
 
 main {
@@ -630,6 +667,18 @@ code {
     padding: 18px 20px;
   }
 
+  .nav {
+    gap: 8px 14px;
+  }
+
+  .nav .language-switch {
+    margin-left: 0;
+  }
+
+  .nav .language-switch::before {
+    display: none;
+  }
+
   main {
     padding: 34px 20px 48px;
   }
@@ -671,4 +720,41 @@ code {
     scroll-behavior: auto !important;
     transition-duration: 1ms !important;
   }
+}
+
+.support-table-wrap {
+  margin-top: 18px;
+  overflow-x: auto;
+}
+
+.support-table {
+  border-collapse: collapse;
+  min-width: 720px;
+  width: 100%;
+}
+
+.support-table th,
+.support-table td {
+  border-bottom: 1px solid var(--rule);
+  padding: 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.support-table th {
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.support-table td {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.support-callout {
+  background: color-mix(in oklch, var(--accent-soft) 42%, white);
+  border: 1px solid color-mix(in oklch, var(--accent) 18%, var(--rule));
+  border-radius: var(--radius-md);
+  margin-top: 18px;
+  padding: 14px;
 }

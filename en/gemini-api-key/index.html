@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MeetingPipeline Gemini API Key Setup Guide</title>
+    <meta name="description" content="How to create a Gemini API key for MeetingPipeline, understand limits, and review what data is sent to Gemini.">
+    <link rel="icon" href="../../app-icon.png" type="image/png">
+    <link rel="stylesheet" href="../../styles.css?v=20260602">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <div class="page-shell">
+      <div class="frame">
+        <header class="site-header">
+          <a class="brand" href="../" aria-label="MeetingPipeline home">
+            <img class="brand-icon" src="../../app-icon.png" alt="" width="32" height="32">
+            <span>MeetingPipeline</span>
+          </a>
+          <nav class="nav" aria-label="Primary navigation">
+            <a href="../gemini-api-key/" aria-current="page">Gemini API Key Guide</a>
+            <a href="../models/">Models &amp; Costs</a>
+            <a href="../privacy/">Privacy Policy</a>
+            <a href="../support/">Support</a>
+            <a class="language-switch" href="../../gemini-api-key/">繁中</a>
+          </nav>
+        </header>
+        <main id="main-content">
+          <article class="content guide">
+            <p class="eyebrow">Last updated: May 31, 2026</p>
+            <h1>Gemini API Key Setup Guide.</h1>
+            <p class="lede">
+              MeetingPipeline uses your own Gemini API key. Create a key in Google AI Studio, then paste it into Settings in the app.
+            </p>
+
+            <div class="meta-box" aria-label="Key points">
+              <p><strong>Start here:</strong> This guide explains how to create a Gemini API key, add it to MeetingPipeline, and understand free-tier limits, paid usage, long-audio processing, and meeting-note costs. For detailed estimates, see <a href="../models/">Models &amp; Costs</a>.</p>
+              <p><strong>Privacy summary:</strong> MeetingPipeline does not include a built-in Gemini account or shared API key. To transcribe, organize, and analyze meetings, audio, transcripts, meeting background, and generated results are sent to the Gemini API. For details, see the <a href="../privacy/">Privacy Policy</a>.</p>
+            </div>
+
+            <h2>Create a Gemini API key</h2>
+            <ol class="step-list">
+              <li>
+                <strong>Open Google AI Studio.</strong>
+                <span>Go to <a href="https://aistudio.google.com" rel="noreferrer">Google AI Studio</a> and sign in with your Google account.</span>
+              </li>
+              <li>
+                <strong>Open the API key page.</strong>
+                <span>Find the API key area in AI Studio, or use Google's <a href="https://ai.google.dev/gemini-api/docs/api-key" rel="noreferrer">Gemini API key documentation</a>.</span>
+              </li>
+              <li>
+                <strong>Create a new key.</strong>
+                <span>Follow the Google AI Studio prompts to create a key. Treat it like a password, and do not paste it into public documents, screenshots, chat messages, or support reports.</span>
+              </li>
+              <li>
+                <strong>Paste it into MeetingPipeline.</strong>
+                <span>Open Settings in MeetingPipeline and paste the key into the Gemini API key field. The key is stored only in iOS Keychain.</span>
+              </li>
+            </ol>
+
+            <h2>Free API keys and free limits</h2>
+            <p>
+              Google AI Studio can usually create a free API key, and some models may include free-tier or trial limits. Free quotas, daily request counts, requests per minute, regions, and model availability can change. Always use Google's official pricing and limit pages as the source of truth.
+            </p>
+            <p>
+              MeetingPipeline is designed for longer imported audio, but the practical limit depends on your Google project's quota and the selected Gemini model. For stable processing of long meetings, consider enabling billing on the Google project that owns your API key.
+            </p>
+
+            <h2>Paid API keys and paid limits</h2>
+            <p>
+              If the free tier is not enough, or if you want to process longer audio more reliably, enable billing for the Google project that owns the API key. MeetingPipeline usage is billed by Google according to your project, model, region, limits, and current Gemini API pricing. MeetingPipeline does not add a backend processing fee.
+            </p>
+
+            <h2>MeetingPipeline design</h2>
+            <div class="comparison-grid">
+              <section>
+                <h3>Bring your own API key</h3>
+                <p>MeetingPipeline does not host a Gemini account or include a shared API key. Usage, pricing, and limits are controlled by your own Google project.</p>
+              </section>
+              <section>
+                <h3>Local meeting records</h3>
+                <p>Meeting notes, transcripts, generated results, and processing state are stored on your device so you can review, retry, and share them later.</p>
+              </section>
+              <section>
+                <h3>Long audio import</h3>
+                <p>MeetingPipeline is designed around imported meeting audio and helps turn full meetings into reusable records.</p>
+              </section>
+              <section>
+                <h3>One-time unlock</h3>
+                <p>The app uses a one-time unlock model. Gemini API usage is charged by Google based on your API key's project and billing setup.</p>
+              </section>
+            </div>
+
+            <h2 id="meeting-background">Meeting background</h2>
+            <p>
+              When you import audio, MeetingPipeline lets you add meeting background such as customer names, product names, agenda topics, acronyms, and speaker context. This text is sent to the Google Gemini API together with the audio, transcript, template, and generated draft so Gemini can recognize domain-specific terms more accurately.
+            </p>
+            <p>
+              Keep the background short and factual: one to five bullets is enough for most meetings. Do not paste API keys, passwords, private credentials, or information you do not want processed by Gemini.
+            </p>
+            <p>
+              Meeting background adds a small amount of text input tokens. For the cost model, see <a href="../models/">Models &amp; Costs</a>.
+            </p>
+
+            <h2>Data sent to Gemini</h2>
+            <p>
+              To complete transcription, meeting-note generation, analysis, and fact-checking, MeetingPipeline sends imported audio, transcripts, meeting background, and generated or app-organized results to the Google Gemini API.
+            </p>
+            <p>
+              Your Gemini API key is stored only in iOS Keychain. It is not written into meeting notes, transcripts, Markdown exports, or in-app meeting data.
+            </p>
+
+            <h2>Official documentation</h2>
+            <ul>
+              <li><a href="https://ai.google.dev/gemini-api/docs/api-key" rel="noreferrer">Gemini API key documentation</a></li>
+              <li><a href="https://ai.google.dev/gemini-api/docs/pricing" rel="noreferrer">Gemini API pricing</a></li>
+              <li><a href="https://ai.google.dev/gemini-api/docs/rate-limits" rel="noreferrer">Gemini API rate limits</a></li>
+              <li><a href="https://ai.google.dev/gemini-api/docs/audio" rel="noreferrer">Gemini API audio understanding</a></li>
+            </ul>
+          </article>
+        </main>
+        <footer class="site-footer">
+          <span>MeetingPipeline</span>
+          <span>
+            <a href="../gemini-api-key/">Gemini API Key Guide</a>
+            · <a href="../models/">Models &amp; Costs</a>
+            · <a href="../privacy/">Privacy Policy</a>
+            · <a href="../support/">Support</a>
+          </span>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

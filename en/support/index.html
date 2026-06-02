@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MeetingPipeline Support</title>
+    <meta name="description" content="MeetingPipeline support, setup checks, guide links, and privacy summary.">
+    <link rel="icon" href="../../app-icon.png" type="image/png">
+    <link rel="stylesheet" href="../../styles.css?v=20260602">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <div class="page-shell">
+      <div class="frame">
+        <header class="site-header">
+          <a class="brand" href="../" aria-label="MeetingPipeline home">
+            <img class="brand-icon" src="../../app-icon.png" alt="" width="32" height="32">
+            <span>MeetingPipeline</span>
+          </a>
+          <nav class="nav" aria-label="Primary navigation">
+            <a href="../gemini-api-key/">Gemini API Key Guide</a>
+            <a href="../models/">Models &amp; Costs</a>
+            <a href="../privacy/">Privacy Policy</a>
+            <a href="../support/" aria-current="page">Support</a>
+            <a class="language-switch" href="../../support/">繁中</a>
+          </nav>
+        </header>
+        <main id="main-content">
+          <article class="content">
+            <p class="eyebrow">Last updated: May 31, 2026</p>
+            <h1>MeetingPipeline Support.</h1>
+            <div class="meta-box" aria-label="Support information">
+              <p><strong>Support path:</strong> Check setup, quota, and audio format first. Public feedback can be left through an App Store review.</p>
+              <p><strong>Privacy policy:</strong> <a href="../privacy/">MeetingPipeline Privacy Policy</a></p>
+            </div>
+
+            <h2>Support</h2>
+            <p>
+              MeetingPipeline is an iPhone app that imports meeting audio and uses your own Gemini API key to produce transcripts, meeting notes, decisions, risks, action items, and fact-checking drafts.
+            </p>
+            <p>
+              If processing fails, check the items below first. If the issue keeps happening, you can leave public feedback through an App Store review.
+            </p>
+            <p>
+              If you do not have a Gemini API key yet, start with the
+              <a href="../gemini-api-key/">Gemini API Key Guide</a>. If you want to estimate longer-audio processing costs, see
+              <a href="../models/">Models &amp; Costs</a>.
+            </p>
+
+            <h2>Before contacting support</h2>
+            <p>Please confirm:</p>
+            <ul>
+              <li>You entered a valid Gemini API key in Settings.</li>
+              <li>The Google project that owns the key still has available quota.</li>
+              <li>The app stays in the foreground for longer audio processing. If iOS interrupts background execution, return to the app and retry the unfinished workflow.</li>
+              <li>The imported file is in an audio format supported by the app.</li>
+            </ul>
+
+            <h2 id="gemini-errors">Gemini API errors</h2>
+            <p>
+              MeetingPipeline uses your own Gemini API key and calls the Google Gemini API directly from your device. These errors usually point to Gemini API availability, your Google project, the selected model, quota, billing, or network state. They do not indicate a MeetingPipeline server outage; MeetingPipeline does not run a backend for these Gemini requests.
+            </p>
+            <div class="support-callout">
+              <p><strong>Quick read:</strong> For HTTP 500, 503, or 504, first retry after a short wait, switch models, reduce meeting background or input context, and check <a href="https://aistudio.google.com/status" rel="noreferrer">Gemini API status</a>.</p>
+            </div>
+            <div class="support-table-wrap">
+              <table class="support-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Error</th>
+                    <th scope="col">Common meaning</th>
+                    <th scope="col">What to try</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>HTTP 400 / INVALID_ARGUMENT</td>
+                    <td>The request format, context, or model parameters were not accepted by Gemini.</td>
+                    <td>Update the model list, shorten meeting background, re-import the audio, and try again.</td>
+                  </tr>
+                  <tr>
+                    <td>HTTP 403 / PERMISSION_DENIED</td>
+                    <td>The API key, Google project permission, or billing state does not allow this request.</td>
+                    <td>Check that the key is correct and not blocked, then review Google AI Studio or Google Cloud project permissions.</td>
+                  </tr>
+                  <tr>
+                    <td>HTTP 404 / NOT_FOUND</td>
+                    <td>The selected model or an uploaded Gemini file resource could not be found.</td>
+                    <td>Update the model list in Settings or retry the audio processing after a short wait.</td>
+                  </tr>
+                  <tr>
+                    <td>HTTP 429 / RESOURCE_EXHAUSTED</td>
+                    <td>Your Gemini quota or rate limit was reached.</td>
+                    <td>Wait for the in-app retry countdown, switch to another usable Gemini key, or review quota and billing in your Google project.</td>
+                  </tr>
+                  <tr>
+                    <td>HTTP 500 / INTERNAL</td>
+                    <td>Google encountered an unexpected error, or the input context was too long.</td>
+                    <td>Retry after a short wait, reduce meeting background or input context, switch models, and check Gemini API status.</td>
+                  </tr>
+                  <tr>
+                    <td>HTTP 503 / UNAVAILABLE</td>
+                    <td>The Gemini service may be temporarily overloaded or unavailable.</td>
+                    <td>Retry after a short wait, switch models, and check Gemini API status.</td>
+                  </tr>
+                  <tr>
+                    <td>HTTP 504 / DEADLINE_EXCEEDED</td>
+                    <td>Gemini could not finish within the processing deadline, often because the input is too large.</td>
+                    <td>Reduce meeting background or audio input size, keep the app in the foreground, and retry.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Official sources: <a href="https://ai.google.dev/gemini-api/docs/troubleshooting" rel="noreferrer">Gemini API troubleshooting guide</a> and <a href="https://ai.google.dev/gemini-api/docs/audio" rel="noreferrer">Gemini audio understanding</a>.
+            </p>
+
+            <h2>Privacy summary</h2>
+            <p>
+              MeetingPipeline uses a bring-your-own Gemini API key model. The API key is stored only in iOS Keychain and is not written into meeting notes or export files. To provide app functionality, audio, transcripts, meeting background, and generated results are sent to the Google Gemini API for transcription, analysis, meeting-note generation, and fact-checking.
+            </p>
+            <p>
+              MeetingPipeline stores meeting notes, transcripts, generated results, and processing state locally so you can retry, review, and share results. MeetingPipeline does not track you, does not include a built-in account, does not include a built-in API key, and does not provide a built-in cloud sync service.
+            </p>
+          </article>
+        </main>
+        <footer class="site-footer">
+          <span>MeetingPipeline</span>
+          <span>
+            <a href="../gemini-api-key/">Gemini API Key Guide</a>
+            · <a href="../models/">Models &amp; Costs</a>
+            · <a href="../privacy/">Privacy Policy</a>
+            · <a href="../support/">Support</a>
+          </span>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
