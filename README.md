@@ -1,6 +1,4 @@
-# MeetingPipeline 公開頁面
-
-這個 repo 放 MeetingPipeline 給 App Store metadata 與 runtime model catalog 使用的公開靜態檔。
+# MeetingPipeline
 
 - 隱私政策：`/privacy/`
 - 支援頁：`/support/`
