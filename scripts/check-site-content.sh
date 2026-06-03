@@ -78,12 +78,12 @@ for file in "${en_pages[@]}"; do
   require_match "$file" 'support/'
 done
 
-require_match "en/index.html" 'href="../styles.css?v=20260602"'
+require_match "en/index.html" 'href="../styles.css?v=20260604"'
 require_match "en/index.html" 'src="../app-icon.png"'
 
 en_nested_pages=(en/gemini-api-key/index.html en/models/index.html en/privacy/index.html en/support/index.html)
 for file in "${en_nested_pages[@]}"; do
-  require_match "$file" 'href="../../styles.css?v=20260602"'
+  require_match "$file" 'href="../../styles.css?v=20260604"'
   require_match "$file" 'src="../../app-icon.png"'
 done
 
