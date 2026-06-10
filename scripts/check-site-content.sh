@@ -4,6 +4,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 MODE="${1:-full}"
+CSS_VERSION="20260610-typography10"
 
 if [[ "$MODE" != "full" && "$MODE" != "pages-only" ]]; then
   echo "usage: scripts/check-site-content.sh [full|pages-only]" >&2
@@ -78,12 +79,12 @@ for file in "${en_pages[@]}"; do
   require_match "$file" 'support/'
 done
 
-require_match "en/index.html" 'href="../styles.css?v=20260604"'
+require_match "en/index.html" "href=\"../styles.css?v=${CSS_VERSION}\""
 require_match "en/index.html" 'src="../app-icon.png"'
 
 en_nested_pages=(en/gemini-api-key/index.html en/models/index.html en/privacy/index.html en/support/index.html)
 for file in "${en_nested_pages[@]}"; do
-  require_match "$file" 'href="../../styles.css?v=20260604"'
+  require_match "$file" "href=\"../../styles.css?v=${CSS_VERSION}\""
   require_match "$file" 'src="../../app-icon.png"'
 done
 

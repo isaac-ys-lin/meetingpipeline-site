@@ -6,7 +6,7 @@
     <title>MeetingPipeline Gemini API Key Setup Guide</title>
     <meta name="description" content="How to create a Gemini API key for MeetingPipeline, understand limits, and review what data is sent to Gemini.">
     <link rel="icon" href="../../app-icon.png" type="image/png">
-    <link rel="stylesheet" href="../../styles.css?v=20260604">
+    <link rel="stylesheet" href="../../styles.css?v=20260610-typography10">
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -27,15 +27,15 @@
         </header>
         <main id="main-content">
           <article class="content guide">
-            <p class="eyebrow">Last updated: May 31, 2026</p>
+            <p class="eyebrow">Last updated: June 10, 2026</p>
             <h1>Gemini API Key Setup Guide.</h1>
             <p class="lede">
               MeetingPipeline uses your own Gemini API key. Create a key in Google AI Studio, then paste it into Settings in the app.
             </p>
 
             <div class="meta-box" aria-label="Key points">
-              <p><strong>Start here:</strong> This guide explains how to create a Gemini API key, add it to MeetingPipeline, and understand free-tier limits, paid usage, long-audio processing, and meeting-note costs. For detailed estimates, see <a href="../models/">Models &amp; Costs</a>.</p>
-              <p><strong>Privacy summary:</strong> MeetingPipeline does not include a built-in Gemini account or shared API key. To transcribe, organize, and analyze meetings, audio, transcripts, meeting background, and generated results are sent to the Gemini API. For details, see the <a href="../privacy/">Privacy Policy</a>.</p>
+              <p><strong>Start here:</strong><span>This guide explains how to create a Gemini API key, add it to MeetingPipeline, and understand free-tier limits, paid usage, long-audio processing, and meeting-note costs. For detailed estimates, see <a href="../models/">Models &amp; Costs</a>.</span></p>
+              <p><strong>Privacy summary:</strong><span>MeetingPipeline does not include a built-in Gemini account or shared API key. To transcribe, organize, and analyze meetings, audio, transcripts, meeting background, and generated results are sent to the Gemini API. For details, see the <a href="../privacy/">Privacy Policy</a>.</span></p>
             </div>
 
             <h2>Create a Gemini API key</h2>
@@ -58,17 +58,31 @@
               </li>
             </ol>
 
+            <figure class="guide-figure">
+              <img src="../../assets/gemini-api-key/01-ai-studio-api-keys-redacted.png?v=20260523-crop" alt="Google AI Studio API Keys page with API key, account, and project details redacted">
+              <figcaption>The API Keys page lists the keys you have created.</figcaption>
+            </figure>
+            <figure class="guide-figure">
+              <img src="../../assets/gemini-api-key/02-create-key-redacted.png?v=20260523-crop" alt="Google AI Studio Create API key dialog with project details redacted">
+              <figcaption>The Create API key dialog asks you to choose a project. After creating the key, store it like a password and do not paste the full key into chats, documents, or support reports.</figcaption>
+            </figure>
+
             <h2>Free API keys and free limits</h2>
             <p>
               Google AI Studio can usually create a free API key, and some models may include free-tier or trial limits. Free quotas, daily request counts, requests per minute, regions, and model availability can change. Always use Google's official pricing and limit pages as the source of truth.
             </p>
             <p>
-              MeetingPipeline is designed for longer imported audio, but the practical limit depends on your Google project's quota and the selected Gemini model. For stable processing of long meetings, consider enabling billing on the Google project that owns your API key.
+              With MeetingPipeline's current Gemini 3.1 Flash-Lite model, free quota can usually be used to test meeting audio around 1 to 2 hours long. This is not an app audio-length limit. It mainly depends on your free API key quota. MeetingPipeline includes a model API cooldown mechanism and retries after rate-limit countdowns, so longer audio may still complete for free. For stable long-meeting results, consider enabling billing on the Google project that owns your API key.
             </p>
+
+            <figure class="guide-figure">
+              <img src="../../assets/gemini-api-key/03-active-limits-redacted.png?v=20260523-crop" alt="Google AI Studio Rate Limit page with account and project details redacted">
+              <figcaption>The Rate Limit page shows active limits and recent usage for the current project. Actual limits vary by account, project, model, and Google policy.</figcaption>
+            </figure>
 
             <h2>Paid API keys and paid limits</h2>
             <p>
-              If the free tier is not enough, or if you want to process longer audio more reliably, enable billing for the Google project that owns the API key. MeetingPipeline usage is billed by Google according to your project, model, region, limits, and current Gemini API pricing. MeetingPipeline does not add a backend processing fee.
+              If the free tier is not enough, or if you want to process longer audio more reliably, enable billing for the Google project that owns the API key. MeetingPipeline usage is billed by Google according to your project, model, region, limits, and current Gemini API pricing. Long-audio cost mainly depends on audio input tokens, transcript output tokens, and meeting-note analysis input / output tokens. For the full formula and examples, see <a href="../models/">MeetingPipeline Models &amp; Costs</a>. MeetingPipeline keeps pricing transparent and does not add a backend processing fee, so you can use Google's public billing standards directly.
             </p>
 
             <h2>MeetingPipeline design</h2>
@@ -108,6 +122,7 @@
             </p>
             <p>
               Your Gemini API key is stored only in iOS Keychain. It is not written into meeting notes, transcripts, Markdown exports, or in-app meeting data.
+              For more about data handling, see the <a href="../privacy/">MeetingPipeline Privacy Policy</a>.
             </p>
 
             <h2>Official documentation</h2>
@@ -122,7 +137,7 @@
         <footer class="site-footer">
           <span>MeetingPipeline</span>
           <span>
-            <a href="../gemini-api-key/">API Key</a>
+            <a href="../gemini-api-key/" aria-current="page">API Key</a>
             · <a href="../models/">Models</a>
             · <a href="../privacy/">Privacy</a>
             · <a href="../support/">Support</a>

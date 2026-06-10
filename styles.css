@@ -181,7 +181,7 @@ main {
 }
 
 .intro {
-  max-width: 760px;
+  max-width: 820px;
 }
 
 .intro > * {
@@ -240,6 +240,18 @@ p {
   max-width: 68ch;
 }
 
+html:lang(zh-Hant) .content p:not(.eyebrow):not(.lede),
+html:lang(zh-Hant) .content li {
+  text-align: justify;
+  text-align-last: start;
+  text-justify: inter-character;
+}
+
+html:lang(en) .content p:not(.eyebrow):not(.lede),
+html:lang(en) .content li {
+  text-align: start;
+}
+
 ul {
   margin: 14px 0 0;
   padding-left: 1.15rem;
@@ -295,24 +307,50 @@ code {
 
 .content {
   max-width: 820px;
+  width: 100%;
+}
+
+.content h1,
+.content p,
+.content li {
+  max-width: none;
 }
 
 .meta-box {
-  background: var(--warning-soft);
+  background: color-mix(in oklch, var(--warning-soft) 54%, white);
+  border: 1px solid color-mix(in oklch, var(--warning-soft) 76%, var(--rule));
   border-radius: var(--radius-md);
-  box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--warning-soft) 75%, var(--rule));
+  display: grid;
   margin-top: 30px;
-  padding: 18px 20px;
+  overflow: hidden;
 }
 
 .meta-box p {
   color: var(--ink);
+  display: grid;
   font-size: 15px;
-  margin: 6px 0 0;
+  gap: 0.45rem;
+  grid-template-columns: 6rem minmax(0, 1fr);
+  line-height: 1.62;
+  margin: 0;
+  max-width: none;
+  padding: 12px 16px;
+  text-align: start;
+  text-align-last: auto;
 }
 
-.guide .lede {
-  max-width: 760px;
+.meta-box p + p {
+  border-top: 1px solid color-mix(in oklch, var(--warning-soft) 78%, var(--rule));
+}
+
+.meta-box strong {
+  color: var(--ink);
+  grid-column: 1;
+}
+
+.meta-box p > span {
+  grid-column: 2;
+  min-width: 0;
 }
 
 .step-list {
@@ -621,6 +659,7 @@ code {
   border-radius: var(--radius-md);
   color: var(--ink);
   font-size: 16px;
+  max-width: none;
   padding: 14px 16px;
 }
 
@@ -640,6 +679,26 @@ code {
   color: var(--ink);
   font-size: 15px;
   margin-top: 8px;
+  max-width: none;
+}
+
+html:lang(en) .meta-box p,
+html:lang(en) .formula-box p,
+html:lang(en) .cost-callout,
+html:lang(en) .support-callout p {
+  text-align: start;
+}
+
+html:lang(en) .meta-box p {
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+}
+
+html:lang(zh-Hant) .meta-box p,
+html:lang(zh-Hant) .formula-box p,
+html:lang(zh-Hant) .cost-callout,
+html:lang(zh-Hant) .support-callout p {
+  text-align: start;
+  text-align-last: auto;
 }
 
 .site-footer {
@@ -657,6 +716,12 @@ code {
 
 .site-footer a {
   white-space: nowrap;
+}
+
+.site-footer a[aria-current="page"] {
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration-color: var(--accent);
 }
 
 @media (hover: hover) {
@@ -700,7 +765,9 @@ code {
   }
 
   main > * {
+    max-width: 100%;
     min-width: 0;
+    width: 100%;
   }
 
   .intro,
@@ -712,6 +779,14 @@ code {
     grid-template-columns: 1fr;
   }
 
+  .content,
+  .guide .lede,
+  .content p,
+  .content li {
+    max-width: 100%;
+    min-width: 0;
+  }
+
   .cost-flow div,
   .cost-flow div:first-child,
   .cost-flow div:last-child {
@@ -721,6 +796,18 @@ code {
   .step-list li {
     grid-template-columns: 36px 1fr;
     padding: 16px;
+  }
+
+  .meta-box p {
+    display: block;
+  }
+
+  .meta-box strong {
+    margin-right: 0.35rem;
+  }
+
+  .meta-box p > span {
+    display: inline;
   }
 
   h1 {
@@ -777,4 +864,8 @@ code {
   border-radius: var(--radius-md);
   margin-top: 18px;
   padding: 14px;
+}
+
+.support-callout p {
+  max-width: none;
 }
