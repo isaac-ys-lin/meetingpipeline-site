@@ -27,7 +27,7 @@
         </header>
         <main id="main-content">
           <article class="content">
-            <p class="eyebrow">最後更新：2026 年 6 月 10 日</p>
+            <p class="eyebrow">最後更新：2026 年 7 月 14 日</p>
             <h1>MeetingPipeline 隱私政策。</h1>
             <p class="lede">
               MeetingPipeline 採用使用者自備 Gemini API key，不內建帳號、API key 或雲端同步服務。本頁說明音檔、逐字稿、會議背景、生成內容、本機儲存與 tracking 的處理方式。
@@ -48,6 +48,9 @@
             </ul>
             <p>
               上述音檔、逐字稿、會議背景與生成結果會送到 Google Gemini API，用來完成轉錄、會議紀錄整理、分析與事實檢核。Google Gemini API 的資料處理方式由使用者使用 Gemini API 時適用的 Google 條款與設定管理。
+            </p>
+            <p>
+              長音訊轉錄會使用 Gemini Interactions API 延續同一段音訊的轉錄內容。為了延續對話，Google 會暫存 Interaction 的請求與回覆；MeetingPipeline 會在該段處理完成、取消或最終失敗後，嘗試刪除相關 Interaction 與上傳檔案。刪除是盡力執行，若網路或服務異常而未即時成功，資料仍可能依 Google 的保留期限存在。Google 目前說明 Free Tier 的 Interaction 保留 1 天，Paid Tier 保留 55 天，且 Paid Tier 專案可在 AI Studio 設定為 7、14、28 或 55 天。使用者也可在 Google AI Studio 查看及管理已儲存的 Interaction。
             </p>
 
             <h2>Gemini API key</h2>

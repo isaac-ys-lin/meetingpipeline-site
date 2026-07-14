@@ -27,7 +27,7 @@
         </header>
         <main id="main-content">
           <article class="content">
-            <p class="eyebrow">Last updated: June 10, 2026</p>
+            <p class="eyebrow">Last updated: July 14, 2026</p>
             <h1>MeetingPipeline Support.</h1>
             <p class="lede">
               If transcription or analysis fails, first check your Gemini API key, project quota, audio format, and foreground processing state. This page summarizes common Gemini API errors, what to try, and the privacy model.
@@ -117,6 +117,9 @@
             <h2>Privacy summary</h2>
             <p>
               MeetingPipeline uses a bring-your-own Gemini API key model. The API key is stored only in iOS Keychain and is not written into meeting notes or export files. To provide app functionality, audio, transcripts, meeting background, and generated results are sent to the Google Gemini API for transcription, analysis, meeting-note generation, and fact-checking.
+            </p>
+            <p>
+              Long-audio transcription uses the Gemini Interactions API to continue context across transcription windows. MeetingPipeline makes a best-effort attempt to delete related Interactions and uploaded files after completion, cancellation, or terminal failure. If a network or Google service issue prevents immediate deletion, data may remain under Google's retention settings. Google currently documents 1 day for Free Tier and 55 days for Paid Tier; Paid Tier projects can select 7, 14, 28, or 55 days in AI Studio.
             </p>
             <p>
               MeetingPipeline stores meeting notes, transcripts, generated results, and processing state locally so you can retry, review, and share results. MeetingPipeline does not track you, does not include a built-in account, does not include a built-in API key, and does not provide a built-in cloud sync service.

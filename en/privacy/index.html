@@ -27,7 +27,7 @@
         </header>
         <main id="main-content">
           <article class="content">
-            <p class="eyebrow">Last updated: June 10, 2026</p>
+            <p class="eyebrow">Last updated: July 14, 2026</p>
             <h1>MeetingPipeline Privacy Policy.</h1>
             <p class="lede">
               MeetingPipeline uses your own Gemini API key and does not include a built-in account, API key, or cloud sync service. This page explains how audio, transcripts, meeting background, generated content, local storage, and tracking are handled.
@@ -51,6 +51,9 @@
             </p>
             <p>
               Google's handling of Gemini API data is governed by the Google terms and settings that apply to your Gemini API usage.
+            </p>
+            <p>
+              Long-audio transcription uses the Gemini Interactions API to continue context across transcription windows. Google stores each Interaction request and response for that continuation. MeetingPipeline attempts to delete related Interactions and uploaded files after that audio section completes, is cancelled, or reaches a terminal failure. Deletion is best effort; if a network or service failure prevents immediate deletion, the data may remain under Google's retention policy. Google currently documents 1-day retention for Free Tier and 55-day retention for Paid Tier, with Paid Tier project settings of 7, 14, 28, or 55 days in AI Studio. Users can also view and manage stored Interactions in Google AI Studio.
             </p>
 
             <h2>Gemini API key</h2>
