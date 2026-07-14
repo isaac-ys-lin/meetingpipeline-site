@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MeetingPipeline Gemini API Key Setup Guide</title>
-    <meta name="description" content="How to create a Gemini API key for MeetingPipeline, understand limits, and review what data is sent to Gemini.">
+    <title>Trace Gemini API Key Setup Guide</title>
+    <meta name="description" content="How to create a Gemini API key for Trace, understand limits, and review what data is sent to Gemini.">
     <link rel="icon" href="../../app-icon.png" type="image/png">
     <link rel="stylesheet" href="../../styles.css?v=20260610-typography11">
   </head>
@@ -13,9 +13,9 @@
     <div class="page-shell">
       <div class="frame">
         <header class="site-header">
-          <a class="brand" href="../" aria-label="MeetingPipeline home">
+          <a class="brand" href="../" aria-label="Trace home">
             <img class="brand-icon" src="../../app-icon.png" alt="" width="32" height="32">
-            <span>MeetingPipeline</span>
+            <span>Trace</span>
           </a>
           <nav class="nav" aria-label="Primary navigation">
             <a href="../gemini-api-key/" aria-current="page">API Key</a>
@@ -30,12 +30,12 @@
             <p class="eyebrow">Last updated: June 10, 2026</p>
             <h1>Gemini API Key Setup Guide.</h1>
             <p class="lede">
-              MeetingPipeline uses your own Gemini API key. Create a key in Google AI Studio, then paste it into Settings in the app.
+              Trace uses your own Gemini API key. Create a key in Google AI Studio, then paste it into Settings in the app.
             </p>
 
             <div class="meta-box" aria-label="Key points">
-              <p><strong>Start here:</strong><span>This guide explains how to create a Gemini API key, add it to MeetingPipeline, and understand free-tier limits, paid usage, long-audio processing, and meeting-note costs. For detailed estimates, see <a href="../models/">Models &amp; Costs</a>.</span></p>
-              <p><strong>Privacy summary:</strong><span>MeetingPipeline does not include a built-in Gemini account or shared API key. To transcribe, organize, and analyze meetings, audio, transcripts, meeting background, and generated results are sent to the Gemini API. For details, see the <a href="../privacy/">Privacy Policy</a>.</span></p>
+              <p><strong>Start here:</strong><span>This guide explains how to create a Gemini API key, add it to Trace, and understand free-tier limits, paid usage, long-audio processing, and meeting-note costs. For detailed estimates, see <a href="../models/">Models &amp; Costs</a>.</span></p>
+              <p><strong>Privacy summary:</strong><span>Trace does not include a built-in Gemini account or shared API key. To transcribe, organize, and analyze meetings, audio, transcripts, meeting background, and generated results are sent to the Gemini API. For details, see the <a href="../privacy/">Privacy Policy</a>.</span></p>
             </div>
 
             <h2>Create a Gemini API key</h2>
@@ -53,8 +53,8 @@
                 <span>Follow the Google AI Studio prompts to create a key. Treat it like a password, and do not paste it into public documents, screenshots, chat messages, or support reports.</span>
               </li>
               <li>
-                <strong>Paste it into MeetingPipeline.</strong>
-                <span>Open Settings in MeetingPipeline and paste the key into the Gemini API key field. The key is stored only in iOS Keychain.</span>
+                <strong>Paste it into Trace.</strong>
+                <span>Open Settings in Trace and paste the key into the Gemini API key field. The key is stored only in iOS Keychain.</span>
               </li>
             </ol>
 
@@ -72,7 +72,7 @@
               Google AI Studio can usually create a free API key, and some models may include free-tier or trial limits. Free quotas, daily request counts, requests per minute, regions, and model availability can change. Always use Google's official pricing and limit pages as the source of truth.
             </p>
             <p>
-              With MeetingPipeline's current Gemini 3.1 Flash-Lite model, free quota can usually be used to test meeting audio around 1 to 2 hours long. This is not an app audio-length limit. It mainly depends on your free API key quota. MeetingPipeline includes a model API cooldown mechanism and retries after rate-limit countdowns, so longer audio may still complete for free. For stable long-meeting results, consider enabling billing on the Google project that owns your API key.
+              With Trace's current Gemini 3.1 Flash-Lite model, free quota can usually be used to test meeting audio around 1 to 2 hours long. This is not an app audio-length limit. It mainly depends on your free API key quota. Trace includes a model API cooldown mechanism and retries after rate-limit countdowns, so longer audio may still complete for free. For stable long-meeting results, consider enabling billing on the Google project that owns your API key.
             </p>
 
             <figure class="guide-figure">
@@ -82,14 +82,14 @@
 
             <h2>Paid API keys and paid limits</h2>
             <p>
-              If the free tier is not enough, or if you want to process longer audio more reliably, enable billing for the Google project that owns the API key. MeetingPipeline usage is billed by Google according to your project, model, region, limits, and current Gemini API pricing. Long-audio cost mainly depends on audio input tokens, transcript output tokens, and meeting-note analysis input / output tokens. For the full formula and examples, see <a href="../models/">MeetingPipeline Models &amp; Costs</a>. MeetingPipeline keeps pricing transparent and does not add a backend processing fee, so you can use Google's public billing standards directly.
+              If the free tier is not enough, or if you want to process longer audio more reliably, enable billing for the Google project that owns the API key. Trace usage is billed by Google according to your project, model, region, limits, and current Gemini API pricing. Long-audio cost mainly depends on audio input tokens, transcript output tokens, and meeting-note analysis input / output tokens. For the full formula and examples, see <a href="../models/">Trace Models &amp; Costs</a>. Trace keeps pricing transparent and does not add a backend processing fee, so you can use Google's public billing standards directly.
             </p>
 
-            <h2>MeetingPipeline design</h2>
+            <h2>Trace design</h2>
             <div class="comparison-grid">
               <section>
                 <h3>Bring your own API key</h3>
-                <p>MeetingPipeline does not host a Gemini account or include a shared API key. Usage, pricing, and limits are controlled by your own Google project.</p>
+                <p>Trace does not host a Gemini account or include a shared API key. Usage, pricing, and limits are controlled by your own Google project.</p>
               </section>
               <section>
                 <h3>Local meeting records</h3>
@@ -97,7 +97,7 @@
               </section>
               <section>
                 <h3>Long audio import</h3>
-                <p>MeetingPipeline is designed around imported meeting audio and helps turn full meetings into reusable records.</p>
+                <p>Trace is designed around recorded or imported meeting audio and helps turn full meetings into reusable records.</p>
               </section>
               <section>
                 <h3>One-time unlock</h3>
@@ -107,7 +107,7 @@
 
             <h2 id="meeting-background">Meeting background</h2>
             <p>
-              When you import audio, MeetingPipeline lets you add meeting background such as customer names, product names, agenda topics, acronyms, and speaker context. This text is sent to the Google Gemini API together with the audio, transcript, template, and generated draft so Gemini can recognize domain-specific terms more accurately.
+              When you record or import audio, Trace lets you add meeting background such as customer names, product names, agenda topics, acronyms, and speaker context. This text is sent to the Google Gemini API together with the audio, transcript, template, and generated draft so Gemini can recognize domain-specific terms more accurately.
             </p>
             <p>
               Keep the background short and factual: one to five bullets is enough for most meetings. Do not paste API keys, passwords, private credentials, or information you do not want processed by Gemini.
@@ -118,11 +118,11 @@
 
             <h2>Data sent to Gemini</h2>
             <p>
-              To complete transcription, meeting-note generation, analysis, and fact-checking, MeetingPipeline sends imported audio, transcripts, meeting background, and generated or app-organized results to the Google Gemini API.
+              To complete transcription, meeting-note generation, analysis, and fact-checking, Trace sends imported audio, transcripts, meeting background, and generated or app-organized results to the Google Gemini API.
             </p>
             <p>
               Your Gemini API key is stored only in iOS Keychain. It is not written into meeting notes, transcripts, Markdown exports, or in-app meeting data.
-              For more about data handling, see the <a href="../privacy/">MeetingPipeline Privacy Policy</a>.
+              For more about data handling, see the <a href="../privacy/">Trace Privacy Policy</a>.
             </p>
 
             <h2>Official documentation</h2>
@@ -135,7 +135,7 @@
           </article>
         </main>
         <footer class="site-footer">
-          <span>MeetingPipeline</span>
+          <span>Trace</span>
           <span>
             <a href="../gemini-api-key/" aria-current="page">API Key</a>
             · <a href="../models/">Models</a>

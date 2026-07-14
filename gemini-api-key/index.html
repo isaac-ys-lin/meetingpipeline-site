@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MeetingPipeline Gemini API Key 教學</title>
-    <meta name="description" content="MeetingPipeline 使用者建立 Gemini API key、理解免費與付費額度、長音訊成本與隱私資料流的教學。">
+    <title>Trace Gemini API Key 教學</title>
+    <meta name="description" content="Trace 使用者建立 Gemini API key、理解免費與付費額度、長音訊成本與隱私資料流的教學。">
     <link rel="icon" href="../app-icon.png" type="image/png">
     <link rel="stylesheet" href="../styles.css?v=20260610-typography11">
   </head>
@@ -13,9 +13,9 @@
     <div class="page-shell">
       <div class="frame">
         <header class="site-header">
-          <a class="brand" href="../" aria-label="MeetingPipeline home">
+          <a class="brand" href="../" aria-label="Trace home">
             <img class="brand-icon" src="../app-icon.png" alt="" width="32" height="32">
-            <span>MeetingPipeline</span>
+            <span>Trace</span>
           </a>
           <nav class="nav" aria-label="主要連結">
             <a href="../gemini-api-key/" aria-current="page">API Key</a>
@@ -30,12 +30,12 @@
             <p class="eyebrow">最後更新：2026 年 6 月 10 日</p>
             <h1>Gemini API Key 申請教學。</h1>
             <p class="lede">
-              MeetingPipeline 採用使用者自備 Gemini API key。你可以在 Google AI Studio 建立 key，再到 app 的「設定」貼上使用。
+              Trace 採用使用者自備 Gemini API key。你可以在 Google AI Studio 建立 key，再到 app 的「設定」貼上使用。
             </p>
 
             <div class="meta-box" aria-label="重點摘要">
-              <p><strong>先看這裡：</strong><span>本頁說明如何建立 Gemini API key、貼到 MeetingPipeline，以及免費 API key、付費 API key、長音訊與會議紀錄成本要怎麼看；完整估算請看 <a href="../models/">模型與成本</a>。</span></p>
-              <p><strong>隱私重點：</strong><span>MeetingPipeline 不內建 Gemini 帳號，也不內建共用 API key。為了完成轉錄、整理與分析，音檔、逐字稿、會議背景與生成結果會送到 Gemini API。更多資料處理方式請看 <a href="../privacy/">隱私政策</a>。</span></p>
+              <p><strong>先看這裡：</strong><span>本頁說明如何建立 Gemini API key、貼到 Trace，以及免費 API key、付費 API key、長音訊與會議紀錄成本要怎麼看；完整估算請看 <a href="../models/">模型與成本</a>。</span></p>
+              <p><strong>隱私重點：</strong><span>Trace 不內建 Gemini 帳號，也不內建共用 API key。為了完成轉錄、整理與分析，音檔、逐字稿、會議背景與生成結果會送到 Gemini API。更多資料處理方式請看 <a href="../privacy/">隱私政策</a>。</span></p>
             </div>
 
             <h2>建立 Gemini API key</h2>
@@ -53,8 +53,8 @@
                 <span>依照 Google AI Studio 畫面建立 key。請把 key 視為密碼，不要貼到公開文件、截圖、聊天訊息或客服回報內。</span>
               </li>
               <li>
-                <strong>貼到 MeetingPipeline。</strong>
-                <span>打開 MeetingPipeline 的「設定」，把 key 貼到「Gemini API key」欄位。key 只會存在 iOS Keychain。</span>
+                <strong>貼到 Trace。</strong>
+                <span>打開 Trace 的「設定」，把 key 貼到「Gemini API key」欄位。key 只會存在 iOS Keychain。</span>
               </li>
             </ol>
 
@@ -72,7 +72,7 @@
               Google AI Studio 通常可以先建立免費 API key，部分模型也會提供免費層級或試用額度。不過免費額度、每日請求數、每分鐘請求數、區域與模型可用性都可能調整；請以 Google 的官方價格與限制頁面為準。
             </p>
             <p>
-              以 MeetingPipeline 目前的 Gemini 3.1 Flash-Lite 模型來看，免費額度可先測 1 到 2 小時內的會議音訊；不過這不是 app 的音訊長度限制，主要受免費 API key 額度限制。MeetingPipeline 內建模型 API 冷卻機制，遇到速率限制時會倒數重送，所以較長的音訊仍有機會免費完成。長會議音檔若要穩定生成結果，建議將 API key 綁定付費帳單。
+              以 Trace 目前的 Gemini 3.1 Flash-Lite 模型來看，免費額度可先測 1 到 2 小時內的會議音訊；不過這不是 app 的音訊長度限制，主要受免費 API key 額度限制。Trace 內建模型 API 冷卻機制，遇到速率限制時會倒數重送，所以較長的音訊仍有機會免費完成。長會議音檔若要穩定生成結果，建議將 API key 綁定付費帳單。
             </p>
 
             <figure class="guide-figure">
@@ -82,14 +82,14 @@
 
             <h2>付費 API key 與付費額度</h2>
             <p>
-              如果免費額度不夠，或你想轉錄更長的音訊，可以到 Google AI Studio 或 Google Cloud 為 API key 所屬專案開通付費帳單。開通後，MeetingPipeline 的 Gemini API 用量會依 Google 的付費價格與限制計算；實際費率、限制與可用模型仍會依帳號、專案、區域、模型與 Google 政策調整。長音訊成本主要取決於音訊 input tokens、逐字稿 output tokens、會議紀錄分析 input / output tokens；完整公式與範例請看 <a href="../models/">MeetingPipeline 模型與成本</a>。MeetingPipeline 收費完全透明，不另建立後端成本，讓你可以直接使用 Google 公開的計費標準。
+              如果免費額度不夠，或你想轉錄更長的音訊，可以到 Google AI Studio 或 Google Cloud 為 API key 所屬專案開通付費帳單。開通後，Trace 的 Gemini API 用量會依 Google 的付費價格與限制計算；實際費率、限制與可用模型仍會依帳號、專案、區域、模型與 Google 政策調整。長音訊成本主要取決於音訊 input tokens、逐字稿 output tokens、會議紀錄分析 input / output tokens；完整公式與範例請看 <a href="../models/">Trace 模型與成本</a>。Trace 收費完全透明，不另建立後端成本，讓你可以直接使用 Google 公開的計費標準。
             </p>
 
-            <h2>MeetingPipeline 的設計取向</h2>
+            <h2>Trace 的設計取向</h2>
             <div class="comparison-grid">
               <section>
                 <h3>使用者自備 API key</h3>
-                <p>MeetingPipeline 不代管 Gemini 帳號，也不內建共用 API key。你的用量、費率與限制取決於你自己的 Google 專案。</p>
+                <p>Trace 不代管 Gemini 帳號，也不內建共用 API key。你的用量、費率與限制取決於你自己的 Google 專案。</p>
               </section>
               <section>
                 <h3>本機保存紀錄</h3>
@@ -97,7 +97,7 @@
               </section>
               <section>
                 <h3>長音訊匯入</h3>
-                <p>MeetingPipeline 針對長音訊匯入流程設計，適合把完整會議整理成可回看的紀錄。</p>
+                <p>Trace 針對錄製或匯入長音訊的流程設計，適合把完整會議整理成可回看的紀錄。</p>
               </section>
               <section>
                 <h3>一次解鎖</h3>
@@ -107,7 +107,7 @@
 
             <h2 id="meeting-background">會議背景</h2>
             <p>
-              匯入音檔時，MeetingPipeline 可以讓你補上會議背景，例如客戶名稱、產品名稱、議程、常用縮寫或說話人脈絡。這些文字會與音檔、逐字稿、模板與生成草稿一起送到 Google Gemini API，幫助 Gemini 更準確辨識專有名詞與領域用語。
+              錄製或匯入音檔時，Trace 可以讓你補上會議背景，例如客戶名稱、產品名稱、議程、常用縮寫或說話人脈絡。這些文字會與音檔、逐字稿、模板與生成草稿一起送到 Google Gemini API，幫助 Gemini 更準確辨識專有名詞與領域用語。
             </p>
             <p>
               會議背景建議保持簡短、具體；多數會議用一到五個重點就足夠。不要貼上 API key、密碼、私人憑證，或任何你不想交由 Gemini 處理的資訊。
@@ -118,10 +118,10 @@
 
             <h2>會送到 Gemini 的資料</h2>
             <p>
-              為了完成轉錄、會議紀錄整理、分析與事實檢核，MeetingPipeline 會把匯入的音檔、逐字稿、你輸入的會議背景，以及 Gemini 產生或 app 整理出的生成結果送到 Google Gemini API。
+              為了完成轉錄、會議紀錄整理、分析與事實檢核，Trace 會把匯入的音檔、逐字稿、你輸入的會議背景，以及 Gemini 產生或 app 整理出的生成結果送到 Google Gemini API。
             </p>
             <p>
-              Gemini API key 只存在 iOS Keychain，不會寫進會議紀錄、逐字稿、Markdown 匯出檔或 app 內的會議資料。更多資料處理方式請看 <a href="../privacy/">MeetingPipeline 隱私政策</a>。
+              Gemini API key 只存在 iOS Keychain，不會寫進會議紀錄、逐字稿、Markdown 匯出檔或 app 內的會議資料。更多資料處理方式請看 <a href="../privacy/">Trace 隱私政策</a>。
             </p>
 
             <h2>官方文件</h2>
@@ -134,7 +134,7 @@
           </article>
         </main>
         <footer class="site-footer">
-          <span>MeetingPipeline</span>
+          <span>Trace</span>
           <span>
             <a href="../gemini-api-key/" aria-current="page">API Key</a>
             · <a href="../models/">模型</a>

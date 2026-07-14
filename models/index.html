@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MeetingPipeline 模型與成本</title>
-    <meta name="description" content="MeetingPipeline 使用的 Gemini 模型、音訊 token 算法與會議紀錄成本估算。">
+    <title>Trace 模型與成本</title>
+    <meta name="description" content="Trace 使用的 Gemini 模型、音訊 token 算法與會議紀錄成本估算。">
     <link rel="icon" href="../app-icon.png" type="image/png">
     <link rel="stylesheet" href="../styles.css?v=20260610-typography11">
   </head>
@@ -13,9 +13,9 @@
     <div class="page-shell">
       <div class="frame">
         <header class="site-header">
-          <a class="brand" href="../" aria-label="MeetingPipeline home">
+          <a class="brand" href="../" aria-label="Trace home">
             <img class="brand-icon" src="../app-icon.png" alt="" width="32" height="32">
-            <span>MeetingPipeline</span>
+            <span>Trace</span>
           </a>
           <nav class="nav" aria-label="主要連結">
             <a href="../gemini-api-key/">API Key</a>
@@ -28,18 +28,18 @@
         <main id="main-content">
           <article class="content guide">
             <p class="eyebrow">最後更新：2026 年 6 月 10 日</p>
-            <h1>MeetingPipeline 模型與成本。</h1>
+            <h1>Trace 模型與成本。</h1>
             <p class="lede">
-              MeetingPipeline 目前提供 Gemini 3.1 Flash-Lite 與 Gemini 3.5 Flash。這頁提供適合情境、音訊 token 算法、逐字稿輸出與會議紀錄分析成本的完整分析。
+              Trace 目前提供 Gemini 3.1 Flash-Lite 與 Gemini 3.5 Flash。這頁提供適合情境、音訊 token 算法、逐字稿輸出與會議紀錄分析成本的完整分析。
             </p>
 
             <div class="meta-box" aria-label="重點摘要">
-              <p><strong>目前模型：</strong><span>MeetingPipeline 提供 Gemini 3.1 Flash-Lite 與 Gemini 3.5 Flash；實際選用哪個模型由使用者依會議情境決定。</span></p>
-              <p><strong>時間戳限制：</strong><span>逐字稿中的時間戳由 Gemini 依音訊內容生成，可能與播放器實際秒數有落差。這通常是 Gemini 模型輸出限制，非 MeetingPipeline 發生錯誤。需要精準定位時，建議在時間戳前後幾分鐘找尋正確時間。</span></p>
+              <p><strong>目前模型：</strong><span>Trace 提供 Gemini 3.1 Flash-Lite 與 Gemini 3.5 Flash；實際選用哪個模型由使用者依會議情境決定。</span></p>
+              <p><strong>時間戳限制：</strong><span>逐字稿中的時間戳由 Gemini 依音訊內容生成，可能與播放器實際秒數有落差。這通常是 Gemini 模型輸出限制，非 Trace 發生錯誤。需要精準定位時，建議在時間戳前後幾分鐘找尋正確時間。</span></p>
               <p><strong>估算限制：</strong><span>若使用免費 API key 並仍在 Google 免費額度內，通常不會產生 API 費用；本頁用公開 paid tier 數字抓付費量級。Google 價格、免費額度與速率限制會調整，並非保證費用。</span></p>
             </div>
 
-            <h2>MeetingPipeline 使用的兩個模型</h2>
+            <h2>Trace 使用的兩個模型</h2>
             <div class="model-grid">
               <section class="model-card">
                 <h3>Gemini 3.1 Flash-Lite</h3>
@@ -79,7 +79,7 @@
 
             <h2>成本怎麼算</h2>
             <p>
-              Gemini 音訊理解以時間計算 token：每秒音訊約 32 input tokens。1 分鐘約 1,920 tokens，1 小時約 115,200 tokens。MeetingPipeline 會先取得逐字稿，再把逐字稿、會議背景與模板送到模型整理成會議紀錄。
+              Gemini 音訊理解以時間計算 token：每秒音訊約 32 input tokens。1 分鐘約 1,920 tokens，1 小時約 115,200 tokens。Trace 會先取得逐字稿，再把逐字稿、會議背景與模板送到模型整理成會議紀錄。
             </p>
             <p>
               長音訊可能會分段處理。同一段音訊在流程中被再次引用時，Google 帳單可能以 cached audio input 計算。本頁用這個情境估算常見量級，也列出未命中 cached input 時的保守上限。
@@ -135,7 +135,7 @@
             <p id="default-cost-caveat">
               以下用「3.1 Flash-Lite 轉錄 + 3.5 Flash 分析」作為範例估算。實際結果會因語速、語言、說話人數、會議背景、模板長度、輸出詳略、cached input 命中情況與 Google 最新價格而不同。
             </p>
-            <div class="table-wrap" role="region" aria-describedby="default-cost-caveat" aria-label="MeetingPipeline 範例流程成本估算" tabindex="0">
+            <div class="table-wrap" role="region" aria-describedby="default-cost-caveat" aria-label="Trace 範例流程成本估算" tabindex="0">
               <table class="cost-table">
                 <caption>1 小時範例流程粗估，含 USD 與 NTD 換算</caption>
                 <thead>
@@ -182,7 +182,7 @@
             </div>
 
             <h2>不同長度的成本範例</h2>
-            <div class="table-wrap" role="region" aria-label="不同長度的 MeetingPipeline 成本範例" tabindex="0">
+            <div class="table-wrap" role="region" aria-label="不同長度的 Trace 成本範例" tabindex="0">
               <table class="cost-table">
                 <caption>範例流程粗估，含 cached audio input 與未命中時的保守上限</caption>
                 <thead>
@@ -266,7 +266,7 @@
               <strong>事實檢核成本：</strong>若另外執行事實檢核，1 小時會議可再抓約 <strong>USD 0.051 (NTD 1.5～1.7 元)</strong> 的量級。
             </p>
             <p>
-              本頁的 cached audio input 只用來抓成本量級；MeetingPipeline 不會替使用者建立後端快取。若 Google 對音訊重複引用或快取命中採用不同計算，請以你的 Google 帳單與官方 pricing 為準。
+              本頁的 cached audio input 只用來抓成本量級；Trace 不會替使用者建立後端快取。若 Google 對音訊重複引用或快取命中採用不同計算，請以你的 Google 帳單與官方 pricing 為準。
             </p>
             <h2>官方來源</h2>
             <ul>
@@ -279,7 +279,7 @@
           </article>
         </main>
         <footer class="site-footer">
-          <span>MeetingPipeline</span>
+          <span>Trace</span>
           <span>
             <a href="../gemini-api-key/">API Key</a>
             · <a href="../models/" aria-current="page">模型</a>

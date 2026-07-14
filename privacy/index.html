@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MeetingPipeline 隱私政策</title>
-    <meta name="description" content="MeetingPipeline 的隱私政策。">
+    <title>Trace 隱私政策</title>
+    <meta name="description" content="Trace 的隱私政策。">
     <link rel="icon" href="../app-icon.png" type="image/png">
     <link rel="stylesheet" href="../styles.css?v=20260610-typography11">
   </head>
@@ -13,9 +13,9 @@
     <div class="page-shell">
       <div class="frame">
         <header class="site-header">
-          <a class="brand" href="../" aria-label="MeetingPipeline home">
+          <a class="brand" href="../" aria-label="Trace home">
             <img class="brand-icon" src="../app-icon.png" alt="" width="32" height="32">
-            <span>MeetingPipeline</span>
+            <span>Trace</span>
           </a>
           <nav class="nav" aria-label="主要連結">
             <a href="../gemini-api-key/">API Key</a>
@@ -28,20 +28,20 @@
         <main id="main-content">
           <article class="content">
             <p class="eyebrow">最後更新：2026 年 7 月 14 日</p>
-            <h1>MeetingPipeline 隱私政策。</h1>
+            <h1>Trace 隱私政策。</h1>
             <p class="lede">
-              MeetingPipeline 採用使用者自備 Gemini API key，不內建帳號、API key 或雲端同步服務。本頁說明音檔、逐字稿、會議背景、生成內容、本機儲存與 tracking 的處理方式。
+              Trace 採用使用者自備 Gemini API key，不內建帳號、API key 或雲端同步服務。本頁說明音檔、逐字稿、會議背景、生成內容、本機儲存與 tracking 的處理方式。
             </p>
 
             <h2>概覽</h2>
             <p>
-              MeetingPipeline 是一款 iPhone app，用來將使用者匯入的會議音檔整理成逐字稿、會議紀錄、決策、風險、待辦與事實檢核內容。MeetingPipeline 採用使用者自備 Gemini API key 的模式，不內建帳號、不內建 API key，也不提供內建雲端同步服務。
+              Trace 是一款 iPhone 與 iPad app，用來錄製或匯入會議音檔，並整理成逐字稿、會議紀錄、決策、風險、待辦與事實檢核內容。Trace 採用使用者自備 Gemini API key 的模式，不內建帳號、不內建 API key，也不提供內建雲端同步服務。
             </p>
 
             <h2>為了 app 功能而處理的資料</h2>
-            <p>為了完成 app 功能，MeetingPipeline 可能處理下列使用者提供或產生的內容：</p>
+            <p>為了完成 app 功能，Trace 可能處理下列使用者提供或產生的內容：</p>
             <ul>
-              <li>匯入的音檔。</li>
+              <li>錄製或匯入的音檔。</li>
               <li>逐字稿。</li>
               <li>使用者輸入的會議背景。</li>
               <li>Gemini 產生或 app 整理出的生成結果，例如會議紀錄、待辦、決策、風險與事實檢核內容。</li>
@@ -50,7 +50,7 @@
               上述音檔、逐字稿、會議背景與生成結果會送到 Google Gemini API，用來完成轉錄、會議紀錄整理、分析與事實檢核。Google Gemini API 的資料處理方式由使用者使用 Gemini API 時適用的 Google 條款與設定管理。
             </p>
             <p>
-              長音訊轉錄會使用 Gemini Interactions API 延續同一段音訊的轉錄內容。為了延續對話，Google 會暫存 Interaction 的請求與回覆；MeetingPipeline 會在該段處理完成、取消或最終失敗後，嘗試刪除相關 Interaction 與上傳檔案。刪除是盡力執行，若網路或服務異常而未即時成功，資料仍可能依 Google 的保留期限存在。Google 目前說明 Free Tier 的 Interaction 保留 1 天，Paid Tier 保留 55 天，且 Paid Tier 專案可在 AI Studio 設定為 7、14、28 或 55 天。使用者也可在 Google AI Studio 查看及管理已儲存的 Interaction。
+              長音訊轉錄會使用 Gemini Interactions API 延續同一段音訊的轉錄內容。為了延續對話，Google 會暫存 Interaction 的請求與回覆；Trace 會在該段處理完成、取消或最終失敗後，嘗試刪除相關 Interaction 與上傳檔案。刪除是盡力執行，若網路或服務異常而未即時成功，資料仍可能依 Google 的保留期限存在。Google 目前說明 Free Tier 的 Interaction 保留 1 天，Paid Tier 保留 55 天，且 Paid Tier 專案可在 AI Studio 設定為 7、14、28 或 55 天。使用者也可在 Google AI Studio 查看及管理已儲存的 Interaction。
             </p>
 
             <h2>Gemini API key</h2>
@@ -58,17 +58,17 @@
               使用者自備 Gemini API key。API key 只存在 iOS Keychain，用於呼叫 Google Gemini API，不會寫入會議紀錄、逐字稿、Markdown 匯出檔或 app 內的會議資料。
             </p>
             <p>
-              MeetingPipeline 不會提供內建 Gemini 帳號或內建 API key。使用者可以在「設定」移除已儲存的 key。
+              Trace 不會提供內建 Gemini 帳號或內建 API key。使用者可以在「設定」移除已儲存的 key。
             </p>
 
             <h2>本機儲存</h2>
             <p>
-              MeetingPipeline 會在本機儲存會議紀錄、逐字稿、生成結果、處理狀態與必要的 app 設定，以便使用者稍後開啟、重試或分享結果。這些本機紀錄只存在使用者裝置上，除非使用者自行透過系統分享、匯出、備份或其他裝置功能傳送出去。
+              Trace 會在本機儲存錄音、會議紀錄、逐字稿、生成結果、處理狀態與必要的 app 設定，以便使用者稍後開啟、重試、播放或分享結果。這些本機紀錄只存在使用者裝置上，除非使用者自行透過系統分享、匯出、備份或其他裝置功能傳送出去。
             </p>
 
             <h2>Tracking 與帳號</h2>
             <p>
-              MeetingPipeline 不追蹤使用者，不使用資料進行跨 app 或跨網站 tracking。MeetingPipeline 不要求內建帳號登入，也不收集帳號密碼。
+              Trace 不追蹤使用者，不使用資料進行跨 app 或跨網站 tracking。Trace 不要求內建帳號登入，也不收集帳號密碼。
             </p>
 
             <h2>使用者選擇</h2>
@@ -82,12 +82,12 @@
 
             <h2>聯絡方式</h2>
             <p>
-              如有隱私問題或支援需求，請先參考 <a href="../support/">MeetingPipeline 支援頁</a>。
+              如有隱私問題或支援需求，請先參考 <a href="../support/">Trace 支援頁</a>。
             </p>
           </article>
         </main>
         <footer class="site-footer">
-          <span>MeetingPipeline</span>
+          <span>Trace</span>
           <span>
             <a href="../gemini-api-key/">API Key</a>
             · <a href="../models/">模型</a>

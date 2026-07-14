@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MeetingPipeline Support</title>
-    <meta name="description" content="MeetingPipeline support, setup checks, guide links, and privacy summary.">
+    <title>Trace Support</title>
+    <meta name="description" content="Trace support, setup checks, guide links, and privacy summary.">
     <link rel="icon" href="../../app-icon.png" type="image/png">
     <link rel="stylesheet" href="../../styles.css?v=20260610-typography11">
   </head>
@@ -13,9 +13,9 @@
     <div class="page-shell">
       <div class="frame">
         <header class="site-header">
-          <a class="brand" href="../" aria-label="MeetingPipeline home">
+          <a class="brand" href="../" aria-label="Trace home">
             <img class="brand-icon" src="../../app-icon.png" alt="" width="32" height="32">
-            <span>MeetingPipeline</span>
+            <span>Trace</span>
           </a>
           <nav class="nav" aria-label="Primary navigation">
             <a href="../gemini-api-key/">API Key</a>
@@ -28,14 +28,14 @@
         <main id="main-content">
           <article class="content">
             <p class="eyebrow">Last updated: July 14, 2026</p>
-            <h1>MeetingPipeline Support.</h1>
+            <h1>Trace Support.</h1>
             <p class="lede">
               If transcription or analysis fails, first check your Gemini API key, project quota, audio format, and foreground processing state. This page summarizes common Gemini API errors, what to try, and the privacy model.
             </p>
 
             <h2>When processing fails</h2>
             <p>
-              MeetingPipeline is an iPhone app that imports meeting audio and uses your own Gemini API key to produce transcripts, meeting notes, decisions, risks, action items, and fact-checking drafts.
+              Trace records meetings directly or imports audio from Files and Voice Memos, then uses your own Gemini API key to create transcripts, meeting notes, decisions, risks, and action items.
             </p>
             <p>
               If processing fails, check the items below first. If the issue keeps happening, you can leave public feedback through an App Store review.
@@ -49,15 +49,18 @@
             <h2>Before contacting support</h2>
             <p>Please confirm:</p>
             <ul>
+              <li>Trace has microphone permission. If you previously denied access, enable it in iOS Settings.</li>
               <li>You entered a valid Gemini API key in Settings.</li>
               <li>The Google project that owns the key still has available quota.</li>
               <li>The app stays in the foreground for longer audio processing. If iOS interrupts background execution, return to the app and retry the unfinished workflow.</li>
               <li>The imported file is in an audio format supported by the app.</li>
+              <li>If a call, another app, or an audio device interrupts recording, return to Trace and confirm the recording state before continuing or finishing.</li>
+              <li>If sharing audio or a result fails, reopen that item and use the system Share Sheet again.</li>
             </ul>
 
             <h2 id="gemini-errors">Gemini API errors</h2>
             <p>
-              MeetingPipeline uses your own Gemini API key and calls the Google Gemini API directly from your device. These errors usually point to Gemini API availability, your Google project, the selected model, quota, billing, or network state. They do not indicate a MeetingPipeline server outage; MeetingPipeline does not run a backend for these Gemini requests.
+              Trace uses your own Gemini API key and calls the Google Gemini API directly from your device. These errors usually point to Gemini API availability, your Google project, the selected model, quota, billing, or network state. They do not indicate a Trace server outage; Trace does not run a backend for these Gemini requests.
             </p>
             <div class="support-callout">
               <p><strong>Quick read:</strong> For HTTP 500, 503, or 504, first retry after a short wait, switch models, reduce meeting background or input context, and check <a href="https://aistudio.google.com/status" rel="noreferrer">Gemini API status</a>.</p>
@@ -116,18 +119,12 @@
 
             <h2>Privacy summary</h2>
             <p>
-              MeetingPipeline uses a bring-your-own Gemini API key model. The API key is stored only in iOS Keychain and is not written into meeting notes or export files. To provide app functionality, audio, transcripts, meeting background, and generated results are sent to the Google Gemini API for transcription, analysis, meeting-note generation, and fact-checking.
-            </p>
-            <p>
-              Long-audio transcription uses the Gemini Interactions API to continue context across transcription windows. MeetingPipeline makes a best-effort attempt to delete related Interactions and uploaded files after completion, cancellation, or terminal failure. If a network or Google service issue prevents immediate deletion, data may remain under Google's retention settings. Google currently documents 1 day for Free Tier and 55 days for Paid Tier; Paid Tier projects can select 7, 14, 28, or 55 days in AI Studio.
-            </p>
-            <p>
-              MeetingPipeline stores meeting notes, transcripts, generated results, and processing state locally so you can retry, review, and share results. MeetingPipeline does not track you, does not include a built-in account, does not include a built-in API key, and does not provide a built-in cloud sync service.
+              Trace uses your own Gemini API key stored only in iOS Keychain. Audio and related content are sent to Google Gemini, and long-audio processing may use server-side Interactions storage that Trace attempts to clean up. See the <a href="../privacy/">Privacy Policy</a> for data types, retention periods, and your choices.
             </p>
           </article>
         </main>
         <footer class="site-footer">
-          <span>MeetingPipeline</span>
+          <span>Trace</span>
           <span>
             <a href="../gemini-api-key/">API Key</a>
             · <a href="../models/">Models</a>
