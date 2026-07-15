@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-05-20",
+  "updatedAt": "2026-07-16",
   "models": [
     {
       "id": "gemini-flash",
@@ -61,6 +61,7 @@
       "status": "stable",
       "recommended": true,
       "settingsHint": "品質優先，適合長會議、策略討論或專有名詞多的紀錄",
+      "thinkingLevel": "low",
       "capabilities": {
         "supportsMeetingBackground": true,
         "supportsFileUpload": false,
