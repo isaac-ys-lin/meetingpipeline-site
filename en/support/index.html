@@ -6,7 +6,7 @@
     <title>Trace Support</title>
     <meta name="description" content="Trace support, setup checks, guide links, and privacy summary.">
     <link rel="icon" href="../../app-icon.png" type="image/png">
-    <link rel="stylesheet" href="../../styles.css?v=20260610-typography11">
+    <link rel="stylesheet" href="../../styles.css?v=20260715-trace-app-alignment3">
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -14,7 +14,7 @@
       <div class="frame">
         <header class="site-header">
           <a class="brand" href="../" aria-label="Trace home">
-            <img class="brand-icon" src="../../app-icon.png" alt="" width="32" height="32">
+            <img class="brand-icon" src="../../brand-icon.png" alt="" width="42" height="42">
             <span>Trace</span>
           </a>
           <nav class="nav" aria-label="Primary navigation">
@@ -76,39 +76,39 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>HTTP 400 / INVALID_ARGUMENT</td>
-                    <td>The request format, context, or model parameters were not accepted by Gemini.</td>
-                    <td>Update the model list, shorten meeting background, re-import the audio, and try again.</td>
+                    <td data-label="Error">HTTP 400 / INVALID_ARGUMENT</td>
+                    <td data-label="Common meaning">The request format, context, or model parameters were not accepted by Gemini.</td>
+                    <td data-label="What to try">Update the model list, shorten meeting background, re-import the audio, and try again.</td>
                   </tr>
                   <tr>
-                    <td>HTTP 403 / PERMISSION_DENIED</td>
-                    <td>The API key, Google project permission, or billing state does not allow this request.</td>
-                    <td>Check that the key is correct and not blocked, then review Google AI Studio or Google Cloud project permissions.</td>
+                    <td data-label="Error">HTTP 403 / PERMISSION_DENIED</td>
+                    <td data-label="Common meaning">The API key, Google project permission, or billing state does not allow this request.</td>
+                    <td data-label="What to try">Check that the key is correct and not blocked, then review Google AI Studio or Google Cloud project permissions.</td>
                   </tr>
                   <tr>
-                    <td>HTTP 404 / NOT_FOUND</td>
-                    <td>The selected model or an uploaded Gemini file resource could not be found.</td>
-                    <td>Update the model list in Settings or retry the audio processing after a short wait.</td>
+                    <td data-label="Error">HTTP 404 / NOT_FOUND</td>
+                    <td data-label="Common meaning">The selected model or an uploaded Gemini file resource could not be found.</td>
+                    <td data-label="What to try">Update the model list in Settings or retry the audio processing after a short wait.</td>
                   </tr>
                   <tr>
-                    <td>HTTP 429 / RESOURCE_EXHAUSTED</td>
-                    <td>Your Gemini quota or rate limit was reached.</td>
-                    <td>Wait for the in-app retry countdown, switch to another usable Gemini key, or review quota and billing in your Google project.</td>
+                    <td data-label="Error">HTTP 429 / RESOURCE_EXHAUSTED</td>
+                    <td data-label="Common meaning">Your Gemini quota or rate limit was reached.</td>
+                    <td data-label="What to try">Wait for the in-app retry countdown, switch to another usable Gemini key, or review quota and billing in your Google project.</td>
                   </tr>
                   <tr>
-                    <td>HTTP 500 / INTERNAL</td>
-                    <td>Google encountered an unexpected error, or the input context was too long.</td>
-                    <td>Retry after a short wait, reduce meeting background or input context, switch models, and check Gemini API status.</td>
+                    <td data-label="Error">HTTP 500 / INTERNAL</td>
+                    <td data-label="Common meaning">Google encountered an unexpected error, or the input context was too long.</td>
+                    <td data-label="What to try">Retry after a short wait, reduce meeting background or input context, switch models, and check Gemini API status.</td>
                   </tr>
                   <tr>
-                    <td>HTTP 503 / UNAVAILABLE</td>
-                    <td>The Gemini service may be temporarily overloaded or unavailable.</td>
-                    <td>Retry after a short wait, switch models, and check Gemini API status.</td>
+                    <td data-label="Error">HTTP 503 / UNAVAILABLE</td>
+                    <td data-label="Common meaning">The Gemini service may be temporarily overloaded or unavailable.</td>
+                    <td data-label="What to try">Retry after a short wait, switch models, and check Gemini API status.</td>
                   </tr>
                   <tr>
-                    <td>HTTP 504 / DEADLINE_EXCEEDED</td>
-                    <td>Gemini could not finish within the processing deadline, often because the input is too large.</td>
-                    <td>Reduce meeting background or audio input size, keep the app in the foreground, and retry.</td>
+                    <td data-label="Error">HTTP 504 / DEADLINE_EXCEEDED</td>
+                    <td data-label="Common meaning">Gemini could not finish within the processing deadline, often because the input is too large.</td>
+                    <td data-label="What to try">Reduce meeting background or audio input size, keep the app in the foreground, and retry.</td>
                   </tr>
                 </tbody>
               </table>

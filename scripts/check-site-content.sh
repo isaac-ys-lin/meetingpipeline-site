@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 MODE="${1:-full}"
-CSS_VERSION="20260610-typography11"
+CSS_VERSION="20260715-trace-app-alignment3"
 
 if [[ "$MODE" != "full" && "$MODE" != "pages-only" ]]; then
   echo "usage: scripts/check-site-content.sh [full|pages-only]" >&2
@@ -24,6 +24,65 @@ require_match() {
   local pattern="$2"
   rg -F -n -- "$pattern" "$file" >/dev/null || {
     echo "Missing required content in $file: $pattern" >&2
+    exit 1
+  }
+}
+
+require_count() {
+  local file="$1"
+  local pattern="$2"
+  local expected="$3"
+  local actual
+  actual="$( (rg -F -o -- "$pattern" "$file" || true) | wc -l | tr -d ' ')"
+  [[ "$actual" == "$expected" ]] || {
+    echo "Unexpected content count in $file: $pattern (expected $expected, got $actual)" >&2
+    exit 1
+  }
+}
+
+require_regex() {
+  local file="$1"
+  local pattern="$2"
+  rg -U -n -- "$pattern" "$file" >/dev/null || {
+    echo "Missing required pattern in $file: $pattern" >&2
+    exit 1
+  }
+}
+
+require_no_regex() {
+  local file="$1"
+  local pattern="$2"
+  if rg -n -- "$pattern" "$file" >/dev/null; then
+    echo "Forbidden content in $file: $pattern" >&2
+    exit 1
+  fi
+}
+
+require_absent() {
+  local file="$1"
+  test ! -e "$file" || {
+    echo "Forbidden legacy file still exists: $file" >&2
+    exit 1
+  }
+}
+
+require_png() {
+  local file="$1"
+  local signature
+  signature="$(od -An -t x1 -N 8 "$file" | tr -d '[:space:]')"
+  [[ "$signature" == "89504e470d0a1a0a" ]] || {
+    echo "Invalid PNG signature in $file" >&2
+    exit 1
+  }
+}
+
+require_sha256() {
+  local file="$1"
+  local expected="$2"
+  local actual
+  actual="$(shasum -a 256 "$file" | awk '{print $1}')"
+  [[ "$actual" == "$expected" ]] || {
+    echo "Unexpected SHA-256 in $file: $actual" >&2
     exit 1
   }
 }
@@ -63,6 +122,44 @@ for file in "${required_files[@]}"; do
   require_file "$file"
 done
 
+require_file "styles.css"
+require_file "app-icon.png"
+require_file "brand-icon.png"
+
+require_match "index.html" "href=\"./styles.css?v=${CSS_VERSION}\""
+require_match "index.html" 'src="./brand-icon.png"'
+
+for asset in \
+  '01-ai-studio-api-keys-redacted.png?v=20260715-safe-crop' \
+  '02-create-key-redacted.png?v=20260715-safe-crop' \
+  '03-active-limits-redacted.png?v=20260715-safe-crop'; do
+  require_match "gemini-api-key/index.html" "${asset}"
+  require_match "en/gemini-api-key/index.html" "${asset}"
+done
+require_png "assets/gemini-api-key/01-ai-studio-api-keys-redacted.png"
+require_png "assets/gemini-api-key/02-create-key-redacted.png"
+require_png "assets/gemini-api-key/03-active-limits-redacted.png"
+require_sha256 "assets/gemini-api-key/01-ai-studio-api-keys-redacted.png" "bbe85e340fdf23db9f5c2e25ac190fef1c8e3d62a629f69421e6aa523178f051"
+require_sha256 "assets/gemini-api-key/02-create-key-redacted.png" "5619ea8b55e919873c744eb11f0cc19a2f4fee8c0d1d5146201f0ca5af21d901"
+require_sha256 "assets/gemini-api-key/03-active-limits-redacted.png" "77d2c61f02ec87dcc574995827841e6135bb8153ecb72911f66d8c0f5036464e"
+require_no_regex "gemini-api-key/index.html" '20260523-crop'
+require_no_regex "en/gemini-api-key/index.html" '20260523-crop'
+require_match "gemini-api-key/index.html" '帳務與實際用量資料未入鏡'
+require_match "en/gemini-api-key/index.html" 'project, billing, and actual usage data are outside the crop'
+require_count "gemini-api-key/index.html" 'class="guide-figure guide-figure--dialog"' 1
+require_count "en/gemini-api-key/index.html" 'class="guide-figure guide-figure--dialog"' 1
+
+zh_nested_pages=(gemini-api-key/index.html models/index.html privacy/index.html support/index.html)
+for file in "${zh_nested_pages[@]}"; do
+  require_match "$file" "href=\"../styles.css?v=${CSS_VERSION}\""
+  require_match "$file" 'src="../brand-icon.png"'
+done
+
+require_match "gemini-api-key/index.html" 'class="language-switch" href="../en/gemini-api-key/"'
+require_match "models/index.html" 'class="language-switch" href="../en/models/"'
+require_match "privacy/index.html" 'class="language-switch" href="../en/privacy/"'
+require_match "support/index.html" 'class="language-switch" href="../en/support/"'
+
 zh_pages=(index.html gemini-api-key/index.html models/index.html privacy/index.html support/index.html)
 for file in "${zh_pages[@]}"; do
   require_match "$file" 'gemini-api-key/'
@@ -80,13 +177,85 @@ for file in "${en_pages[@]}"; do
 done
 
 require_match "en/index.html" "href=\"../styles.css?v=${CSS_VERSION}\""
-require_match "en/index.html" 'src="../app-icon.png"'
+require_match "en/index.html" 'src="../brand-icon.png"'
 
 en_nested_pages=(en/gemini-api-key/index.html en/models/index.html en/privacy/index.html en/support/index.html)
 for file in "${en_nested_pages[@]}"; do
   require_match "$file" "href=\"../../styles.css?v=${CSS_VERSION}\""
-  require_match "$file" 'src="../../app-icon.png"'
+  require_match "$file" 'src="../../brand-icon.png"'
 done
+
+# Trace's web design contract mirrors the app's semantic palette and typography.
+for token in \
+  '--canvas: #ECEAE5;' \
+  '--paper: #F7F5F1;' \
+  '--panel: #FFFFFF;' \
+  '--ivory: #FBFAF6;' \
+  '--ink: #171717;' \
+  '--muted: #64645B;' \
+  '--line: #DCDAD2;' \
+  '--teal: #1F6F8B;' \
+  '--teal-soft: #DFEFEF;' \
+  '--record-soft: #EEE9E0;' \
+  '--success: #298C45;' \
+  '--warning: #B85309;' \
+  '--copper: #B86445;'; do
+  require_match "styles.css" "$token"
+done
+
+require_match "styles.css" '--font-serif: ui-serif, "Iowan Old Style", "Palatino Linotype", "Songti TC", serif;'
+require_match "styles.css" '--font-brand: "Baskerville-SemiBold", "Baskerville", ui-serif, serif;'
+require_match "styles.css" '--font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", sans-serif;'
+require_match "styles.css" 'font-family: var(--font-serif);'
+require_match "styles.css" 'font-family: var(--font-sans);'
+require_match "styles.css" '.trace-rail'
+require_match "styles.css" 'background: var(--canvas);'
+require_match "styles.css" 'background: var(--paper);'
+require_regex "styles.css" '(?s)\.brand \{.*?font-family: var\(--font-brand\);.*?font-size: 28px;.*?gap: 12px;'
+require_regex "styles.css" '(?s)\.content h1 \{.*?font-family: var\(--font-sans\);'
+require_regex "styles.css" '(?s)h2 \{.*?border-inline-start: 2px solid var\(--teal\);.*?font-family: var\(--font-sans\);'
+require_no_regex "styles.css" '\.trace-rail::before|\.trace-rail::after'
+require_match "styles.css" '@media (prefers-color-scheme: dark)'
+for token in \
+  '--canvas: #0C0E0E;' \
+  '--paper: #121414;' \
+  '--panel: #1E2121;' \
+  '--ivory: #181A1A;' \
+  '--ink: #F0F0E8;' \
+  '--muted: #B0B5AF;' \
+  '--line: #3F4443;' \
+  '--teal: #68C5D1;' \
+  '--teal-soft: #203C40;' \
+  '--record-soft: #32302B;' \
+  '--success: #6BD18A;' \
+  '--warning: #EA9F50;' \
+  '--copper: #D37B56;'; do
+  require_regex "styles.css" "(?s)@media \\(prefers-color-scheme: dark\\).*?${token}"
+done
+require_match "styles.css" '@media (prefers-reduced-motion: reduce)'
+
+require_match "index.html" 'class="trace-rail"'
+require_match "en/index.html" 'class="trace-rail"'
+
+for file in "${required_files[@]}"; do
+  require_match "$file" 'class="brand-icon"'
+  require_match "$file" 'width="42" height="42"'
+done
+
+for label in '錯誤' '常見意思' '你可以做什麼'; do
+  require_count "support/index.html" "data-label=\"${label}\"" 7
+done
+for label in 'Error' 'Common meaning' 'What to try'; do
+  require_count "en/support/index.html" "data-label=\"${label}\"" 7
+done
+
+require_absent "favicon.svg"
+for file in "${required_files[@]}"; do
+  require_no_regex "$file" 'MeetingPipeline|(^|[^[:alnum:]_])MP([^[:alnum:]_]|$)'
+done
+while IFS= read -r file; do
+  require_no_regex "$file" 'MeetingPipeline|(^|[^[:alnum:]_])MP([^[:alnum:]_]|$)'
+done < <(find . -type f -name '*.svg' -not -path './.git/*' -print)
 
 require_match "gemini-api-key/index.html" '會議背景'
 require_match "en/gemini-api-key/index.html" 'meeting background'

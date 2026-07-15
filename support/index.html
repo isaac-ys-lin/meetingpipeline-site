@@ -6,7 +6,7 @@
     <title>Trace 支援</title>
     <meta name="description" content="Trace 的支援頁。">
     <link rel="icon" href="../app-icon.png" type="image/png">
-    <link rel="stylesheet" href="../styles.css?v=20260610-typography11">
+    <link rel="stylesheet" href="../styles.css?v=20260715-trace-app-alignment3">
   </head>
   <body>
     <a class="skip-link" href="#main-content">跳到主要內容</a>
@@ -14,7 +14,7 @@
       <div class="frame">
         <header class="site-header">
           <a class="brand" href="../" aria-label="Trace home">
-            <img class="brand-icon" src="../app-icon.png" alt="" width="32" height="32">
+            <img class="brand-icon" src="../brand-icon.png" alt="" width="42" height="42">
             <span>Trace</span>
           </a>
           <nav class="nav" aria-label="主要連結">
@@ -22,7 +22,7 @@
             <a href="../models/">模型</a>
             <a href="../privacy/">隱私</a>
             <a href="../support/" aria-current="page">支援</a>
-            <a class="language-switch" href="../en/">English</a>
+            <a class="language-switch" href="../en/support/">English</a>
           </nav>
         </header>
         <main id="main-content">
@@ -76,39 +76,39 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>HTTP 400 / INVALID_ARGUMENT</td>
-                    <td>請求格式、內容或模型參數不被 Gemini 接受。</td>
-                    <td>更新模型清單、縮短會議背景、重新匯入音檔後再試。</td>
+                    <td data-label="錯誤">HTTP 400 / INVALID_ARGUMENT</td>
+                    <td data-label="常見意思">請求格式、內容或模型參數不被 Gemini 接受。</td>
+                    <td data-label="你可以做什麼">更新模型清單、縮短會議背景、重新匯入音檔後再試。</td>
                   </tr>
                   <tr>
-                    <td>HTTP 403 / PERMISSION_DENIED</td>
-                    <td>API key、Google 專案權限或帳單狀態不允許這次請求。</td>
-                    <td>確認 key 沒貼錯、沒有被封鎖，並檢查 Google AI Studio 或 Google Cloud 專案權限。</td>
+                    <td data-label="錯誤">HTTP 403 / PERMISSION_DENIED</td>
+                    <td data-label="常見意思">API key、Google 專案權限或帳單狀態不允許這次請求。</td>
+                    <td data-label="你可以做什麼">確認 key 沒貼錯、沒有被封鎖，並檢查 Google AI Studio 或 Google Cloud 專案權限。</td>
                   </tr>
                   <tr>
-                    <td>HTTP 404 / NOT_FOUND</td>
-                    <td>模型或上傳到 Gemini 的檔案資源找不到。</td>
-                    <td>在 App 設定更新模型清單，或稍後重新處理音檔。</td>
+                    <td data-label="錯誤">HTTP 404 / NOT_FOUND</td>
+                    <td data-label="常見意思">模型或上傳到 Gemini 的檔案資源找不到。</td>
+                    <td data-label="你可以做什麼">在 App 設定更新模型清單，或稍後重新處理音檔。</td>
                   </tr>
                   <tr>
-                    <td>HTTP 429 / RESOURCE_EXHAUSTED</td>
-                    <td>Gemini 額度或速率限制已觸發。</td>
-                    <td>等待 App 倒數重試、換可用 Gemini key，或檢查 Google 專案額度與帳單。</td>
+                    <td data-label="錯誤">HTTP 429 / RESOURCE_EXHAUSTED</td>
+                    <td data-label="常見意思">Gemini 額度或速率限制已觸發。</td>
+                    <td data-label="你可以做什麼">等待 App 倒數重試、換可用 Gemini key，或檢查 Google 專案額度與帳單。</td>
                   </tr>
                   <tr>
-                    <td>HTTP 500 / INTERNAL</td>
-                    <td>Google 端發生非預期錯誤，或輸入上下文太長。</td>
-                    <td>稍後重試、縮短會議背景或輸入內容、切換模型，並查看 Gemini API 狀態頁。</td>
+                    <td data-label="錯誤">HTTP 500 / INTERNAL</td>
+                    <td data-label="常見意思">Google 端發生非預期錯誤，或輸入上下文太長。</td>
+                    <td data-label="你可以做什麼">稍後重試、縮短會議背景或輸入內容、切換模型，並查看 Gemini API 狀態頁。</td>
                   </tr>
                   <tr>
-                    <td>HTTP 503 / UNAVAILABLE</td>
-                    <td>Gemini 服務可能暫時過載或不可用。</td>
-                    <td>稍後重試、切換模型，並查看 Gemini API 狀態頁。</td>
+                    <td data-label="錯誤">HTTP 503 / UNAVAILABLE</td>
+                    <td data-label="常見意思">Gemini 服務可能暫時過載或不可用。</td>
+                    <td data-label="你可以做什麼">稍後重試、切換模型，並查看 Gemini API 狀態頁。</td>
                   </tr>
                   <tr>
-                    <td>HTTP 504 / DEADLINE_EXCEEDED</td>
-                    <td>Gemini 無法在期限內完成處理，常見於輸入內容過大。</td>
-                    <td>縮短會議背景或音檔內容，保持 App 在前景後重試。</td>
+                    <td data-label="錯誤">HTTP 504 / DEADLINE_EXCEEDED</td>
+                    <td data-label="常見意思">Gemini 無法在期限內完成處理，常見於輸入內容過大。</td>
+                    <td data-label="你可以做什麼">縮短會議背景或音檔內容，保持 App 在前景後重試。</td>
                   </tr>
                 </tbody>
               </table>
