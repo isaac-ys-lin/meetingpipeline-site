@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 MODE="${1:-full}"
-CSS_VERSION="20260715-trace-brand-lockup1"
+CSS_VERSION="20260715-trace-brand-lockup2"
 
 if [[ "$MODE" != "full" && "$MODE" != "pages-only" ]]; then
   echo "usage: scripts/check-site-content.sh [full|pages-only]" >&2
@@ -133,12 +133,13 @@ for file in "${required_files[@]}"; do
   brand_lockup_count=2
   if [[ "$file" == "index.html" || "$file" == "en/index.html" ]]; then
     brand_lockup_count=3
-    require_match "$file" 'id="page-title" aria-label="Trace: Audio Notes &amp; Insights"'
+    require_match "$file" 'id="page-title" aria-label="Trace Audio Notes &amp; Insights"'
   fi
-  require_match "$file" 'aria-label="Trace: Audio Notes &amp; Insights home"'
+  require_match "$file" 'aria-label="Trace Audio Notes &amp; Insights home"'
   require_count "$file" 'class="brand-signature"' "$brand_lockup_count"
   require_count "$file" 'class="brand-descriptor"' "$brand_lockup_count"
-  require_count "$file" ': Audio Notes &amp; Insights</span>' "$brand_lockup_count"
+  require_count "$file" '> Audio Notes &amp; Insights</span>' "$brand_lockup_count"
+  require_no_regex "$file" '<span class="brand-descriptor">:'
 done
 
 for asset in \
@@ -225,7 +226,7 @@ require_match "styles.css" 'background: var(--canvas);'
 require_match "styles.css" 'background: var(--paper);'
 require_regex "styles.css" '(?s)\.brand \{.*?font-family: var\(--font-brand\);.*?font-size: 28px;.*?gap: 12px;'
 require_regex "styles.css" '(?s)\.brand-lockup \{.*?align-items: baseline;.*?display: inline-flex;.*?white-space: nowrap;'
-require_regex "styles.css" '(?s)\.brand-descriptor \{.*?color: var\(--teal\);.*?font-family: var\(--font-sans\);.*?font-weight: 600;'
+require_regex "styles.css" '(?s)\.brand-descriptor \{.*?color: var\(--teal\);.*?font-family: var\(--font-sans\);.*?font-weight: 600;.*?margin-inline-start: 0\.15em;'
 require_regex "styles.css" '(?s)\.content h1 \{.*?font-family: var\(--font-sans\);'
 require_regex "styles.css" '(?s)h2 \{.*?border-inline-start: 2px solid var\(--teal\);.*?font-family: var\(--font-sans\);'
 require_no_regex "styles.css" '\.trace-rail::before|\.trace-rail::after'

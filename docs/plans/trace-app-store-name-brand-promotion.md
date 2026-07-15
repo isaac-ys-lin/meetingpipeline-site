@@ -5,7 +5,7 @@ Last updated: 2026-07-15
 
 ## Goal
 
-依 `/Users/isaacyslin/Code/iOSapp/output/html/Trace-export-sample.html` 的品牌簽名概念，在網站現有獨立 `Trace` wordmark 後加入小字 `: Audio Notes & Insights`，讓網站與 App Store 公開名稱 `Trace: Audio Notes & Insights` 建立直接關聯。
+依 `/Users/isaacyslin/Code/iOSapp/output/html/Trace-export-sample.html` 的品牌簽名概念，在網站現有獨立 `Trace` wordmark 後加入小字 `Audio Notes & Insights`，視覺上省略 App Store 公開名稱 `Trace: Audio Notes & Insights` 的冒號，仍保留直接品牌關聯。
 
 ## Confirmed scope
 
@@ -13,8 +13,8 @@ Last updated: 2026-07-15
 - 修改繁中與英文首頁 hero 的獨立 `Trace` 主標。
 - 修改 10 頁 footer 的獨立品牌 lockup。
 - `Trace` 保留 Baskerville、既有尺寸與主要視覺權重。
-- `: Audio Notes & Insights` 使用 system sans、小字、teal accent、同一基線且不換行。
-- Header home link 的 accessible name 改為 exact `Trace: Audio Notes & Insights home`。
+- `Audio Notes & Insights` 使用 system sans、小字、teal accent、同一基線且不換行，不顯示冒號。
+- Header home link 的 accessible name 改為 exact `Trace Audio Notes & Insights home`。
 - 更新 CSS cache version 與 `scripts/check-site-content.sh` 品牌契約。
 - README 與既有設計計畫只同步新的 lockup 規則。
 
@@ -68,7 +68,7 @@ Website mapping：
 
 ## Completion evidence
 
-- 新品牌契約先在舊畫面以 `Missing required content in index.html: aria-label="Trace: Audio Notes &amp; Insights home"` 真實失敗，實作後 `bash scripts/check-site-content.sh full` 轉為 GREEN。
+- 第一版品牌契約先在舊畫面以 `Missing required content in index.html: aria-label="Trace: Audio Notes &amp; Insights home"` 真實失敗，實作後轉為 GREEN；後續依使用者決策移除視覺與 accessible name 中的冒號，契約同步禁止 descriptor 重新出現冒號。
 - 10 頁 header、兩個首頁 hero、10 頁 footer 都使用完整 lockup；首頁 heading 與 header link 的 accessible name 也使用 exact 公開名稱。
 - 320px 的 10 個中英文 route 全數無水平 overflow、無 broken image、lockup 保持單行；390、768、1280px 與 light／dark 代表畫面均通過實際渲染檢查。
 - 一般內容、頁面 title、SEO metadata、App、路由、截圖與產品資料均未修改。

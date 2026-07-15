@@ -12,7 +12,7 @@
 
 - `app-icon.png` 的唯一來源是 iOS App asset catalog 的 `MeetingPipelineIOS/Assets.xcassets/AppIcon.appiconset/AppIcon.png`，網站只把它用於 favicon 與平台圖示。
 - `brand-icon.png` 的唯一來源是 iOS App asset catalog 的 `MeetingPipelineIOS/Assets.xcassets/BrandIcon.imageset/BrandIcon.png`，用於網站 header 品牌 lockup。
-- 網站的獨立品牌 lockup 依 App HTML export 使用 Baskerville `Trace`，並在同一基線接上較小的 system sans、teal `: Audio Notes & Insights`；教學、支援、隱私與模型內文仍使用短名 `Trace`。
+- 網站的獨立品牌 lockup 依 App HTML export 使用 Baskerville `Trace`，並在同一基線接上較小的 system sans、teal `Audio Notes & Insights`，視覺上不顯示冒號；教學、支援、隱私與模型內文仍使用短名 `Trace`。
 - 同步品牌資產時，直接從 App asset catalog 複製，並用 `shasum -a 256` 比對網站檔與 App source；兩邊 SHA-256 必須完全相同才算同步完成。
 - 不得依 PNG 自行描摹、重畫或產生替代 SVG。若未來取得正式 vector source，須另行驗收後才能取代。
 - 網站維持原生靜態 HTML／CSS，不載入第三方 web font、第三方 JavaScript，也不加入手動 theme toggle；light／dark 只跟隨系統 `prefers-color-scheme`。
