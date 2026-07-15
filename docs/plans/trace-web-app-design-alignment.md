@@ -61,6 +61,7 @@ App 端設計真相依序以以下檔案為準：
 - **Confirmed** — 現有 Google AI Studio 截圖不是不可變資產；使用者接受重拍。新版本以當前 UI、任務聚焦裁切與最小必要遮蔽取代大面積黑塊／全頁模糊。
 - **Confirmed** — 公開網站以 App `MeetingTemplate.htmlStyles` 的 HTML export 作主要版面語法：canvas／parchment、Baskerville signature、sans 文件標題與 2px teal section rail；SwiftUI 畫面則提供 panel、button、spacing、radius 與 semantic color role。網站不逐像素複製 iPhone 構圖。
 - **Superseded** — 網站自行放大的 60–72px Serif 文件標題與帶裝飾短線的首頁 Trace rail 不屬於 App／HTML export 現行語法；第二輪改為較緊湊的文件尺度與單純 section rail。
+- **Confirmed** — Header、首頁 hero 與 footer 的獨立品牌 lockup 使用完整公開名稱 `Trace: Audio Notes & Insights`：`Trace` 維持 Baskerville signature，descriptor 使用同一基線的小字 teal system sans。一般內容仍使用短名 `Trace`，不做全站機械替換。
 
 ## Visual direction
 
@@ -230,3 +231,4 @@ Mobile: 同一資訊順序；導覽可換行、cards 單欄，Trace rail 保留�
 - 2026-07-15 — 使用者確認目前顏色與設計尚未完全對齊 App；撤回以 exact token 與自動 GREEN 代表視覺完成的判定，新增 side-by-side parity 與使用者視覺確認作為完成 gate。
 - 2026-07-15 — 使用者授權「先盤點、然後執行」；fresh Simulator／source／website evidence 已收斂 Phase 3，狀態由 Clarifying 改為 Implementing，Git／deployment 與 Google 狀態變更權限不擴張。
 - 2026-07-15 — Phase 3 parity correction、安全重拍、10-route responsive／dark QA 與二次 adversarial review 完成；狀態由 Implementing 改為 Ready for visual review。截圖改採 task-specific crop，優先讓私人資料完全不入鏡；Git／deployment 權限仍不擴張。
+- 2026-07-15 — 使用者以 App HTML export sample 確認網站品牌延伸方式，並授權實作、commit 與 push；本輪僅更新獨立品牌 lockup，不修改內容、SEO、App 或 deployment。

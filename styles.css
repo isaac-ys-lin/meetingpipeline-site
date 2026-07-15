@@ -154,6 +154,28 @@ a:focus-visible,
   color: var(--teal);
 }
 
+.brand-lockup {
+  align-items: baseline;
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+.brand-signature {
+  font-family: var(--font-brand);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.brand-descriptor {
+  color: var(--teal);
+  font-family: var(--font-sans);
+  font-size: 0.42em;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  line-height: 1;
+}
+
 .brand-icon {
   display: block;
   height: 42px;
@@ -283,6 +305,10 @@ h1 {
 .intro h1 {
   font-family: var(--font-brand);
   letter-spacing: 0.015em;
+}
+
+.intro .brand-descriptor {
+  font-size: clamp(12px, 1.6vw, 16px);
 }
 
 h2 {
@@ -792,6 +818,10 @@ code {
   font-family: var(--font-brand);
   font-size: 18px;
   font-weight: 600;
+}
+
+.site-footer .brand-descriptor {
+  font-size: 10px;
 }
 
 .site-footer span:last-child {
