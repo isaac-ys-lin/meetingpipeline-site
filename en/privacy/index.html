@@ -27,7 +27,7 @@
         </header>
         <main id="main-content">
           <article class="content">
-            <p class="eyebrow">Last updated: July 14, 2026</p>
+            <p class="eyebrow">Last updated: July 20, 2026</p>
             <h1>Trace Privacy Policy.</h1>
             <p class="lede">
               Trace uses your own Gemini API key and does not include a built-in account, API key, or cloud sync service. This page explains how audio, transcripts, meeting background, generated content, local storage, and tracking are handled.
@@ -44,16 +44,23 @@
               <li>Recorded or imported audio files.</li>
               <li>Transcripts.</li>
               <li>Meeting background you enter.</li>
+              <li>Template instructions you select or edit.</li>
               <li>Generated results such as meeting notes, action items, decisions, risks, and fact-checking drafts.</li>
             </ul>
             <p>
-              To provide app functionality, Trace sends recorded or imported audio, transcripts, meeting background, and generated drafts to the Google Gemini API for transcription, analysis, meeting-note generation, and fact-checking.
+              Trace collects this content from your device and sends it only to the third-party Google Gemini API when needed to provide transcription, organization, analysis, meeting-note generation, and fact-checking that you request. Trace does not use this content for advertising or cross-app or cross-website tracking.
             </p>
             <p>
-              Google's handling of Gemini API data is governed by the Google terms and settings that apply to your Gemini API usage.
+              Before the first transmission, Trace identifies the data types, recipient, and purposes in the app and asks for your explicit permission. If you decline or later withdraw consent, Trace will not start new Gemini transcription or automatically retry transmissions in the background. You can withdraw consent in Settings. Trace will ask again if this disclosure materially changes.
             </p>
             <p>
-              Long-audio transcription uses the Gemini Interactions API to continue context across transcription windows. Google stores each Interaction request and response for that continuation. Trace attempts to delete related Interactions and uploaded files after that audio section completes, is cancelled, or reaches a terminal failure. Deletion is best effort; if a network or service failure prevents immediate deletion, the data may remain under Google's retention policy. Google currently documents 1-day retention for Free Tier and 55-day retention for Paid Tier, with Paid Tier project settings of 7, 14, 28, or 55 days in AI Studio. Users can also view and manage stored Interactions in Google AI Studio.
+              Google's use of Gemini API data depends on the service tier for the project associated with your API key. Under Google's current terms for unpaid services, Google may use submitted content and responses to provide, improve, and develop its products and machine-learning technologies, and human reviewers may process API inputs and outputs; Google therefore advises not to submit sensitive, confidential, or personal information to unpaid services. For paid services, Google states that it does not use prompts, files, or responses to improve its products and processes them under its data processing addendum, while limited logging may still occur for safety, abuse prevention, and legal obligations.
+            </p>
+            <p>
+              Long-audio transcription is processed in sections through Gemini <code>generateContent</code> requests, with audio uploaded through the Google Files API when needed. Trace makes a best-effort attempt to delete uploaded files after processing completes, is cancelled, or reaches a terminal failure. If a network or service failure prevents immediate deletion, data may remain under Google's settings and retention policies. Google currently states that prompts, contextual information, and outputs may be retained for up to 55 days to detect violations of its usage policies.
+            </p>
+            <p>
+              Trace shares data with the Google Gemini API only for the purposes described above and relies on Google's applicable API terms, privacy policy, and paid-service data processing commitments to provide protection consistent with this policy for data processed on Trace's behalf. Trace does not separately authorize Google to use data for any undisclosed Trace purpose.
             </p>
 
             <h2>Gemini API key</h2>
@@ -77,6 +84,8 @@
             <h2>Your choices</h2>
             <ul>
               <li>You can choose not to enter a Gemini API key, but Gemini transcription and analysis will not work without one.</li>
+              <li>You can decline Google Gemini data sharing before the first transmission.</li>
+              <li>You can withdraw Google Gemini data sharing consent in Settings.</li>
               <li>You can remove the saved Gemini API key in Settings.</li>
               <li>You can delete meeting records and local results in the app.</li>
               <li>You can share or export results using iOS system features.</li>

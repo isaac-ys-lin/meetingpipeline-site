@@ -27,7 +27,7 @@
         </header>
         <main id="main-content">
           <article class="content">
-            <p class="eyebrow">最後更新：2026 年 7 月 14 日</p>
+            <p class="eyebrow">最後更新：2026 年 7 月 20 日</p>
             <h1>Trace 隱私政策。</h1>
             <p class="lede">
               Trace 採用使用者自備 Gemini API key，不內建帳號、API key 或雲端同步服務。本頁說明音檔、逐字稿、會議背景、生成內容、本機儲存與 tracking 的處理方式。
@@ -44,13 +44,23 @@
               <li>錄製或匯入的音檔。</li>
               <li>逐字稿。</li>
               <li>使用者輸入的會議背景。</li>
+              <li>使用者選擇或編輯的模板指示。</li>
               <li>Gemini 產生或 app 整理出的生成結果，例如會議紀錄、待辦、決策、風險與事實檢核內容。</li>
             </ul>
             <p>
-              上述音檔、逐字稿、會議背景與生成結果會送到 Google Gemini API，用來完成轉錄、會議紀錄整理、分析與事實檢核。Google Gemini API 的資料處理方式由使用者使用 Gemini API 時適用的 Google 條款與設定管理。
+              Trace 會從使用者的裝置收集上述內容，並只在完成使用者要求的功能時，傳送給第三方服務 Google Gemini API，用來完成轉錄、會議紀錄整理、分析與事實檢核。Trace 不會把這些內容用於廣告或跨 app／網站 tracking。
             </p>
             <p>
-              長音訊轉錄會使用 Gemini Interactions API 延續同一段音訊的轉錄內容。為了延續對話，Google 會暫存 Interaction 的請求與回覆；Trace 會在該段處理完成、取消或最終失敗後，嘗試刪除相關 Interaction 與上傳檔案。刪除是盡力執行，若網路或服務異常而未即時成功，資料仍可能依 Google 的保留期限存在。Google 目前說明 Free Tier 的 Interaction 保留 1 天，Paid Tier 保留 55 天，且 Paid Tier 專案可在 AI Studio 設定為 7、14、28 或 55 天。使用者也可在 Google AI Studio 查看及管理已儲存的 Interaction。
+              在第一次傳送前，Trace 會在 app 內列出資料類型、接收方與用途，並取得使用者的明確同意。未同意或撤回同意後，Trace 不會開始新的 Gemini 轉錄，也不會在背景自動重試傳送。使用者可隨時在「設定」撤回同意；若日後揭露內容有實質變更，Trace 會再次取得同意。
+            </p>
+            <p>
+              Google 對 Gemini API 資料的使用取決於 API key 所屬專案適用的服務層級。依 Google 目前條款，使用免費服務時，Google 可能使用送出的內容與回覆來提供、改善及開發產品與機器學習技術，且人工審查員可能處理輸入與輸出；Google 因此要求免費服務不要送出敏感、機密或個人資料。使用付費服務時，Google 表示不會使用 prompts、檔案或回覆改善其產品，並依其資料處理附約處理；仍可能為安全、濫用防制及法律義務有限期記錄資料。
+            </p>
+            <p>
+              長音訊轉錄會透過 Gemini <code>generateContent</code> 請求分段處理，並在需要時透過 Google Files API 上傳音檔。Trace 會在處理完成、取消或最終失敗後，盡力刪除已上傳檔案；若網路或服務異常而未即時成功，資料仍可能依 Google 的設定與保留政策存在。Google 目前說明，為偵測違反使用政策的行為，可能保留 prompts、相關脈絡與輸出最多 55 天。
+            </p>
+            <p>
+              Trace 僅依上述目的將資料交由 Google Gemini API 處理，並依賴 Google 適用的 API 條款、隱私政策及付費服務資料處理承諾，對受託處理的資料提供與本政策一致的保護。Trace 不另行授權 Google 將資料用於本政策未揭露的 Trace 目的。
             </p>
 
             <h2>Gemini API key</h2>
@@ -75,6 +85,8 @@
             <p>使用者可以：</p>
             <ul>
               <li>不輸入 Gemini API key，但沒有 key 時無法完成 Gemini 轉錄與分析流程。</li>
+              <li>在第一次傳送前拒絕 Google Gemini 資料分享。</li>
+              <li>在「設定」撤回 Google Gemini 資料分享同意。</li>
               <li>在「設定」移除 Gemini API key。</li>
               <li>刪除 app 內的會議紀錄與本機結果。</li>
               <li>使用 iOS 系統提供的方式分享或匯出結果。</li>
