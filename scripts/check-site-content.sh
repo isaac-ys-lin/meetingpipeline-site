@@ -109,11 +109,13 @@ required_files=(
   "index.html"
   "gemini-api-key/index.html"
   "models/index.html"
+  "speaker-analysis/index.html"
   "privacy/index.html"
   "support/index.html"
   "en/index.html"
   "en/gemini-api-key/index.html"
   "en/models/index.html"
+  "en/speaker-analysis/index.html"
   "en/privacy/index.html"
   "en/support/index.html"
 )
@@ -126,8 +128,8 @@ require_file "styles.css"
 require_file "app-icon.png"
 require_file "brand-icon.png"
 require_file "model-catalog.json"
-require_match "model-catalog.json" '"updatedAt": "2026-07-16"'
-require_regex "model-catalog.json" '(?s)"id": "gemini-pro-analysis".*?"modelID": "gemini-3\.5-flash".*?"thinkingLevel": "low"'
+require_match "model-catalog.json" '"updatedAt": "2026-07-22"'
+require_regex "model-catalog.json" '(?s)"id": "gemini-pro-analysis".*?"modelID": "gemini-3\.6-flash".*?"thinkingLevel": "low"'
 require_count "model-catalog.json" '"thinkingLevel": "low"' 1
 
 require_match "index.html" "href=\"./styles.css?v=${CSS_VERSION}\""
@@ -166,7 +168,7 @@ require_match "en/gemini-api-key/index.html" 'project, billing, and actual usage
 require_count "gemini-api-key/index.html" 'class="guide-figure guide-figure--dialog"' 1
 require_count "en/gemini-api-key/index.html" 'class="guide-figure guide-figure--dialog"' 1
 
-zh_nested_pages=(gemini-api-key/index.html models/index.html privacy/index.html support/index.html)
+zh_nested_pages=(gemini-api-key/index.html models/index.html speaker-analysis/index.html privacy/index.html support/index.html)
 for file in "${zh_nested_pages[@]}"; do
   require_match "$file" "href=\"../styles.css?v=${CSS_VERSION}\""
   require_match "$file" 'src="../brand-icon.png"'
@@ -174,10 +176,11 @@ done
 
 require_match "gemini-api-key/index.html" 'class="language-switch" href="../en/gemini-api-key/"'
 require_match "models/index.html" 'class="language-switch" href="../en/models/"'
+require_match "speaker-analysis/index.html" 'class="language-switch" href="../en/speaker-analysis/"'
 require_match "privacy/index.html" 'class="language-switch" href="../en/privacy/"'
 require_match "support/index.html" 'class="language-switch" href="../en/support/"'
 
-zh_pages=(index.html gemini-api-key/index.html models/index.html privacy/index.html support/index.html)
+zh_pages=(index.html gemini-api-key/index.html models/index.html speaker-analysis/index.html privacy/index.html support/index.html)
 for file in "${zh_pages[@]}"; do
   require_match "$file" 'gemini-api-key/'
   require_match "$file" 'models/'
@@ -185,7 +188,7 @@ for file in "${zh_pages[@]}"; do
   require_match "$file" 'support/'
 done
 
-en_pages=(en/index.html en/gemini-api-key/index.html en/models/index.html en/privacy/index.html en/support/index.html)
+en_pages=(en/index.html en/gemini-api-key/index.html en/models/index.html en/speaker-analysis/index.html en/privacy/index.html en/support/index.html)
 for file in "${en_pages[@]}"; do
   require_match "$file" 'gemini-api-key/'
   require_match "$file" 'models/'
@@ -196,11 +199,20 @@ done
 require_match "en/index.html" "href=\"../styles.css?v=${CSS_VERSION}\""
 require_match "en/index.html" 'src="../brand-icon.png"'
 
-en_nested_pages=(en/gemini-api-key/index.html en/models/index.html en/privacy/index.html en/support/index.html)
+en_nested_pages=(en/gemini-api-key/index.html en/models/index.html en/speaker-analysis/index.html en/privacy/index.html en/support/index.html)
 for file in "${en_nested_pages[@]}"; do
   require_match "$file" "href=\"../../styles.css?v=${CSS_VERSION}\""
   require_match "$file" 'src="../../brand-icon.png"'
 done
+
+require_match "index.html" 'href="./speaker-analysis/"'
+require_match "en/index.html" 'href="./speaker-analysis/"'
+require_match "speaker-analysis/index.html" '這項增強不會改寫你說過的內容，也不會因本機分析再次上傳音訊'
+require_match "speaker-analysis/index.html" 'Gemini 轉錄與整理功能並不是完全離線'
+require_match "speaker-analysis/index.html" '1ed7a662fdc7109e36d822db793ee6eebdaf8594'
+require_match "en/speaker-analysis/index.html" 'This enhancement does not rewrite what was said or upload the audio again'
+require_match "en/speaker-analysis/index.html" "Gemini transcription and analysis features are not fully offline"
+require_match "en/speaker-analysis/index.html" '1ed7a662fdc7109e36d822db793ee6eebdaf8594'
 
 # Trace's web design contract mirrors the app's semantic palette and typography.
 for token in \

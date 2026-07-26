@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Trace On-Device Speaker Analysis</title>
+    <meta name="description" content="Learn how Trace improves speaker labels on device, when it automatically skips the enhancement, and where local processing ends and Gemini data sharing begins.">
+    <link rel="icon" href="../../app-icon.png" type="image/png">
+    <link rel="stylesheet" href="../../styles.css?v=20260715-trace-brand-lockup2">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <div class="page-shell">
+      <div class="frame">
+        <header class="site-header">
+          <a class="brand" href="../" aria-label="Trace Audio Notes &amp; Insights home">
+            <img class="brand-icon" src="../../brand-icon.png" alt="" width="42" height="42">
+            <span class="brand-lockup"><span class="brand-signature">Trace</span><span class="brand-descriptor"> Audio Notes &amp; Insights</span></span>
+          </a>
+          <nav class="nav" aria-label="Primary navigation">
+            <a href="../gemini-api-key/">API Key</a>
+            <a href="../models/">Models</a>
+            <a href="../privacy/">Privacy</a>
+            <a href="../support/">Support</a>
+            <a class="language-switch" href="../../speaker-analysis/">繁中</a>
+          </nav>
+        </header>
+        <main id="main-content">
+          <article class="content guide">
+            <p class="eyebrow">Last updated: July 26, 2026</p>
+            <h1>Clearer speaker labels, without another audio upload.</h1>
+            <p class="lede">
+              After your transcript is ready, Trace uses a model bundled with the app to separate voices on this device and align them with the existing transcript. This enhancement does not rewrite what was said or upload the audio again.
+            </p>
+
+            <div class="meta-box" aria-label="Speaker analysis key points">
+              <p><strong>Where it runs</strong><span>On the current iPhone or iPad. No additional model download is needed.</span></p>
+              <p><strong>What it changes</strong><span>Speaker turns and labels become easier to follow. The existing transcript text remains authoritative.</span></p>
+              <p><strong>If it cannot run</strong><span>Trace keeps the transcript and general speaker labels instead of failing the meeting.</span></p>
+            </div>
+
+            <h2>How it works</h2>
+            <ol class="step-list">
+              <li>
+                <strong>Complete the transcript first</strong>
+                <span>Trace first uses your selected Gemini model to create the transcript. This cloud step remains governed by the in-app data-sharing consent and Privacy Policy.</span>
+              </li>
+              <li>
+                <strong>Separate voices on device</strong>
+                <span>The bundled Core ML model analyzes the audio ranges Trace actually processed and estimates where different speakers appear. Trace does not create or retain a voiceprint that can identify someone across meetings.</span>
+              </li>
+              <li>
+                <strong>Align the existing content safely</strong>
+                <span>Trace aligns the local result with the existing transcript. A reanalysis shows a preview first, and new speaker labels are only applied after you confirm them.</span>
+              </li>
+            </ol>
+
+            <h2>Local analysis and Gemini are separate</h2>
+            <div class="comparison-grid">
+              <section>
+                <p class="model-kicker">On device</p>
+                <h3>Speaker enhancement</h3>
+                <p>Audio is analyzed by the bundled model on your device. This step does not send it again to Trace, FluidInference, or another service. Its output is limited to speaker ranges, labels, and alignment data for the meeting.</p>
+              </section>
+              <section>
+                <p class="model-kicker">Google Gemini</p>
+                <h3>Transcription and meeting notes</h3>
+                <p>This is a separate cloud workflow. After you allow it, Trace sends the audio, transcript, meeting background, template instructions, or generated content that the requested feature needs.</p>
+              </section>
+            </div>
+            <div class="support-callout">
+              <strong>In short:</strong>
+              <span>Speaker enhancement runs locally, but Trace's Gemini transcription and analysis features are not fully offline. See the <a href="../privacy/">Privacy Policy</a> for the complete data scope.</span>
+            </div>
+
+            <h2>When Trace skips it automatically</h2>
+            <p>
+              Trace skips local speaker enhancement when Low Power Mode is on, the device is running hot, the bundled model cannot load, or system resources are constrained. Your transcript continues with Gemini's general speaker labels. Once the device is ready again, you can reanalyze speakers from the result screen.
+            </p>
+            <p>
+              Canceling the entire processing job still stops the whole job; it is different from automatically skipping only the local speaker enhancement.
+            </p>
+
+            <h2>Accuracy and recovery</h2>
+            <ul>
+              <li>Overlapping speech, rapid interruptions, background noise, distance, and uneven volume can split one person into several speakers or merge different people.</li>
+              <li>Local analysis separates voices but does not know anyone's real name. You remain in control of names and merges.</li>
+              <li>Trace keeps the current version before applying a reanalysis preview, so you can keep the existing result or restore the previous version.</li>
+              <li>Reanalysis does not rewrite transcript text. It only adjusts speaker turns and timing alignment.</li>
+            </ul>
+
+            <h2>Open source, model, and licenses</h2>
+            <div class="model-grid">
+              <section class="model-card">
+                <p class="model-kicker">Runtime</p>
+                <h3>FluidAudio 0.15.5</h3>
+                <dl>
+                  <div>
+                    <dt>Purpose</dt>
+                    <dd>Runs speaker segmentation and clustering on Apple devices.</dd>
+                  </div>
+                  <div>
+                    <dt>License</dt>
+                    <dd><a href="https://github.com/FluidInference/FluidAudio/blob/v0.15.5/LICENSE">Apache License 2.0</a></dd>
+                  </div>
+                  <div>
+                    <dt>Source</dt>
+                    <dd><a href="https://github.com/FluidInference/FluidAudio/tree/v0.15.5">FluidInference / FluidAudio v0.15.5</a></dd>
+                  </div>
+                </dl>
+              </section>
+              <section class="model-card">
+                <p class="model-kicker">Bundled model</p>
+                <h3>Speaker Diarization Core ML</h3>
+                <dl>
+                  <div>
+                    <dt>Revision</dt>
+                    <dd><code>1ed7a662fdc7109e36d822db793ee6eebdaf8594</code></dd>
+                  </div>
+                  <div>
+                    <dt>License</dt>
+                    <dd><a href="https://creativecommons.org/licenses/by/4.0/legalcode">Creative Commons Attribution 4.0 International</a></dd>
+                  </div>
+                  <div>
+                    <dt>Source and attribution</dt>
+                    <dd><a href="https://huggingface.co/FluidInference/speaker-diarization-coreml/tree/1ed7a662fdc7109e36d822db793ee6eebdaf8594">FluidInference; derived from pyannote Community-1</a></dd>
+                  </div>
+                </dl>
+              </section>
+            </div>
+            <p class="note">
+              FluidAudio also includes code derived from the VBx project and the fastcluster component. License summaries, official links, and attribution for each component remain available offline in Trace under Settings → In-App Third-Party Notices.
+            </p>
+
+            <h2>Need help?</h2>
+            <p>
+              If the speaker labels look incorrect, keep the current result and try reanalysis after the device cools down or Low Power Mode is turned off. See the <a href="../support/">Support page</a> for other processing issues.
+            </p>
+          </article>
+        </main>
+        <footer class="site-footer">
+          <span class="footer-brand brand-lockup"><span class="brand-signature">Trace</span><span class="brand-descriptor"> Audio Notes &amp; Insights</span></span>
+          <span>
+            <a href="../gemini-api-key/">API Key</a>
+            · <a href="../models/">Models</a>
+            · <a href="../privacy/">Privacy</a>
+            · <a href="../support/">Support</a>
+          </span>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

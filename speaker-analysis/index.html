@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Trace 裝置端講者分析</title>
+    <meta name="description" content="了解 Trace 如何在裝置端改善講者標籤、何時會自動略過，以及本機分析與 Gemini 傳輸之間的隱私邊界。">
+    <link rel="icon" href="../app-icon.png" type="image/png">
+    <link rel="stylesheet" href="../styles.css?v=20260715-trace-brand-lockup2">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">跳到主要內容</a>
+    <div class="page-shell">
+      <div class="frame">
+        <header class="site-header">
+          <a class="brand" href="../" aria-label="Trace Audio Notes &amp; Insights home">
+            <img class="brand-icon" src="../brand-icon.png" alt="" width="42" height="42">
+            <span class="brand-lockup"><span class="brand-signature">Trace</span><span class="brand-descriptor"> Audio Notes &amp; Insights</span></span>
+          </a>
+          <nav class="nav" aria-label="主要連結">
+            <a href="../gemini-api-key/">API Key</a>
+            <a href="../models/">模型</a>
+            <a href="../privacy/">隱私</a>
+            <a href="../support/">支援</a>
+            <a class="language-switch" href="../en/speaker-analysis/">English</a>
+          </nav>
+        </header>
+        <main id="main-content">
+          <article class="content guide">
+            <p class="eyebrow">最後更新：2026 年 7 月 26 日</p>
+            <h1>講者標籤更清楚，音訊不會因此再上傳。</h1>
+            <p class="lede">
+              Trace 會在逐字稿完成後，使用 App 內建模型在這部裝置上分辨不同聲音，再把結果對齊到原本的逐字稿。這項增強不會改寫你說過的內容，也不會因本機分析再次上傳音訊。
+            </p>
+
+            <div class="meta-box" aria-label="講者分析重點">
+              <p><strong>在哪裡處理</strong><span>在目前這部 iPhone 或 iPad 上執行，不需另外下載模型。</span></p>
+              <p><strong>會改變什麼</strong><span>改善講者的分段與標籤；逐字稿文字仍以原本結果為準。</span></p>
+              <p><strong>無法執行時</strong><span>保留逐字稿與一般講者標記，不會讓整份會議處理失敗。</span></p>
+            </div>
+
+            <h2>它怎麼運作</h2>
+            <ol class="step-list">
+              <li>
+                <strong>先完成逐字稿</strong>
+                <span>Trace 先依你選擇的 Gemini 模型產生逐字稿。這個雲端步驟受 App 內的資料分享同意與隱私政策約束。</span>
+              </li>
+              <li>
+                <strong>在裝置上分辨聲音</strong>
+                <span>內建的 Core ML 模型分析實際處理的音訊區間，找出可能屬於不同講者的時間範圍。Trace 不會為這項功能建立或保留可跨會議辨認身分的聲紋資料。</span>
+              </li>
+              <li>
+                <strong>安全對齊原本內容</strong>
+                <span>Trace 把本機分析結果對齊既有逐字稿。重新分析時會先顯示預覽，只有在你確認後才套用新的講者標籤。</span>
+              </li>
+            </ol>
+
+            <h2>本機分析與 Gemini 是兩件事</h2>
+            <div class="comparison-grid">
+              <section>
+                <p class="model-kicker">On device</p>
+                <h3>講者增強</h3>
+                <p>音訊在裝置上交給內建模型分析，不會因這一步再次傳送到 Trace、FluidInference 或其他服務。結果只包含會議中的講者分段、標籤與對齊資料。</p>
+              </section>
+              <section>
+                <p class="model-kicker">Google Gemini</p>
+                <h3>轉錄與會議整理</h3>
+                <p>這是獨立的雲端流程。只有在你允許後，Trace 才會依功能需要把音訊、逐字稿、會議背景、模板指令或生成內容送到 Gemini。</p>
+              </section>
+            </div>
+            <div class="support-callout">
+              <strong>簡單說：</strong>
+              <span>講者增強是本機處理，但 Trace 的 Gemini 轉錄與整理功能並不是完全離線。完整資料範圍請查看<a href="../privacy/">隱私政策</a>。</span>
+            </div>
+
+            <h2>什麼時候會自動略過</h2>
+            <p>
+              低耗電模式、裝置溫度偏高、內建模型無法載入，或系統資源不足時，Trace 會跳過本機講者增強，讓逐字稿繼續完成。這時你仍會看到 Gemini 產生的一般講者標記；等裝置恢復後，可在結果頁重新分析講者。
+            </p>
+            <p>
+              如果你取消的是整個處理工作，Trace 會停止整個工作，而不是只略過講者增強。
+            </p>
+
+            <h2>準確度與可回復性</h2>
+            <ul>
+              <li>多人同時說話、快速插話、背景噪音、距離太遠或音量差異大，都可能讓同一人被拆成多位，或把不同人合併。</li>
+              <li>本機分析只判斷聲音分段，不知道講者的真實姓名；姓名與合併仍由你確認。</li>
+              <li>套用重新分析的預覽前，Trace 會保留目前版本；你可以保留原結果或回復上一版。</li>
+              <li>重新分析不會重新撰寫逐字稿文字，只調整講者分段與時間對齊。</li>
+            </ul>
+
+            <h2>開放原始碼、模型與授權</h2>
+            <div class="model-grid">
+              <section class="model-card">
+                <p class="model-kicker">Runtime</p>
+                <h3>FluidAudio 0.15.5</h3>
+                <dl>
+                  <div>
+                    <dt>用途</dt>
+                    <dd>在 Apple 裝置上執行講者分段與聚類。</dd>
+                  </div>
+                  <div>
+                    <dt>授權</dt>
+                    <dd><a href="https://github.com/FluidInference/FluidAudio/blob/v0.15.5/LICENSE">Apache License 2.0</a></dd>
+                  </div>
+                  <div>
+                    <dt>來源</dt>
+                    <dd><a href="https://github.com/FluidInference/FluidAudio/tree/v0.15.5">FluidInference / FluidAudio v0.15.5</a></dd>
+                  </div>
+                </dl>
+              </section>
+              <section class="model-card">
+                <p class="model-kicker">Bundled model</p>
+                <h3>Speaker Diarization Core ML</h3>
+                <dl>
+                  <div>
+                    <dt>版本</dt>
+                    <dd><code>1ed7a662fdc7109e36d822db793ee6eebdaf8594</code></dd>
+                  </div>
+                  <div>
+                    <dt>授權</dt>
+                    <dd><a href="https://creativecommons.org/licenses/by/4.0/legalcode">Creative Commons Attribution 4.0 International</a></dd>
+                  </div>
+                  <div>
+                    <dt>來源與出處</dt>
+                    <dd><a href="https://huggingface.co/FluidInference/speaker-diarization-coreml/tree/1ed7a662fdc7109e36d822db793ee6eebdaf8594">FluidInference；衍生自 pyannote Community-1</a></dd>
+                  </div>
+                </dl>
+              </section>
+            </div>
+            <p class="note">
+              FluidAudio 也包含由 VBx 專案衍生的程式碼，以及 fastcluster 元件。各元件的授權摘要、官方連結與出處同時保留在 Trace App 的「設定 → App 內第三方授權」，即使離線也能查看。
+            </p>
+
+            <h2>需要協助？</h2>
+            <p>
+              如果講者標籤看起來不合理，請先保留目前結果，等裝置降溫或關閉低耗電模式後再重新分析。其他處理問題請查看<a href="../support/">支援頁</a>。
+            </p>
+          </article>
+        </main>
+        <footer class="site-footer">
+          <span class="footer-brand brand-lockup"><span class="brand-signature">Trace</span><span class="brand-descriptor"> Audio Notes &amp; Insights</span></span>
+          <span>
+            <a href="../gemini-api-key/">API Key</a>
+            · <a href="../models/">模型</a>
+            · <a href="../privacy/">隱私</a>
+            · <a href="../support/">支援</a>
+          </span>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
