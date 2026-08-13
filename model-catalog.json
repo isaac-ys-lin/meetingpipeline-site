@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-22",
+  "updatedAt": "2026-08-14",
   "models": [
     {
       "id": "gemini-flash",
@@ -8,7 +8,7 @@
       "label": "Gemini 3.5 Flash-Lite",
       "provider": "gemini",
       "modelID": "gemini-3.5-flash-lite",
-      "fallbackModelIDs": ["gemini-3.6-flash"],
+      "fallbackModelIDs": ["gemini-3.7-flash"],
       "status": "stable",
       "recommended": true,
       "settingsHint": "速度快，適合一般會議與較低成本流程",
@@ -22,9 +22,9 @@
     {
       "id": "gemini-pro",
       "kind": "transcription",
-      "label": "Gemini 3.6 Flash",
+      "label": "Gemini 3.7 Flash",
       "provider": "gemini",
-      "modelID": "gemini-3.6-flash",
+      "modelID": "gemini-3.7-flash",
       "fallbackModelIDs": ["gemini-3.5-flash-lite"],
       "status": "stable",
       "recommended": false,
@@ -42,7 +42,7 @@
       "label": "Gemini 3.5 Flash-Lite",
       "provider": "gemini",
       "modelID": "gemini-3.5-flash-lite",
-      "fallbackModelIDs": ["gemini-3.6-flash"],
+      "fallbackModelIDs": ["gemini-3.7-flash"],
       "status": "stable",
       "recommended": false,
       "settingsHint": "速度快，適合一般會議紀錄整理",
@@ -56,9 +56,9 @@
     {
       "id": "gemini-pro-analysis",
       "kind": "analysis",
-      "label": "Gemini 3.6 Flash",
+      "label": "Gemini 3.7 Flash",
       "provider": "gemini",
-      "modelID": "gemini-3.6-flash",
+      "modelID": "gemini-3.7-flash",
       "fallbackModelIDs": ["gemini-3.5-flash-lite"],
       "status": "stable",
       "recommended": true,
