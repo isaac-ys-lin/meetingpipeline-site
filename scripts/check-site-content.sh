@@ -128,8 +128,8 @@ require_file "styles.css"
 require_file "app-icon.png"
 require_file "brand-icon.png"
 require_file "model-catalog.json"
-require_match "model-catalog.json" '"updatedAt": "2026-07-22"'
-require_regex "model-catalog.json" '(?s)"id": "gemini-pro-analysis".*?"modelID": "gemini-3\.6-flash".*?"thinkingLevel": "low"'
+require_match "model-catalog.json" '"updatedAt": "2026-08-14"'
+require_regex "model-catalog.json" '(?s)"id": "gemini-pro-analysis".*?"modelID": "gemini-3\.7-flash".*?"thinkingLevel": "low"'
 require_count "model-catalog.json" '"thinkingLevel": "low"' 1
 
 require_match "index.html" "href=\"./styles.css?v=${CSS_VERSION}\""
