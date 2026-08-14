@@ -132,6 +132,30 @@ require_match "model-catalog.json" '"updatedAt": "2026-08-14"'
 require_regex "model-catalog.json" '(?s)"id": "gemini-pro-analysis".*?"modelID": "gemini-3\.7-flash".*?"thinkingLevel": "low"'
 require_count "model-catalog.json" '"thinkingLevel": "low"' 1
 
+# The public cost explainer must track the remote catalog and its dated pricing
+# assumptions. Keep both languages numerically identical so a copy-only update
+# cannot silently leave one set of estimates stale.
+for file in "models/index.html" "en/models/index.html"; do
+  require_match "$file" 'gemini-3.5-flash-lite'
+  require_match "$file" 'gemini-3.7-flash'
+  require_match "$file" 'USD 0.30 / 1M'
+  require_match "$file" 'USD 0.03 / 1M'
+  require_match "$file" 'USD 2.50 / 1M'
+  require_match "$file" 'USD 0.75 / 1M'
+  require_match "$file" 'USD 0.075 / 1M'
+  require_match "$file" 'USD 3.75 / 1M'
+  require_match "$file" 'USD 0.060'
+  require_match "$file" 'USD 0.122'
+  require_match "$file" 'USD 0.153'
+  require_match "$file" 'USD 0.242'
+  require_match "$file" 'USD 0.304'
+  require_match "$file" 'USD 0.203'
+  require_match "$file" 'USD 0.023'
+  require_no_regex "$file" 'gemini-3\.1-flash-lite|gemini-3\.5-flash([^_-]|$)'
+done
+require_match "models/index.html" '最後更新：2026 年 8 月 14 日'
+require_match "en/models/index.html" 'Last updated: August 14, 2026'
+
 require_match "index.html" "href=\"./styles.css?v=${CSS_VERSION}\""
 require_match "index.html" 'src="./brand-icon.png"'
 
