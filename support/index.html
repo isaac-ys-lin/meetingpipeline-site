@@ -27,7 +27,7 @@
         </header>
         <main id="main-content">
           <article class="content">
-            <p class="eyebrow">最後更新：2026 年 7 月 14 日</p>
+            <p class="eyebrow">最後更新：2026 年 8 月 25 日</p>
             <h1>Trace 支援。</h1>
             <p class="lede">
               如果轉錄或分析失敗，請先檢查 Gemini API key、專案額度、音訊格式與 app 前景處理狀態。本頁整理常見 Gemini API 錯誤、可嘗試的處理方式與隱私摘要。
@@ -119,7 +119,7 @@
 
             <h2>隱私摘要</h2>
             <p>
-              Trace 使用你自備且只存於 iOS Keychain 的 Gemini API key；音檔與相關內容會送到 Google Gemini API，長音訊可能使用 server-side Interactions 儲存並由 Trace 盡力清理。完整資料類型、保留期限與使用者選擇請參考 <a href="../privacy/">隱私政策</a>。
+              Trace 使用你自備且只存於 iOS Keychain 的 Gemini API key；音檔與相關內容會送到 Google Gemini API。長音訊會透過 <code>generateContent</code> 分段處理，必要時使用 Google Files API 上傳；Trace 會在處理結束後盡力刪除上傳檔案。完整資料類型、保留期限與使用者選擇請參考 <a href="../privacy/">隱私政策</a>。
             </p>
           </article>
         </main>
