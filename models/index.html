@@ -96,13 +96,14 @@
 
             <h2>成本怎麼算</h2>
             <p>
-              Gemini 音訊理解以時間計算 token：每秒音訊約 32 input tokens。1 分鐘約 1,920 tokens，1 小時約 115,200 tokens。Trace 會先取得逐字稿，再把逐字稿、會議背景與模板送到模型整理成會議紀錄。
+              以下的 token 算法只適用於 Gemini 3.5 Flash-Lite 轉錄；Gemini 3.5 Transcribe 依音訊分鐘數計費，請直接用下方的分鐘公式。Gemini 音訊理解以時間計算 token：每秒音訊約 32 input tokens。1 分鐘約 1,920 tokens，1 小時約 115,200 tokens。Trace 會先取得逐字稿，再把逐字稿、會議背景與模板送到模型整理成會議紀錄。
             </p>
             <p>
               長音訊可能會分段處理。同一段音訊在流程中被再次引用時，Google 帳單可能以 cached audio input 計算。本頁用這個情境估算常見量級，也列出未命中 cached input 時的保守上限。
             </p>
             <div class="formula-box" aria-label="成本公式">
-              <p><strong>轉錄成本</strong> = 音訊 normal input + 可能的 cached audio input + 逐字稿文字 input + 逐字稿 JSON output。</p>
+              <p><strong>轉錄成本（3.5 Flash-Lite）</strong> = 音訊 normal input + 可能的 cached audio input + 逐字稿文字 input + 逐字稿 JSON output。</p>
+              <p><strong>轉錄成本（3.5 Transcribe）</strong> = 音訊分鐘數 × USD 0.005。這個模式不依 token 計價，上面的 token 公式不適用，也不要再加一次。</p>
               <p><strong>分析成本</strong> = (完整逐字稿 + 會議背景 / 模板 / 分析指令) × 分析模型 input 單價 + 會議紀錄 output tokens × 分析模型 output 單價。</p>
               <p><strong>總成本</strong> = 轉錄成本 + 分析成本</p>
             </div>

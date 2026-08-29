@@ -96,13 +96,14 @@
 
             <h2>How costs are calculated</h2>
             <p>
-              Gemini audio understanding is commonly estimated by duration: one second of audio is roughly 32 input tokens. One minute is about 1,920 tokens, and one hour is about 115,200 tokens. Trace then uses the transcript, meeting background, and templates to produce meeting notes.
+              The token arithmetic below applies to Gemini 3.5 Flash-Lite transcription only; Gemini 3.5 Transcribe bills by audio duration, so use the per-minute formula instead. Gemini audio understanding is commonly estimated by duration: one second of audio is roughly 32 input tokens. One minute is about 1,920 tokens, and one hour is about 115,200 tokens. Trace then uses the transcript, meeting background, and templates to produce meeting notes.
             </p>
             <p>
               Longer audio may be processed in stages. When the same audio segment is referenced again during the workflow, Google billing may treat it as cached audio input. This page uses that scenario for common estimates and also shows a conservative upper bound when cached input does not apply.
             </p>
             <div class="formula-box" aria-label="Cost formula">
-              <p><strong>Transcription cost</strong> = normal audio input + possible cached audio input + transcript text input + transcript JSON output.</p>
+              <p><strong>Transcription cost (3.5 Flash-Lite)</strong> = normal audio input + possible cached audio input + transcript text input + transcript JSON output.</p>
+              <p><strong>Transcription cost (3.5 Transcribe)</strong> = audio minutes &times; USD 0.005. This mode is not priced per token, so the token formula above does not apply and must not be added on top.</p>
               <p><strong>Analysis cost</strong> = (full transcript + meeting background / template / analysis instructions) x analysis model input price + meeting-note output tokens x analysis model output price.</p>
               <p><strong>Total cost</strong> = transcription cost + analysis cost</p>
             </div>
