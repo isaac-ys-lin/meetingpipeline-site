@@ -27,7 +27,7 @@
         </header>
         <main id="main-content">
           <article class="content">
-            <p class="eyebrow">Last updated: August 25, 2026</p>
+            <p class="eyebrow">Last updated: August 29, 2026</p>
             <h1>Trace Support.</h1>
             <p class="lede">
               If transcription or analysis fails, first check your Gemini API key, project quota, audio format, and foreground processing state. This page summarizes common Gemini API errors, what to try, and the privacy model.
@@ -119,7 +119,7 @@
 
             <h2>Privacy summary</h2>
             <p>
-              Trace uses your own Gemini API key stored only in iOS Keychain. Audio and related content are sent to Google Gemini. Long audio is processed in sections through <code>generateContent</code>, with audio uploaded through the Google Files API when needed; Trace makes a best-effort attempt to delete uploaded files after processing ends. See the <a href="../privacy/">Privacy Policy</a> for data types, retention periods, and your choices.
+              Trace uses your own Gemini API key, which is stored only on this device. Audio and related content are sent to Google for processing. Longer recordings are processed in sections, and the audio is held temporarily on Google's servers while that happens; Trace makes a best-effort attempt to delete it afterwards. See the <a href="../privacy/">Privacy Policy</a> for data types, retention periods, and your choices.
             </p>
           </article>
         </main>
