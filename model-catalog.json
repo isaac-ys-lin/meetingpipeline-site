@@ -28,8 +28,8 @@
       "modelID": "gemini-3.5-transcribe",
       "status": "stable",
       "recommended": false,
-      "settingsHint": "成本較高，說話者標籤與可定位的時間戳較精準",
-      "settingsHintEn": "Higher cost. More precise speaker labels and locatable timestamps.",
+      "settingsHint": "品質優先，說話者標籤與可定位的時間戳較精準",
+      "settingsHintEn": "Higher quality. More precise speaker labels and locatable timestamps.",
       "capabilities": {
         "supportsMeetingBackground": true,
         "supportsFileUpload": true,
