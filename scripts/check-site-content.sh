@@ -58,6 +58,24 @@ require_no_regex() {
   fi
 }
 
+# A transcription entry must not reach a retired model, directly or through a
+# fallback. Text matching cannot express this: 3.7 remains a valid analysis
+# model, so any regex spanning entries also matches a healthy catalog.
+require_no_transcription_model() {
+  local file="$1"
+  local model_id="$2"
+  local offenders
+  offenders="$(jq -r --arg m "$model_id" '
+    [.models[]
+     | select(.kind == "transcription")
+     | select(.modelID == $m or ((.fallbackModelIDs // []) | index($m)))
+     | .id] | join(", ")' "$file")"
+  if [[ -n "$offenders" ]]; then
+    echo "Forbidden transcription model $model_id in $file: $offenders" >&2
+    exit 1
+  fi
+}
+
 require_absent() {
   local file="$1"
   test ! -e "$file" || {
@@ -134,7 +152,7 @@ require_match "model-catalog.json" '"schemaVersion": 2'
 require_count "model-catalog.json" '"settingsHint":' 4
 require_count "model-catalog.json" '"settingsHintEn":' 4
 require_regex "model-catalog.json" '(?s)"id": "gemini-transcribe".*?"modelID": "gemini-3\.5-transcribe".*?"transcriptionTransport": "nativeTranscribe"'
-require_no_regex "model-catalog.json" '(?s)"kind": "transcription".*?"modelID": "gemini-3\.7-flash"'
+require_no_transcription_model "model-catalog.json" "gemini-3.7-flash"
 require_regex "model-catalog.json" '(?s)"id": "gemini-pro-analysis".*?"modelID": "gemini-3\.7-flash".*?"thinkingLevel": "low"'
 require_count "model-catalog.json" '"thinkingLevel": "low"' 1
 
