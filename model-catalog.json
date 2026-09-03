@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 1,
-  "updatedAt": "2026-08-14",
+  "schemaVersion": 2,
+  "updatedAt": "2026-08-29",
   "models": [
     {
       "id": "gemini-flash",
@@ -8,32 +8,34 @@
       "label": "Gemini 3.5 Flash-Lite",
       "provider": "gemini",
       "modelID": "gemini-3.5-flash-lite",
-      "fallbackModelIDs": ["gemini-3.7-flash"],
       "status": "stable",
       "recommended": true,
       "settingsHint": "速度快，適合一般會議與較低成本流程",
+      "settingsHintEn": "Fast and lower cost, good for everyday meetings",
       "capabilities": {
         "supportsMeetingBackground": true,
         "supportsFileUpload": true,
         "defaultChunkDurationSeconds": 1800,
-        "maxUploadBytes": null
+        "maxUploadBytes": null,
+        "transcriptionTransport": "generateContent"
       }
     },
     {
-      "id": "gemini-pro",
+      "id": "gemini-transcribe",
       "kind": "transcription",
-      "label": "Gemini 3.7 Flash",
+      "label": "Gemini 3.5 Transcribe",
       "provider": "gemini",
-      "modelID": "gemini-3.7-flash",
-      "fallbackModelIDs": ["gemini-3.5-flash-lite"],
+      "modelID": "gemini-3.5-transcribe",
       "status": "stable",
       "recommended": false,
-      "settingsHint": "品質優先，適合專有名詞多或內容複雜的會議",
+      "settingsHint": "品質優先，說話者標籤與可定位的時間戳較精準",
+      "settingsHintEn": "Higher quality. More precise speaker labels and locatable timestamps.",
       "capabilities": {
         "supportsMeetingBackground": true,
         "supportsFileUpload": true,
         "defaultChunkDurationSeconds": 1800,
-        "maxUploadBytes": null
+        "maxUploadBytes": null,
+        "transcriptionTransport": "nativeTranscribe"
       }
     },
     {
@@ -42,10 +44,10 @@
       "label": "Gemini 3.5 Flash-Lite",
       "provider": "gemini",
       "modelID": "gemini-3.5-flash-lite",
-      "fallbackModelIDs": ["gemini-3.7-flash"],
       "status": "stable",
       "recommended": false,
       "settingsHint": "速度快，適合一般會議紀錄整理",
+      "settingsHintEn": "Fast, good for everyday meeting notes",
       "capabilities": {
         "supportsMeetingBackground": true,
         "supportsFileUpload": false,
@@ -59,10 +61,13 @@
       "label": "Gemini 3.7 Flash",
       "provider": "gemini",
       "modelID": "gemini-3.7-flash",
-      "fallbackModelIDs": ["gemini-3.5-flash-lite"],
+      "fallbackModelIDs": [
+        "gemini-3.5-flash-lite"
+      ],
       "status": "stable",
       "recommended": true,
       "settingsHint": "品質優先，適合長會議、策略討論或專有名詞多的紀錄",
+      "settingsHintEn": "Higher quality, good for long or jargon-heavy meetings",
       "thinkingLevel": "low",
       "capabilities": {
         "supportsMeetingBackground": true,

@@ -58,6 +58,24 @@ require_no_regex() {
   fi
 }
 
+# A transcription entry must not reach a retired model, directly or through a
+# fallback. Text matching cannot express this: 3.7 remains a valid analysis
+# model, so any regex spanning entries also matches a healthy catalog.
+require_no_transcription_model() {
+  local file="$1"
+  local model_id="$2"
+  local offenders
+  offenders="$(jq -r --arg m "$model_id" '
+    [.models[]
+     | select(.kind == "transcription")
+     | select(.modelID == $m or ((.fallbackModelIDs // []) | index($m)))
+     | .id] | join(", ")' "$file")"
+  if [[ -n "$offenders" ]]; then
+    echo "Forbidden transcription model $model_id in $file: $offenders" >&2
+    exit 1
+  fi
+}
+
 require_absent() {
   local file="$1"
   test ! -e "$file" || {
@@ -128,7 +146,13 @@ require_file "styles.css"
 require_file "app-icon.png"
 require_file "brand-icon.png"
 require_file "model-catalog.json"
-require_match "model-catalog.json" '"updatedAt": "2026-08-14"'
+require_match "model-catalog.json" '"updatedAt": "2026-08-29"'
+require_match "model-catalog.json" '"schemaVersion": 2'
+# Every entry ships copy for both locales; English reads settingsHintEn.
+require_count "model-catalog.json" '"settingsHint":' 4
+require_count "model-catalog.json" '"settingsHintEn":' 4
+require_regex "model-catalog.json" '(?s)"id": "gemini-transcribe".*?"modelID": "gemini-3\.5-transcribe".*?"transcriptionTransport": "nativeTranscribe"'
+require_no_transcription_model "model-catalog.json" "gemini-3.7-flash"
 require_regex "model-catalog.json" '(?s)"id": "gemini-pro-analysis".*?"modelID": "gemini-3\.7-flash".*?"thinkingLevel": "low"'
 require_count "model-catalog.json" '"thinkingLevel": "low"' 1
 
@@ -149,12 +173,13 @@ for file in "models/index.html" "en/models/index.html"; do
   require_match "$file" 'USD 0.153'
   require_match "$file" 'USD 0.242'
   require_match "$file" 'USD 0.304'
-  require_match "$file" 'USD 0.203'
+  require_match "$file" 'USD 0.338'
+  require_match "$file" 'gemini-3.5-transcribe'
   require_match "$file" 'USD 0.023'
   require_no_regex "$file" 'gemini-3\.1-flash-lite|gemini-3\.5-flash([^_-]|$)'
 done
-require_match "models/index.html" '最後更新：2026 年 8 月 14 日'
-require_match "en/models/index.html" 'Last updated: August 14, 2026'
+require_match "models/index.html" '最後更新：2026 年 8 月 29 日'
+require_match "en/models/index.html" 'Last updated: August 29, 2026'
 
 require_match "index.html" "href=\"./styles.css?v=${CSS_VERSION}\""
 require_match "index.html" 'src="./brand-icon.png"'
