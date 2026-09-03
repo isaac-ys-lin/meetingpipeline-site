@@ -27,19 +27,19 @@
         </header>
         <main id="main-content">
           <article class="content guide">
-            <p class="eyebrow">最後更新：2026 年 8 月 14 日</p>
+            <p class="eyebrow">最後更新：2026 年 9 月 3 日</p>
             <h1>Trace 模型與成本。</h1>
             <p class="lede">
-              Trace 目前提供 Gemini 3.5 Flash-Lite 與 Gemini 3.7 Flash。這頁提供適合情境、音訊 token 算法、逐字稿輸出與會議紀錄分析成本的完整分析。
+              Trace 目前提供 Gemini 3.5 Flash-Lite、Gemini 3.5 Transcribe 與 Gemini 3.8 Flash。這頁提供適合情境、音訊 token 算法、逐字稿輸出與會議紀錄分析成本的完整分析。
             </p>
 
             <div class="meta-box" aria-label="重點摘要">
-              <p><strong>目前模型：</strong><span>Trace 提供 Gemini 3.5 Flash-Lite 與 Gemini 3.7 Flash；實際選用哪個模型由使用者依會議情境決定。</span></p>
-              <p><strong>時間戳限制：</strong><span>逐字稿中的時間戳由 Gemini 依音訊內容生成，可能與播放器實際秒數有落差。這通常是 Gemini 模型輸出限制，非 Trace 發生錯誤。需要精準定位時，建議在時間戳前後幾分鐘找尋正確時間。</span></p>
+              <p><strong>目前模型：</strong><span>轉錄可選 Gemini 3.5 Flash-Lite 或 Gemini 3.5 Transcribe，會議紀錄整理可選 Gemini 3.5 Flash-Lite 或 Gemini 3.8 Flash；實際選用哪個模型由使用者依會議情境決定。</span></p>
+              <p><strong>時間戳限制：</strong><span>使用 Gemini 3.5 Flash-Lite 轉錄時，逐字稿的時間戳由模型依音訊內容生成，可能與播放器實際秒數有落差；這通常是模型輸出限制，非 Trace 發生錯誤，需要精準定位時建議在時間戳前後幾分鐘找尋正確時間。Gemini 3.5 Transcribe 提供原生時間資訊；Trace 會驗證後才用於定位，未通過驗證的片段仍會標示為估算時間。</span></p>
               <p><strong>估算限制：</strong><span>若使用免費 API key 並仍在 Google 免費額度內，通常不會產生 API 費用；本頁用公開 paid tier 數字抓付費量級。Google 價格、免費額度與速率限制會調整，並非保證費用。</span></p>
             </div>
 
-            <h2>Trace 使用的兩個模型</h2>
+            <h2>Trace 使用的三個模型</h2>
             <div class="model-grid">
               <section class="model-card">
                 <h3>Gemini 3.5 Flash-Lite</h3>
@@ -59,11 +59,11 @@
                 </dl>
               </section>
               <section class="model-card">
-                <h3>Gemini 3.7 Flash</h3>
+                <h3>Gemini 3.8 Flash</h3>
                 <dl>
                   <div>
                     <dt>Model code</dt>
-                    <dd><code>gemini-3.7-flash</code></dd>
+                    <dd><code>gemini-3.8-flash</code></dd>
                   </div>
                   <div>
                     <dt>輸入 / 輸出上限</dt>
@@ -72,6 +72,23 @@
                   <div>
                     <dt>適合情境</dt>
                     <dd>長會議、策略討論、專有名詞多，需要較完整的會議紀錄。</dd>
+                  </div>
+                </dl>
+              </section>
+              <section class="model-card">
+                <h3>Gemini 3.5 Transcribe</h3>
+                <dl>
+                  <div>
+                    <dt>Model code</dt>
+                    <dd><code>gemini-3.5-transcribe</code></dd>
+                  </div>
+                  <div>
+                    <dt>計價方式</dt>
+                    <dd>依音訊時間計費，約 USD 0.005 / 分鐘，不依 token 計算</dd>
+                  </div>
+                  <div>
+                    <dt>適合情境</dt>
+                    <dd>需要說話者標籤與可定位時間戳的會議；成本高於 Flash-Lite。</dd>
                   </div>
                 </dl>
               </section>
@@ -95,7 +112,7 @@
               <section>
                 <span class="assumption-label">價格基準</span>
                 <strong>Google paid tier</strong>
-                <p>3.5 Flash-Lite input（含音訊）USD 0.30 / 1M、cached input USD 0.03 / 1M、output USD 2.50 / 1M。3.7 Flash 在 2026 年 12 月 31 日前 input USD 0.75 / 1M、cached input USD 0.075 / 1M、output USD 3.75 / 1M；2027 年起官方單價將調整。</p>
+                <p>3.5 Flash-Lite input（含音訊）USD 0.30 / 1M、cached input USD 0.03 / 1M、output USD 2.50 / 1M。3.8 Flash 在 2026 年 12 月 31 日前 input USD 0.75 / 1M、cached input USD 0.075 / 1M、output USD 3.75 / 1M；2027 年起官方單價將調整。Gemini 3.5 Transcribe 不依 token 計價，改以音訊時間計費，約 USD 0.005 / 分鐘。</p>
               </section>
               <section>
                 <span class="assumption-label">1 小時音訊</span>
@@ -133,7 +150,7 @@
 
             <h2>1 小時會議流程拆解</h2>
             <p id="default-cost-caveat">
-              以下用「3.5 Flash-Lite 轉錄 + 3.7 Flash 分析」作為範例估算，並採 3.7 Flash 在 2026 年 12 月 31 日前的標準單價。實際結果會因語速、語言、說話人數、會議背景、模板長度、輸出詳略、cached input 命中情況與 Google 最新價格而不同。
+              以下用「3.5 Flash-Lite 轉錄 + 3.8 Flash 分析」作為範例估算，並採 3.8 Flash 在 2026 年 12 月 31 日前的標準單價。實際結果會因語速、語言、說話人數、會議背景、模板長度、輸出詳略、cached input 命中情況與 Google 最新價格而不同。
             </p>
             <div class="table-wrap" role="region" aria-describedby="default-cost-caveat" aria-label="Trace 範例流程成本估算" tabindex="0">
               <table class="cost-table">
@@ -174,7 +191,7 @@
                   <tr>
                     <td><strong>基本總額</strong></td>
                     <td>1 小時會議</td>
-                    <td>3.5 Flash-Lite 轉錄 + 3.7 Flash 分析，含 cached audio input。</td>
+                    <td>3.5 Flash-Lite 轉錄 + 3.8 Flash 分析，含 cached audio input。</td>
                     <td><strong>約 USD 0.122 (NTD 3.7～4.0 元)</strong></td>
                   </tr>
                 </tbody>
@@ -241,15 +258,15 @@
                   </tr>
                   <tr>
                     <td>範例組合</td>
-                    <td>3.5 Flash-Lite 轉錄，3.7 Flash 分析</td>
+                    <td>3.5 Flash-Lite 轉錄，3.8 Flash 分析</td>
                     <td>約 USD 0.122 (NTD 3.7～4.0 元)</td>
                     <td>保留低成本轉錄，同時讓會議紀錄整理使用較強模型。</td>
                   </tr>
                   <tr>
-                    <td>全部 3.7 Flash</td>
-                    <td>轉錄與分析都用 <code>gemini-3.7-flash</code></td>
-                    <td>約 USD 0.203 (NTD 6.1～6.7 元)</td>
-                    <td>成本最高，適合專有名詞多、內容複雜且願意提高預算的會議。</td>
+                    <td>3.5 Transcribe 轉錄 + 3.8 Flash 分析</td>
+                    <td>轉錄用 <code>gemini-3.5-transcribe</code>（按分鐘計費），分析用 <code>gemini-3.8-flash</code></td>
+                    <td>約 USD 0.338 (NTD 10.1～11.2 元)</td>
+                    <td>成本最高，換取說話者標籤與可定位的時間戳。</td>
                   </tr>
                 </tbody>
               </table>
@@ -260,10 +277,10 @@
               匯入音檔時，可以補上會議背景，例如客戶名稱、產品、議題或常用縮寫。這些上下文會幫助模型辨識專有名詞、人物、產品與常見用語，讓逐字稿更接近實際會議內容。
             </p>
             <p>
-              這些上下文會增加少量文字 input tokens，但成本通常很低。以 2,000 input tokens 粗估，3.5 Flash-Lite input 約 USD 0.0006，不到 NTD 0.02 元；若進入 3.7 Flash 分析，約 USD 0.0015，大約是 NTD 0.05 元。
+              這些上下文會增加少量文字 input tokens，但成本通常很低。以 2,000 input tokens 粗估，3.5 Flash-Lite input 約 USD 0.0006，不到 NTD 0.02 元；若進入 3.8 Flash 分析，約 USD 0.0015，大約是 NTD 0.05 元。
             </p>
             <p class="cost-callout">
-              <strong>事實檢核成本：</strong>若另外執行約 16,000 input／3,000 output tokens 的 3.7 Flash 檢核，1 小時會議可再抓約 <strong>USD 0.023 (NTD 0.7～0.8 元)</strong> 的量級。
+              <strong>事實檢核成本：</strong>若另外執行約 16,000 input／3,000 output tokens 的 3.8 Flash 檢核，1 小時會議可再抓約 <strong>USD 0.023 (NTD 0.7～0.8 元)</strong> 的量級。
             </p>
             <p>
               本頁的 cached audio input 只用來抓成本量級；Trace 不會替使用者建立後端快取。若 Google 對音訊重複引用或快取命中採用不同計算，請以你的 Google 帳單與官方 pricing 為準。
@@ -271,7 +288,8 @@
             <h2>官方來源</h2>
             <ul>
               <li><a href="https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite" rel="noreferrer">Gemini 3.5 Flash-Lite 模型文件</a></li>
-              <li><a href="https://ai.google.dev/gemini-api/docs/models/gemini-3.7-flash" rel="noreferrer">Gemini 3.7 Flash 模型文件</a></li>
+              <li><a href="https://ai.google.dev/gemini-api/docs/models/gemini-3.5-transcribe" rel="noreferrer">Gemini 3.5 Transcribe 模型文件</a></li>
+              <li><a href="https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash" rel="noreferrer">Gemini 3.8 Flash 模型文件</a></li>
               <li><a href="https://ai.google.dev/gemini-api/docs/pricing" rel="noreferrer">Gemini API pricing</a></li>
               <li><a href="https://ai.google.dev/gemini-api/docs/tokens" rel="noreferrer">Gemini token counting</a></li>
               <li><a href="https://ai.google.dev/gemini-api/docs/audio" rel="noreferrer">Gemini audio understanding</a></li>

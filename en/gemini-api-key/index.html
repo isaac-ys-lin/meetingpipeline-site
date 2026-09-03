@@ -72,7 +72,7 @@
               Google AI Studio can usually create a free API key, and some models may include free-tier or trial limits. Free quotas, daily request counts, requests per minute, regions, and model availability can change. Always use Google's official pricing and limit pages as the source of truth.
             </p>
             <p>
-              With Trace's current Gemini 3.1 Flash-Lite model, free quota can usually be used to test meeting audio around 1 to 2 hours long. This is not an app audio-length limit. It mainly depends on your free API key quota. Trace includes a model API cooldown mechanism and retries after rate-limit countdowns, so longer audio may still complete for free. For stable long-meeting results, consider enabling billing on the Google project that owns your API key.
+              Trace's available models follow its public model catalog. Free quota varies by account, project, model, region, and Google policy, so Trace cannot promise a fixed number of meeting hours. Start with a short recording to confirm that the key and quota work before processing longer audio. See <a href="../models/">Trace Models &amp; Costs</a> for paid estimates, and use the Google AI Studio Rate Limit page for current limits. When Gemini returns a rate limit, Trace waits before retrying.
             </p>
 
             <figure class="guide-figure">
