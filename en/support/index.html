@@ -27,7 +27,7 @@
         </header>
         <main id="main-content">
           <article class="content">
-            <p class="eyebrow">Last updated: September 2, 2026</p>
+            <p class="eyebrow">Last updated: September 5, 2026</p>
             <h1>Trace Support.</h1>
             <p class="lede">
               If transcription or analysis fails, first check your Gemini API key, project quota, audio format, and foreground processing state. This page summarizes common Gemini API errors, what to try, and the privacy model.
@@ -63,12 +63,67 @@
             </ul>
 
             <h2 id="gemini-errors">Gemini API errors</h2>
-            <p>
-              Trace uses your own Gemini API key and calls the Google Gemini API directly from your device. These errors usually point to Gemini API availability, your Google project, the selected model, quota, billing, or network state. They do not indicate a Trace server outage; Trace does not run a backend for these Gemini requests.
-            </p>
-            <div class="support-callout">
-              <p><strong>Quick read:</strong> For HTTP 500, 503, or 504, first retry after a short wait, switch models, reduce meeting background or input context, and check <a href="https://aistudio.google.com/status" rel="noreferrer">Gemini API status</a>.</p>
-            </div>
+            <p>Trace sends Gemini requests directly from your device to Google Gemini API using your own key. Use the app’s current job status to confirm what is saved, waiting or unfinished.</p>
+            <div class="support-callout"><p>Find your symptom below. Keep the source audio and existing result while investigating; an error alone does not prove data loss or successful saving.</p></div>
+            <ul>
+              <li><a href="#recording-recovery">Recording could not finish</a></li>
+              <li><a href="#gemini-incomplete">Transcript stops partway through</a></li>
+              <li><a href="#gemini-network">Network interruption or timeout</a></li>
+              <li><a href="#gemini-quota">Quota or rate limit</a></li>
+              <li><a href="#gemini-access">Key, permissions or billing</a></li>
+              <li><a href="#gemini-model">Model or file resource not found</a></li>
+              <li><a href="#gemini-service">Google service temporarily unavailable</a></li>
+              <li><a href="#gemini-request">Request content or parameters rejected</a></li>
+            </ul>
+            <section aria-labelledby="recording-recovery">
+              <h3 id="recording-recovery">Recording could not finish</h3>
+              <p><strong>What happened:</strong> A finalization failure does not by itself prove that the audio was lost or fully saved.</p>
+              <p><strong>Current state:</strong> The audio may still need finalization. Confirm it appears in Recordings and plays fully; the error alone cannot guarantee that it was saved.</p>
+              <p><strong>What to do:</strong> Check Recordings first. In 1.3.1 and later, tap a recording marked Waiting for recovery to retry. In 1.3.0 or earlier, close and reopen Trace, then check again. Do not delete the app or source audio.</p>
+            </section>
+            <section aria-labelledby="gemini-incomplete">
+              <h3 id="gemini-incomplete">Transcript stops partway through</h3>
+              <p><strong>What happened:</strong> Google can return text that omits the end. Text or a completed response alone does not prove full coverage.</p>
+              <p><strong>Current state:</strong> Returned text may cover only part of the audio, including omissions at the beginning, middle or end. Timestamp checks cannot guarantee that every sentence was recognized.</p>
+              <p><strong>What to do:</strong> When Trace detects a missing tail and recovery is eligible, it attempts recovery. Only a retry shown in the job status confirms that more processing is scheduled. If a completed result clearly ends early, keep the audio and result and report the issue through an App Store review. Do not delete the original result or repeatedly submit the entire recording.</p>
+            </section>
+            <section aria-labelledby="gemini-network">
+              <h3 id="gemini-network">Network interruption or timeout</h3>
+              <p><strong>What happened:</strong> The connection or processing did not finish within its deadline. The error alone does not establish whether Google completed the work.</p>
+              <p><strong>Current state:</strong> The job may be failed, waiting to retry or still processing. Check the original job; a timeout does not prove Google stopped processing.</p>
+              <p><strong>What to do:</strong> Check your connection and return to the app to resume unfinished work as its status allows. Wait if the app shows a pending retry. Do not create duplicate jobs or trim away audio as a first response.</p>
+            </section>
+            <section aria-labelledby="gemini-quota">
+              <h3 id="gemini-quota">Quota or rate limit</h3>
+              <p><strong>What happened:</strong> HTTP 429 can mean a short-term rate limit or a daily or project quota limit. Another key from the same project may share that limit.</p>
+              <p><strong>Current state:</strong> This request was limited, and the whole job may be unfinished. Check the app for completed work and any scheduled retry time.</p>
+              <p><strong>What to do:</strong> A retry is scheduled only when the app shows a countdown. If failures persist, check project limits and billing in Google AI Studio. Avoid repeatedly tapping Retry.</p>
+            </section>
+            <section aria-labelledby="gemini-access">
+              <h3 id="gemini-access">Key, permissions or billing</h3>
+              <p><strong>What happened:</strong> A 401 usually concerns authentication. A 403 can also involve project permissions or access requirements; it does not always mean the key was entered incorrectly.</p>
+              <p><strong>Current state:</strong> This request did not receive normal authorization or access. This error does not mean local source audio or existing results were deleted.</p>
+              <p><strong>What to do:</strong> Check the key in Trace Settings and the key, project access and billing status in Google AI Studio, as the error indicates. Never include API keys in support messages, screenshots or websites.</p>
+            </section>
+            <section aria-labelledby="gemini-model">
+              <h3 id="gemini-model">Model or file resource not found</h3>
+              <p><strong>What happened:</strong> HTTP 404 may refer to an unavailable model or to a file or job resource that no longer exists on Google.</p>
+              <p><strong>Current state:</strong> The requested Google resource is unavailable; that does not mean the local audio is gone. Check whether the original job still has its source.</p>
+              <p><strong>What to do:</strong> Follow the app’s message. Refresh the model list in Settings for a model issue; resume the existing job for unfinished work. Changing modes is a separate choice that may affect results and cost, not a universal repair.</p>
+            </section>
+            <section aria-labelledby="gemini-service">
+              <h3 id="gemini-service">Google service temporarily unavailable</h3>
+              <p><strong>What happened:</strong> HTTP 500 or 503 generally indicates a server-side processing failure or temporary unavailability. It does not prove that the app or input is fault-free.</p>
+              <p><strong>Current state:</strong> This attempt did not finish normally. Check the original job to see whether completed work is available or a retry is scheduled.</p>
+              <p><strong>What to do:</strong> Check <a href="https://aistudio.google.com/status" rel="noreferrer">Google service status</a> and retry the existing job later. For repeated failures, report the error code and time through an App Store review. Changing models or deleting audio is not the first step.</p>
+            </section>
+            <section aria-labelledby="gemini-request">
+              <h3 id="gemini-request">Request content or parameters rejected</h3>
+              <p><strong>What happened:</strong> HTTP 400 means Google could not accept the request. A more specific message may identify a key, billing or feature restriction.</p>
+              <p><strong>Current state:</strong> The request was rejected and cannot count as a completed transcription. Keep the source audio and existing result.</p>
+              <p><strong>What to do:</strong> Follow the specific message first. If the cause is unclear, check that the app is up to date and report the issue through an App Store review. Do not delete recording content just to experiment.</p>
+            </section>
+            <p>Unknown error? Keep the code and approximate time, check the job status, and leave an App Store review without sharing keys or private audio.</p>
             <div class="support-table-wrap">
               <table class="support-table">
                 <thead>
@@ -82,37 +137,37 @@
                   <tr>
                     <td data-label="Error">HTTP 400 / INVALID_ARGUMENT</td>
                     <td data-label="Common meaning">The request format, context, or model parameters were not accepted by Gemini.</td>
-                    <td data-label="What to try">Update the model list, shorten meeting background, re-import the audio, and try again.</td>
+                    <td data-label="What to try"><a href="#gemini-request">See the explanation and next step above</a></td>
                   </tr>
                   <tr>
-                    <td data-label="Error">HTTP 403 / PERMISSION_DENIED</td>
+                    <td data-label="Error">HTTP 401 / HTTP 403 / PERMISSION_DENIED</td>
                     <td data-label="Common meaning">The API key, Google project permission, or billing state does not allow this request.</td>
-                    <td data-label="What to try">Check that the key is correct and not blocked, then review Google AI Studio or Google Cloud project permissions.</td>
+                    <td data-label="What to try"><a href="#gemini-access">See the explanation and next step above</a></td>
                   </tr>
                   <tr>
                     <td data-label="Error">HTTP 404 / NOT_FOUND</td>
                     <td data-label="Common meaning">The selected model or an uploaded Gemini file resource could not be found.</td>
-                    <td data-label="What to try">Update the model list in Settings or retry the audio processing after a short wait.</td>
+                    <td data-label="What to try"><a href="#gemini-model">See the explanation and next step above</a></td>
                   </tr>
                   <tr>
                     <td data-label="Error">HTTP 429 / RESOURCE_EXHAUSTED</td>
                     <td data-label="Common meaning">Your Gemini quota or rate limit was reached.</td>
-                    <td data-label="What to try">Wait for the in-app retry countdown, switch to another usable Gemini key, or review quota and billing in your Google project.</td>
+                    <td data-label="What to try"><a href="#gemini-quota">See the explanation and next step above</a></td>
                   </tr>
                   <tr>
                     <td data-label="Error">HTTP 500 / INTERNAL</td>
-                    <td data-label="Common meaning">Google encountered an unexpected error, or the input context was too long.</td>
-                    <td data-label="What to try">Retry after a short wait, reduce meeting background or input context, switch models, and check Gemini API status.</td>
+                    <td data-label="Common meaning">Google processing failed; the specific cause depends on the error details.</td>
+                    <td data-label="What to try"><a href="#gemini-service">See the explanation and next step above</a></td>
                   </tr>
                   <tr>
                     <td data-label="Error">HTTP 503 / UNAVAILABLE</td>
                     <td data-label="Common meaning">The Gemini service may be temporarily overloaded or unavailable.</td>
-                    <td data-label="What to try">Retry after a short wait, switch models, and check Gemini API status.</td>
+                    <td data-label="What to try"><a href="#gemini-service">See the explanation and next step above</a></td>
                   </tr>
                   <tr>
                     <td data-label="Error">HTTP 504 / DEADLINE_EXCEEDED</td>
-                    <td data-label="Common meaning">Gemini could not finish within the processing deadline, often because the input is too large.</td>
-                    <td data-label="What to try">Reduce meeting background or audio input size, keep the app in the foreground, and retry.</td>
+                    <td data-label="Common meaning">Gemini did not finish within the deadline; audio length is not necessarily the cause.</td>
+                    <td data-label="What to try"><a href="#gemini-network">See the explanation and next step above</a></td>
                   </tr>
                 </tbody>
               </table>

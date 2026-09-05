@@ -27,7 +27,7 @@
         </header>
         <main id="main-content">
           <article class="content">
-            <p class="eyebrow">最後更新：2026 年 9 月 2 日</p>
+            <p class="eyebrow">最後更新：2026 年 9 月 5 日</p>
             <h1>Trace 支援。</h1>
             <p class="lede">
               如果轉錄或分析失敗，請先檢查 Gemini API key、專案額度、音訊格式與 app 前景處理狀態。本頁整理常見 Gemini API 錯誤、可嘗試的處理方式與隱私摘要。
@@ -63,12 +63,67 @@
             </ul>
 
             <h2 id="gemini-errors">Gemini API 錯誤說明</h2>
-            <p>
-              Trace 使用你自己的 Gemini API key，App 會從裝置直接呼叫 Google Gemini API。下列錯誤通常代表 Gemini API、Google 專案、模型、額度或網路狀態需要處理，不是 Trace 服務中斷；此類 Gemini 請求是 App 從裝置直接送往 Google Gemini API。
-            </p>
-            <div class="support-callout">
-              <p><strong>快速判斷：</strong>如果看到 HTTP 500、503 或 504，通常可以先稍後重試、切換模型、縮短會議背景或輸入內容，並查看 <a href="https://aistudio.google.com/status" rel="noreferrer">Gemini API status</a>。</p>
-            </div>
+            <p>Trace 使用你自己的金鑰，從裝置直接向 Google Gemini API 送出請求。哪些內容已儲存、正在等待或尚未完成，請以 App 當下的工作狀態為準。</p>
+            <div class="support-callout"><p>先找符合的情況。排查時保留原音檔與既有結果；單一錯誤訊息不能證明資料已遺失或已成功儲存。</p></div>
+            <ul>
+              <li><a href="#recording-recovery">錄音未能完成</a></li>
+              <li><a href="#gemini-incomplete">逐字稿只到一半</a></li>
+              <li><a href="#gemini-network">網路中斷或處理逾時</a></li>
+              <li><a href="#gemini-quota">額度或速率限制</a></li>
+              <li><a href="#gemini-access">金鑰、權限或帳務</a></li>
+              <li><a href="#gemini-model">模型或檔案資源找不到</a></li>
+              <li><a href="#gemini-service">Google 服務暫時異常</a></li>
+              <li><a href="#gemini-request">請求內容或參數不被接受</a></li>
+            </ul>
+            <section aria-labelledby="recording-recovery">
+              <h3 id="recording-recovery">錄音未能完成</h3>
+              <p><strong>發生什麼事：</strong>停止收尾失敗，不代表原音訊已遺失，也不代表已完整儲存。</p>
+              <p><strong>目前狀態：</strong> 這段音訊可能仍在等待收尾。只有錄音出現在列表且能完整播放，才可確認可用；錯誤提示本身不能保證已保存。</p>
+              <p><strong>下一步：</strong>先回錄音列表查看。1.3.1 起，若有「等待恢復」，可點選該錄音重試；1.3.0 或更早版本可關閉並重開 Trace 再查看。請勿刪除 App 或原音檔。</p>
+            </section>
+            <section aria-labelledby="gemini-incomplete">
+              <h3 id="gemini-incomplete">逐字稿只到一半</h3>
+              <p><strong>發生什麼事：</strong>Google 回傳文字仍可能缺少後半段；有文字或完成回應不等於內容完整。</p>
+              <p><strong>目前狀態：</strong> 已回傳的文字可能只有部分內容；開頭、中間或尾端都有可能缺漏。時間戳檢查不能保證每一句都被辨識。</p>
+              <p><strong>下一步：</strong>當 Trace 偵測到缺尾且符合恢復條件時，會嘗試恢復；只有工作狀態顯示重試時才代表已安排處理。若已顯示完成但內容明顯缺尾，保留音檔與結果並透過 App Store 評論回報；不要刪掉原結果或反覆提交整段錄音。</p>
+            </section>
+            <section aria-labelledby="gemini-network">
+              <h3 id="gemini-network">網路中斷或處理逾時</h3>
+              <p><strong>發生什麼事：</strong>這次連線或處理沒有在期限內完成，不能由錯誤本身判定 Google 是否已完成工作。</p>
+              <p><strong>目前狀態：</strong> 工作可能處於失敗、等待重試或處理中；請以原工作的狀態為準，勿把逾時視為已取消 Google 端處理。</p>
+              <p><strong>下一步：</strong>確認網路後回到 App，依工作狀態恢復未完成部分。若畫面顯示等待，先等候；不要同時建立重複工作，也不必先裁掉音訊。</p>
+            </section>
+            <section aria-labelledby="gemini-quota">
+              <h3 id="gemini-quota">額度或速率限制</h3>
+              <p><strong>發生什麼事：</strong>HTTP 429 可能是短期速率限制，也可能是每日或專案額度不足；換同一專案的金鑰不一定有用。</p>
+              <p><strong>目前狀態：</strong> 這次請求受到限制，整份工作不一定已完成；已完成部分與下一次重試時間以 App 顯示為準。</p>
+              <p><strong>下一步：</strong>只有畫面出現倒數時才代表已安排重試。若持續失敗，到 Google AI Studio 檢查專案限制與帳務；不要連續按重試。</p>
+            </section>
+            <section aria-labelledby="gemini-access">
+              <h3 id="gemini-access">金鑰、權限或帳務</h3>
+              <p><strong>發生什麼事：</strong>401 通常與驗證有關；403 也可能涉及專案權限或存取條件，不能一律判定金鑰貼錯。</p>
+              <p><strong>目前狀態：</strong> 這次請求未獲正常授權或存取；此錯誤不代表裝置上的原音檔或既有結果已被刪除。</p>
+              <p><strong>下一步：</strong>依錯誤提示檢查 Trace 設定中的金鑰，以及 Google AI Studio 的金鑰、專案存取與帳務狀態。請勿把金鑰貼到支援信件、截圖或網站。</p>
+            </section>
+            <section aria-labelledby="gemini-model">
+              <h3 id="gemini-model">模型或檔案資源找不到</h3>
+              <p><strong>發生什麼事：</strong>HTTP 404 可能指模型不可用，也可能是 Google 上的檔案或工作資源已不存在。</p>
+              <p><strong>目前狀態：</strong> Google 端的指定資源無法使用，不等於本機音檔消失；先確認原工作是否仍有可用來源。</p>
+              <p><strong>下一步：</strong>先查看 App 提示；模型問題可在設定更新模型清單，未完成工作則依原工作恢復。切換模式是另一個使用者選擇，可能影響結果與費用，不是通用的修復步驟。</p>
+            </section>
+            <section aria-labelledby="gemini-service">
+              <h3 id="gemini-service">Google 服務暫時異常</h3>
+              <p><strong>發生什麼事：</strong>HTTP 500 或 503 通常表示服務端處理失敗或暫時不可用；不能據此保證 Trace 或輸入內容完全沒有問題。</p>
+              <p><strong>目前狀態：</strong> 這次處理未正常完成；是否保留已完成部分或排定重試，須查看 App 的原工作狀態。</p>
+              <p><strong>下一步：</strong>查看 <a href="https://aistudio.google.com/status" rel="noreferrer">Google 服務狀態</a>，稍後從原工作重試。若反覆發生，保留錯誤代碼與發生時間，透過 App Store 評論回報，不必先更換模型或刪除音檔。</p>
+            </section>
+            <section aria-labelledby="gemini-request">
+              <h3 id="gemini-request">請求內容或參數不被接受</h3>
+              <p><strong>發生什麼事：</strong>HTTP 400 表示 Google 無法接受這次請求；也可能有更明確的金鑰、帳務或功能限制訊息。</p>
+              <p><strong>目前狀態：</strong> 這次請求被拒絕，不能視為轉錄完成；先保留原音檔與現有結果。</p>
+              <p><strong>下一步：</strong>先依具體提示處理。若沒有明確原因，確認 App 為最新版本並透過 App Store 評論回報；不要為了嘗試而先刪除錄音內容。</p>
+            </section>
+            <p>找不到相符情況？請記下錯誤代碼與大約時間，查看工作狀態後透過 App Store 評論回報；不要附上金鑰或私人音訊。</p>
             <div class="support-table-wrap">
               <table class="support-table">
                 <thead>
@@ -82,37 +137,37 @@
                   <tr>
                     <td data-label="錯誤">HTTP 400 / INVALID_ARGUMENT</td>
                     <td data-label="常見意思">請求格式、內容或模型參數不被 Gemini 接受。</td>
-                    <td data-label="你可以做什麼">更新模型清單、縮短會議背景、重新匯入音檔後再試。</td>
+                    <td data-label="你可以做什麼"><a href="#gemini-request">查看上方原因與處理步驟</a></td>
                   </tr>
                   <tr>
-                    <td data-label="錯誤">HTTP 403 / PERMISSION_DENIED</td>
+                    <td data-label="錯誤">HTTP 401 / HTTP 403 / PERMISSION_DENIED</td>
                     <td data-label="常見意思">API key、Google 專案權限或帳單狀態不允許這次請求。</td>
-                    <td data-label="你可以做什麼">確認 key 沒貼錯、沒有被封鎖，並檢查 Google AI Studio 或 Google Cloud 專案權限。</td>
+                    <td data-label="你可以做什麼"><a href="#gemini-access">查看上方原因與處理步驟</a></td>
                   </tr>
                   <tr>
                     <td data-label="錯誤">HTTP 404 / NOT_FOUND</td>
                     <td data-label="常見意思">模型或上傳到 Gemini 的檔案資源找不到。</td>
-                    <td data-label="你可以做什麼">在 App 設定更新模型清單，或稍後重新處理音檔。</td>
+                    <td data-label="你可以做什麼"><a href="#gemini-model">查看上方原因與處理步驟</a></td>
                   </tr>
                   <tr>
                     <td data-label="錯誤">HTTP 429 / RESOURCE_EXHAUSTED</td>
                     <td data-label="常見意思">Gemini 額度或速率限制已觸發。</td>
-                    <td data-label="你可以做什麼">等待 App 倒數重試、換可用 Gemini key，或檢查 Google 專案額度與帳單。</td>
+                    <td data-label="你可以做什麼"><a href="#gemini-quota">查看上方原因與處理步驟</a></td>
                   </tr>
                   <tr>
                     <td data-label="錯誤">HTTP 500 / INTERNAL</td>
-                    <td data-label="常見意思">Google 端發生非預期錯誤，或輸入上下文太長。</td>
-                    <td data-label="你可以做什麼">稍後重試、縮短會議背景或輸入內容、切換模型，並查看 Gemini API 狀態頁。</td>
+                    <td data-label="常見意思">Google 端處理失敗；具體原因仍需依訊息判斷。</td>
+                    <td data-label="你可以做什麼"><a href="#gemini-service">查看上方原因與處理步驟</a></td>
                   </tr>
                   <tr>
                     <td data-label="錯誤">HTTP 503 / UNAVAILABLE</td>
                     <td data-label="常見意思">Gemini 服務可能暫時過載或不可用。</td>
-                    <td data-label="你可以做什麼">稍後重試、切換模型，並查看 Gemini API 狀態頁。</td>
+                    <td data-label="你可以做什麼"><a href="#gemini-service">查看上方原因與處理步驟</a></td>
                   </tr>
                   <tr>
                     <td data-label="錯誤">HTTP 504 / DEADLINE_EXCEEDED</td>
-                    <td data-label="常見意思">Gemini 無法在期限內完成處理，常見於輸入內容過大。</td>
-                    <td data-label="你可以做什麼">縮短會議背景或音檔內容，保持 App 在前景後重試。</td>
+                    <td data-label="常見意思">Gemini 未在期限內完成處理，原因不一定是音檔長度。</td>
+                    <td data-label="你可以做什麼"><a href="#gemini-network">查看上方原因與處理步驟</a></td>
                   </tr>
                 </tbody>
               </table>

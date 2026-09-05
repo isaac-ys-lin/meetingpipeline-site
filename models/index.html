@@ -274,7 +274,7 @@
 
             <h2>其他成本：會議背景與檢核</h2>
             <p>
-              匯入音檔時，可以補上會議背景，例如客戶名稱、產品、議題或常用縮寫。這些上下文會幫助模型辨識專有名詞、人物、產品與常見用語，讓逐字稿更接近實際會議內容。
+              匯入音檔時，可以補上會議背景，例如客戶名稱、產品、議題或常用縮寫。背景資訊可協助支援文字提示的轉錄模式辨識專有名詞，也可用於後續內容整理。Gemini 3.5 Transcribe 的時間戳與說話人功能不支援自訂詞彙提示；使用這個模式時，背景資訊用於後續分析，不保證改善原生逐字稿的名詞辨識。請參考 <a href="https://ai.google.dev/gemini-api/docs/transcribe#custom-vocabulary" rel="noreferrer">Google 功能相容性說明</a>。
             </p>
             <p>
               這些上下文會增加少量文字 input tokens，但成本通常很低。以 2,000 input tokens 粗估，3.5 Flash-Lite input 約 USD 0.0006，不到 NTD 0.02 元；若進入 3.8 Flash 分析，約 USD 0.0015，大約是 NTD 0.05 元。

@@ -274,7 +274,7 @@
 
             <h2>Other costs: meeting background and review</h2>
             <p>
-              When importing audio, you can add meeting background such as customer names, products, topics, or common acronyms. This context helps the model recognize proper nouns, people, products, and recurring terms, making the transcript closer to the actual meeting.
+              When importing audio, you can add meeting background such as customer names, products, topics, or common acronyms. Background can help transcription modes that support text prompts recognize names and terms, and can inform the later analysis. Gemini 3.5 Transcribe does not support custom vocabulary alongside timestamps or speaker diarization; in this mode, background informs the later analysis and does not guarantee better name recognition in the native transcript. See <a href="https://ai.google.dev/gemini-api/docs/transcribe#custom-vocabulary" rel="noreferrer">Google’s feature compatibility guide</a>.
             </p>
             <p>
               This context adds a small number of text input tokens, but the cost is usually low. At 2,000 input tokens, 3.5 Flash-Lite input is about USD 0.0006, under NTD 0.02. If it goes into 3.8 Flash analysis, it is about USD 0.0015, around NTD 0.05.

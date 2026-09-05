@@ -315,6 +315,12 @@ for label in 'Error' 'Common meaning' 'What to try'; do
   require_count "en/support/index.html" "data-label=\"${label}\"" 7
 done
 
+for page in support/index.html en/support/index.html; do
+  for anchor in gemini-errors recording-recovery gemini-incomplete gemini-network gemini-quota gemini-access gemini-model gemini-service gemini-request; do
+    require_match "$page" "id=\"${anchor}\""
+  done
+done
+
 require_absent "favicon.svg"
 for file in "${required_files[@]}"; do
   require_no_regex "$file" 'MeetingPipeline|(^|[^[:alnum:]_])MP([^[:alnum:]_]|$)'
@@ -338,6 +344,11 @@ if [[ "$MODE" == "full" ]]; then
   require_match "support/index.html" 'https://ai.google.dev/gemini-api/docs/troubleshooting'
   require_match "en/support/index.html" 'https://ai.google.dev/gemini-api/docs/troubleshooting'
 fi
+
+require_match "models/index.html" '不支援自訂詞彙提示'
+require_match "en/models/index.html" 'does not support custom vocabulary alongside timestamps'
+require_match "models/index.html" 'https://ai.google.dev/gemini-api/docs/transcribe#custom-vocabulary'
+require_match "en/models/index.html" 'https://ai.google.dev/gemini-api/docs/transcribe#custom-vocabulary'
 
 if tidy_cmd="$(find_tidy_html5)"; then
   for file in "${required_files[@]}"; do
