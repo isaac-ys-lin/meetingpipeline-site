@@ -22,7 +22,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="../../favicon-64.png" type="image/png" sizes="64x64">
     <link rel="apple-touch-icon" href="../../apple-touch-icon-180.png">
-    <link rel="stylesheet" href="../../styles.css?v=20260928-trace-models-charts">
+    <link rel="stylesheet" href="../../styles.css?v=20260928-trace-pages-visual">
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -49,22 +49,41 @@
               If transcription or analysis fails, first check your Gemini API key, project quota, audio format, and foreground processing state. This page summarizes common Gemini API errors, what to try, and the privacy model.
             </p>
 
-            <h2>When processing fails</h2>
-            <p>
-              Trace records meetings directly or imports audio from Files and Voice Memos, then uses your own Gemini API key to create transcripts, meeting notes, decisions, risks, and action items.
-            </p>
-            <h2>Apple Watch recording</h2>
-            <p>
-              Trace can record locally on Apple Watch. When you finish, the recording transfers to its paired iPhone and appears in the Recording Inbox the next time Trace is active; the watch keeps its copy until the iPhone confirms durable receipt. If it has not appeared, confirm that both devices remain paired, unlocked, and connected, then open Trace on iPhone.
-            </p>
-            <p>
-              If processing fails, check the items below first. If the issue keeps happening, you can leave public feedback through an App Store review.
-            </p>
-            <p>
-              If you do not have a Gemini API key yet, start with the
-              <a href="../gemini-api-key/">Gemini API Key Guide</a>. If you want to estimate longer-audio processing costs, see
-              <a href="../models/">Models &amp; Costs</a>.
-            </p>
+            <h2 id="symptoms">What is happening?</h2>
+            <nav class="link-grid" aria-labelledby="symptoms">
+              <a class="link-card" href="#recording-recovery">
+                <strong>Recording did not finish</strong>
+                <span>Stopping failed and you are not sure the recording was saved.</span>
+              </a>
+              <a class="link-card" href="#apple-watch">
+                <strong>Watch recording is missing</strong>
+                <span>You recorded on Apple Watch but it is not in the iPhone Recording Inbox yet.</span>
+              </a>
+              <a class="link-card" href="#gemini-incomplete">
+                <strong>Transcript stops partway</strong>
+                <span>Some sections finished and the rest have not been processed.</span>
+              </a>
+              <a class="link-card" href="#gemini-quota">
+                <strong>Quota used up or rate limited</strong>
+                <span>You see a quota, rate-limit, or HTTP 429 message.</span>
+              </a>
+              <a class="link-card" href="#gemini-access">
+                <strong>Key or permission error</strong>
+                <span>The key is invalid, or project permissions or billing block the request.</span>
+              </a>
+              <a class="link-card" href="#gemini-network">
+                <strong>Network drop or timeout</strong>
+                <span>The connection dropped mid-way, or processing waited too long.</span>
+              </a>
+              <a class="link-card" href="#gemini-errors">
+                <strong>An error code appeared</strong>
+                <span>Lookup table for HTTP 400, 403, 404, 429, 500, 503, and 504.</span>
+              </a>
+              <a class="link-card" href="../gemini-api-key/">
+                <strong>No API key yet</strong>
+                <span>Create one in Google AI Studio, then paste it into Trace.</span>
+              </a>
+            </nav>
 
             <h2>Before contacting support</h2>
             <p>Please confirm:</p>
@@ -77,6 +96,12 @@
               <li>If a call, another app, or an audio device interrupts recording, return to Trace and confirm the recording state before continuing or finishing.</li>
               <li>If sharing audio or a result fails, reopen that item and use the system Share Sheet again.</li>
             </ul>
+            <p>If the issue keeps happening, you can leave public feedback through an App Store review.</p>
+
+            <h2 id="apple-watch">Apple Watch recording</h2>
+            <p>
+              Trace can record locally on Apple Watch. When you finish, the recording transfers to its paired iPhone and appears in the Recording Inbox the next time Trace is active; the watch keeps its copy until the iPhone confirms durable receipt. If it has not appeared, confirm that both devices remain paired, unlocked, and connected, then open Trace on iPhone.
+            </p>
 
             <h2 id="gemini-errors">Gemini API errors</h2>
             <p>Trace sends Gemini requests directly from your device to Google Gemini API using your own key. Use the app’s current job status to confirm what is saved, waiting or unfinished.</p>

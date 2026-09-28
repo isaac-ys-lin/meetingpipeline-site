@@ -22,7 +22,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="../../favicon-64.png" type="image/png" sizes="64x64">
     <link rel="apple-touch-icon" href="../../apple-touch-icon-180.png">
-    <link rel="stylesheet" href="../../styles.css?v=20260928-trace-models-charts">
+    <link rel="stylesheet" href="../../styles.css?v=20260928-trace-pages-visual">
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,7 +43,7 @@
         </header>
         <main id="main-content">
           <article class="content guide">
-            <p class="eyebrow">Last updated: June 10, 2026</p>
+            <p class="eyebrow">Last updated: September 28, 2026</p>
             <h1>Gemini API Key Setup Guide.</h1>
             <p class="lede">
               Trace uses your own Gemini API key. Create a key in Google AI Studio, then paste it into Settings in the app.
@@ -63,25 +63,29 @@
               <li>
                 <strong>Open the API key page.</strong>
                 <span>Find the API key area in AI Studio, or use Google's <a href="https://ai.google.dev/gemini-api/docs/api-key" rel="noreferrer">Gemini API key documentation</a>.</span>
+                <figure class="guide-figure">
+                  <img src="../../assets/gemini-api-key/01-ai-studio-api-keys-redacted.png?v=20260715-safe-crop" width="1280" height="210" loading="lazy" decoding="async" alt="Google AI Studio API Keys page showing creation, grouping, filtering, and column controls; account, key, project identifier, and usage data are outside the crop">
+                  <figcaption>The API Keys page provides controls to create a key, group by key or project, and filter by project.</figcaption>
+                </figure>
               </li>
               <li>
                 <strong>Create a new key.</strong>
                 <span>Follow the Google AI Studio prompts to create a key. Treat it like a password, and do not paste it into public documents, screenshots, chat messages, or support reports.</span>
+                <figure class="guide-figure guide-figure--dialog">
+                  <img src="../../assets/gemini-api-key/02-create-key-redacted.png?v=20260715-safe-crop" width="560" height="204" loading="lazy" decoding="async" alt="Google AI Studio Create API key dialog showing the key-name field and project-selection prompt; the actual project is outside the crop">
+                  <figcaption>The Create API key dialog asks you to choose a project. After creating the key, store it like a password and do not paste the full key into chats, documents, or support reports.</figcaption>
+                </figure>
               </li>
               <li>
                 <strong>Paste it into Trace.</strong>
-                <span>Open Settings in Trace and paste the key into the Gemini API key field. The key is stored only in iOS Keychain.</span>
+                <span>Open Settings in Trace, paste the key into the Gemini field under API Keys, then tap Add Key. The key is stored only in iOS Keychain.</span>
+                <figure class="guide-figure guide-figure--phone">
+                  <img src="../../assets/gemini-api-key/04-trace-settings-en-US.png?v=20260928" width="620" height="555" loading="lazy" decoding="async" alt="The API Keys section of Trace Settings: the Gemini field has no key stored yet, with Label and API key fields and an Add Key button">
+                  <figcaption>The API Keys section in Trace. Keys in the same project share one allowance; when one key reaches its quota, Trace can switch to another available key.</figcaption>
+                </figure>
               </li>
             </ol>
 
-            <figure class="guide-figure">
-              <img src="../../assets/gemini-api-key/01-ai-studio-api-keys-redacted.png?v=20260715-safe-crop" width="1280" height="210" loading="lazy" decoding="async" alt="Google AI Studio API Keys page showing creation, grouping, filtering, and column controls; account, key, project identifier, and usage data are outside the crop">
-              <figcaption>The API Keys page provides controls to create a key, group by key or project, and filter by project.</figcaption>
-            </figure>
-            <figure class="guide-figure guide-figure--dialog">
-              <img src="../../assets/gemini-api-key/02-create-key-redacted.png?v=20260715-safe-crop" width="560" height="204" loading="lazy" decoding="async" alt="Google AI Studio Create API key dialog showing the key-name field and project-selection prompt; the actual project is outside the crop">
-              <figcaption>The Create API key dialog asks you to choose a project. After creating the key, store it like a password and do not paste the full key into chats, documents, or support reports.</figcaption>
-            </figure>
 
             <h2>Free API keys and free limits</h2>
             <p>

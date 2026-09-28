@@ -22,7 +22,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="../favicon-64.png" type="image/png" sizes="64x64">
     <link rel="apple-touch-icon" href="../apple-touch-icon-180.png">
-    <link rel="stylesheet" href="../styles.css?v=20260928-trace-models-charts">
+    <link rel="stylesheet" href="../styles.css?v=20260928-trace-pages-visual">
   </head>
   <body>
     <a class="skip-link" href="#main-content">跳到主要內容</a>
@@ -43,7 +43,7 @@
         </header>
         <main id="main-content">
           <article class="content guide">
-            <p class="eyebrow">最後更新：2026 年 6 月 10 日</p>
+            <p class="eyebrow">最後更新：2026 年 9 月 28 日</p>
             <h1>Gemini API Key 申請教學。</h1>
             <p class="lede">
               Trace 採用使用者自備 Gemini API key。你可以在 Google AI Studio 建立 key，再到 app 的「設定」貼上使用。
@@ -63,25 +63,29 @@
               <li>
                 <strong>進入 API key 頁面。</strong>
                 <span>在 AI Studio 找到 API key 相關入口，或直接參考 Google 的 <a href="https://ai.google.dev/gemini-api/docs/api-key?hl=zh-tw" rel="noreferrer">Gemini API key 官方文件</a>。</span>
+                <figure class="guide-figure">
+                  <img src="../assets/gemini-api-key/01-ai-studio-api-keys-redacted.png?v=20260715-safe-crop" width="1280" height="210" loading="lazy" decoding="async" alt="Google AI Studio API Keys 頁面的建立按鈕、分組、篩選與欄位標題；帳號、key、專案識別與用量資料未入鏡">
+                  <figcaption>API Keys 頁面提供建立 key、依 key 或專案分組，以及專案篩選等操作。</figcaption>
+                </figure>
               </li>
               <li>
                 <strong>建立新的 key。</strong>
                 <span>依照 Google AI Studio 畫面建立 key。請把 key 視為密碼，不要貼到公開文件、截圖、聊天訊息或客服回報內。</span>
+                <figure class="guide-figure guide-figure--dialog">
+                  <img src="../assets/gemini-api-key/02-create-key-redacted.png?v=20260715-safe-crop" width="560" height="204" loading="lazy" decoding="async" alt="Google AI Studio 建立 API key 對話框，顯示 key 名稱欄位與選擇專案提示；實際專案未入鏡">
+                  <figcaption>Create API key 對話框會要求選擇專案。建立後請立即把 key 當成密碼保存，不要把完整 key 貼到聊天、文件或客服回報。</figcaption>
+                </figure>
               </li>
               <li>
                 <strong>貼到 Trace。</strong>
-                <span>打開 Trace 的「設定」，把 key 貼到「Gemini API key」欄位。key 只會存在 iOS Keychain。</span>
+                <span>打開 Trace 的「設定」，在「API 金鑰」的 Gemini 欄位貼上金鑰，再按「加入金鑰」。金鑰只會存在 iOS 鑰匙圈。</span>
+                <figure class="guide-figure guide-figure--phone">
+                  <img src="../assets/gemini-api-key/04-trace-settings-zh-Hant.png?v=20260928" width="620" height="580" loading="lazy" decoding="async" alt="Trace「設定」的「API 金鑰」區塊：Gemini 欄位尚未儲存金鑰，下方有標籤與貼上金鑰欄位和「加入金鑰」按鈕">
+                  <figcaption>Trace 的「API 金鑰」區塊。同一專案的多組金鑰共用額度；某組額度不足時，Trace 會自動改用其他可用金鑰。</figcaption>
+                </figure>
               </li>
             </ol>
 
-            <figure class="guide-figure">
-              <img src="../assets/gemini-api-key/01-ai-studio-api-keys-redacted.png?v=20260715-safe-crop" width="1280" height="210" loading="lazy" decoding="async" alt="Google AI Studio API Keys 頁面的建立按鈕、分組、篩選與欄位標題；帳號、key、專案識別與用量資料未入鏡">
-              <figcaption>API Keys 頁面提供建立 key、依 key 或專案分組，以及專案篩選等操作。</figcaption>
-            </figure>
-            <figure class="guide-figure guide-figure--dialog">
-              <img src="../assets/gemini-api-key/02-create-key-redacted.png?v=20260715-safe-crop" width="560" height="204" loading="lazy" decoding="async" alt="Google AI Studio 建立 API key 對話框，顯示 key 名稱欄位與選擇專案提示；實際專案未入鏡">
-              <figcaption>Create API key 對話框會要求選擇專案。建立後請立即把 key 當成密碼保存，不要把完整 key 貼到聊天、文件或客服回報。</figcaption>
-            </figure>
 
             <h2>免費 API key 與免費額度</h2>
             <p>

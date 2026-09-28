@@ -22,7 +22,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="../favicon-64.png" type="image/png" sizes="64x64">
     <link rel="apple-touch-icon" href="../apple-touch-icon-180.png">
-    <link rel="stylesheet" href="../styles.css?v=20260928-trace-models-charts">
+    <link rel="stylesheet" href="../styles.css?v=20260928-trace-pages-visual">
   </head>
   <body>
     <a class="skip-link" href="#main-content">跳到主要內容</a>
@@ -48,6 +48,31 @@
             <p class="lede">
               Trace 會在逐字稿完成後，使用 App 內建模型在這部裝置上分辨不同聲音，再把結果對齊到原本的逐字稿。這項增強不會改寫你說過的內容，也不會因本機分析再次上傳音訊。
             </p>
+
+            <figure class="flow-figure" aria-label="講者分析流程">
+              <ol class="flow-steps">
+                <li class="flow-step">
+                  <span class="flow-where">這部裝置</span>
+                  <strong>錄音或匯入音檔</strong>
+                </li>
+                <li class="flow-step flow-step--cloud">
+                  <span class="flow-where">Google Gemini・經你同意</span>
+                  <strong>轉錄成逐字稿</strong>
+                  <span class="flow-note">音訊為轉錄而送出</span>
+                </li>
+                <li class="flow-step">
+                  <span class="flow-where">這部裝置</span>
+                  <strong>內建模型分辨聲音</strong>
+                  <span class="flow-note">不會為此再上傳音訊</span>
+                </li>
+                <li class="flow-step">
+                  <span class="flow-where">這部裝置</span>
+                  <strong>講者標籤對齊逐字稿</strong>
+                  <span class="flow-note">不改寫逐字稿文字</span>
+                </li>
+              </ol>
+              <figcaption>講者分析全程在你的 iPhone 或 iPad 上完成；轉錄與會議整理則是另外經你同意的 Gemini 雲端流程。</figcaption>
+            </figure>
 
             <div class="meta-box" aria-label="講者分析重點">
               <p><strong>在哪裡處理</strong><span>在目前這部 iPhone 或 iPad 上執行，不需另外下載模型。</span></p>

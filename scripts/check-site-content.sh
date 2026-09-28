@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 MODE="${1:-full}"
-CSS_VERSION="20260928-trace-models-charts"
+CSS_VERSION="20260928-trace-pages-visual"
 
 if [[ "$MODE" != "full" && "$MODE" != "pages-only" ]]; then
   echo "usage: scripts/check-site-content.sh [full|pages-only]" >&2
@@ -208,6 +208,23 @@ done
 require_match "index.html" 'iPhone、iPad 與 Apple Watch'
 require_match "en/index.html" 'iPhone, iPad, and Apple Watch'
 require_file "404.html"
+for locale in zh-Hant en-US; do
+  require_png "assets/gemini-api-key/04-trace-settings-${locale}.png"
+done
+require_match "gemini-api-key/index.html" '04-trace-settings-zh-Hant.png?v=20260928'
+require_match "en/gemini-api-key/index.html" '04-trace-settings-en-US.png?v=20260928'
+for file in "support/index.html" "en/support/index.html"; do
+  require_match "$file" 'id="symptoms"'
+  require_match "$file" 'id="apple-watch"'
+  require_count "$file" 'class="link-card" href="#' 7
+done
+for file in "speaker-analysis/index.html" "en/speaker-analysis/index.html"; do
+  require_count "$file" '<li class="flow-step' 4
+done
+for file in "privacy/index.html" "en/privacy/index.html"; do
+  require_match "$file" 'id="at-a-glance"'
+  require_count "$file" '<td data-label=' 16
+done
 for file in "models/index.html" "en/models/index.html"; do
   require_match "$file" 'id="free-tier"'
   require_count "$file" 'class="bar-row"' 11

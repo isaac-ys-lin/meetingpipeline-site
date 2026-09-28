@@ -22,7 +22,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="../favicon-64.png" type="image/png" sizes="64x64">
     <link rel="apple-touch-icon" href="../apple-touch-icon-180.png">
-    <link rel="stylesheet" href="../styles.css?v=20260928-trace-models-charts">
+    <link rel="stylesheet" href="../styles.css?v=20260928-trace-pages-visual">
   </head>
   <body>
     <a class="skip-link" href="#main-content">跳到主要內容</a>
@@ -49,22 +49,41 @@
               如果轉錄或分析失敗，請先檢查 Gemini API key、專案額度、音訊格式與 app 前景處理狀態。本頁整理常見 Gemini API 錯誤、可嘗試的處理方式與隱私摘要。
             </p>
 
-            <h2>處理失敗時</h2>
-            <p>
-              Trace 可直接錄下會議，或從「檔案」與「語音備忘錄」匯入音訊，再使用你自備的 Gemini API key 產生逐字稿、會議紀錄、決策、風險與待辦。
-            </p>
-            <h2>Apple Watch 錄音</h2>
-            <p>
-              Trace 可在 Apple Watch 本機錄音。完成後，錄音會傳到已配對的 iPhone，並在下次開啟 Trace 時出現在「錄音」區；手錶會保留副本直到 iPhone 確認已穩定收到。若尚未出現，請確認兩台裝置仍配對、已解鎖並可連線，然後開啟 iPhone 上的 Trace。
-            </p>
-            <p>
-              如果處理失敗，請先確認下方項目。若問題仍重複發生，可以透過 App Store 評論留下公開回饋。
-            </p>
-            <p>
-              如果你還沒有 Gemini API key，請先看
-              <a href="../gemini-api-key/">Gemini API Key 申請教學</a>。如果想估算長音訊處理成本，請看
-              <a href="../models/">模型與成本</a>。
-            </p>
+            <h2 id="symptoms">你遇到什麼狀況？</h2>
+            <nav class="link-grid" aria-labelledby="symptoms">
+              <a class="link-card" href="#recording-recovery">
+                <strong>錄音沒有完成</strong>
+                <span>停止錄音時出錯，不確定錄音有沒有保存。</span>
+              </a>
+              <a class="link-card" href="#apple-watch">
+                <strong>手錶錄音沒出現</strong>
+                <span>Apple Watch 錄完了，iPhone「錄音」區還看不到。</span>
+              </a>
+              <a class="link-card" href="#gemini-incomplete">
+                <strong>逐字稿只到一半</strong>
+                <span>部分段落已完成，其餘還沒處理。</span>
+              </a>
+              <a class="link-card" href="#gemini-quota">
+                <strong>額度用完或被限速</strong>
+                <span>出現額度不足、速率限制或 HTTP 429。</span>
+              </a>
+              <a class="link-card" href="#gemini-access">
+                <strong>金鑰或權限錯誤</strong>
+                <span>金鑰無效、專案權限或帳務狀態不允許。</span>
+              </a>
+              <a class="link-card" href="#gemini-network">
+                <strong>網路中斷或逾時</strong>
+                <span>處理到一半斷線，或等待太久。</span>
+              </a>
+              <a class="link-card" href="#gemini-errors">
+                <strong>看到錯誤代碼</strong>
+                <span>HTTP 400、403、404、429、500、503、504 對照表。</span>
+              </a>
+              <a class="link-card" href="../gemini-api-key/">
+                <strong>還沒有 API key</strong>
+                <span>從 Google AI Studio 建立，再貼到 Trace。</span>
+              </a>
+            </nav>
 
             <h2>聯絡支援前請先確認</h2>
             <p>請先確認：</p>
@@ -77,6 +96,12 @@
               <li>若錄音被電話、其他 App 或音訊裝置中斷，回到 Trace 確認錄音狀態後再繼續或完成。</li>
               <li>若音檔或結果分享失敗，重新開啟該項目並再次使用系統分享表單。</li>
             </ul>
+            <p>若問題仍重複發生，可以透過 App Store 評論留下公開回饋。</p>
+
+            <h2 id="apple-watch">Apple Watch 錄音</h2>
+            <p>
+              Trace 可在 Apple Watch 本機錄音。完成後，錄音會傳到已配對的 iPhone，並在下次開啟 Trace 時出現在「錄音」區；手錶會保留副本直到 iPhone 確認已穩定收到。若尚未出現，請確認兩台裝置仍配對、已解鎖並可連線，然後開啟 iPhone 上的 Trace。
+            </p>
 
             <h2 id="gemini-errors">Gemini API 錯誤說明</h2>
             <p>Trace 使用你自己的金鑰，從裝置直接向 Google Gemini API 送出請求。哪些內容已儲存、正在等待或尚未完成，請以 App 當下的工作狀態為準。</p>

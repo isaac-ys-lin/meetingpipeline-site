@@ -22,7 +22,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="../../favicon-64.png" type="image/png" sizes="64x64">
     <link rel="apple-touch-icon" href="../../apple-touch-icon-180.png">
-    <link rel="stylesheet" href="../../styles.css?v=20260928-trace-models-charts">
+    <link rel="stylesheet" href="../../styles.css?v=20260928-trace-pages-visual">
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -48,6 +48,31 @@
             <p class="lede">
               After your transcript is ready, Trace uses a model bundled with the app to separate voices on this device and align them with the existing transcript. This enhancement does not rewrite what was said or upload the audio again.
             </p>
+
+            <figure class="flow-figure" aria-label="Speaker analysis flow">
+              <ol class="flow-steps">
+                <li class="flow-step">
+                  <span class="flow-where">This device</span>
+                  <strong>Record or import audio</strong>
+                </li>
+                <li class="flow-step flow-step--cloud">
+                  <span class="flow-where">Google Gemini, with your consent</span>
+                  <strong>Transcribe the audio</strong>
+                  <span class="flow-note">Audio is sent for transcription</span>
+                </li>
+                <li class="flow-step">
+                  <span class="flow-where">This device</span>
+                  <strong>Bundled model separates voices</strong>
+                  <span class="flow-note">Audio is not uploaded again for this</span>
+                </li>
+                <li class="flow-step">
+                  <span class="flow-where">This device</span>
+                  <strong>Speaker labels align to the transcript</strong>
+                  <span class="flow-note">Transcript text is not rewritten</span>
+                </li>
+              </ol>
+              <figcaption>Speaker analysis runs entirely on your iPhone or iPad. Transcription and meeting notes are a separate Gemini cloud workflow that needs your consent.</figcaption>
+            </figure>
 
             <div class="meta-box" aria-label="Speaker analysis key points">
               <p><strong>Where it runs</strong><span>On the current iPhone or iPad. No additional model download is needed.</span></p>
