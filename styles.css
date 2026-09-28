@@ -396,6 +396,69 @@ code {
   margin: 10px 0 0;
 }
 
+.store-row {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin-top: 22px;
+}
+
+.store-link {
+  align-items: center;
+  background: var(--teal);
+  border-radius: var(--radius-panel);
+  color: var(--paper);
+  display: inline-flex;
+  font-size: 16px;
+  font-weight: 600;
+  min-height: 44px;
+  padding: 0 18px;
+  text-decoration: none;
+}
+
+.store-link:hover {
+  background: var(--ink);
+}
+
+.store-note {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.features {
+  max-width: 840px;
+}
+
+.feature-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 20px;
+}
+
+.feature {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  min-width: 0;
+  padding: 16px;
+}
+
+.feature h3 {
+  margin-top: 0;
+}
+
+.feature p {
+  font-size: 15px;
+  line-height: 1.55;
+  margin-top: 8px;
+}
+
+.link-grid-title {
+  max-width: 840px;
+}
+
 .link-grid {
   display: grid;
   gap: 16px;
@@ -980,6 +1043,7 @@ code {
   }
 
   .link-grid,
+  .feature-grid,
   .model-grid,
   .assumption-grid,
   .cost-flow,

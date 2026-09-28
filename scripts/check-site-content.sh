@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 MODE="${1:-full}"
-CSS_VERSION="20260928-trace-promo-video"
+CSS_VERSION="20260928-trace-site-launch"
 
 if [[ "$MODE" != "full" && "$MODE" != "pages-only" ]]; then
   echo "usage: scripts/check-site-content.sh [full|pages-only]" >&2
@@ -169,6 +169,28 @@ done
 
 require_match "index.html" "href=\"./styles.css?v=${CSS_VERSION}\""
 require_match "index.html" 'src="./brand-icon.png"'
+
+# App Store listing, share previews and language alternates on every page.
+for file in "${required_files[@]}"; do
+  require_count "$file" '<meta name="apple-itunes-app" content="app-id=6767938270">' 1
+  require_count "$file" '<link rel="canonical"' 1
+  require_count "$file" 'hreflang="zh-Hant"' 1
+  require_count "$file" 'hreflang="en"' 1
+  require_count "$file" 'hreflang="x-default"' 1
+  require_match "$file" '<meta property="og:image" content="https://isaac-ys-lin.github.io/meetingpipeline-site/assets/og/trace-og-'
+  require_match "$file" '<meta name="twitter:card" content="summary_large_image">'
+done
+for locale in zh-Hant en-US; do
+  require_png "assets/og/trace-og-${locale}-20260928.png"
+done
+for file in "index.html" "en/index.html"; do
+  require_match "$file" 'class="store-link" href="https://apps.apple.com/app/id6767938270"'
+  require_count "$file" 'class="feature"' 4
+done
+require_match "index.html" 'iPhone、iPad 與 Apple Watch'
+require_match "en/index.html" 'iPhone, iPad, and Apple Watch'
+require_file "404.html"
+require_match "404.html" "href=\"/meetingpipeline-site/styles.css?v=${CSS_VERSION}\""
 
 # Homepage promo videos: dated filenames act as the cache key, so a re-render
 # must ship under a new name instead of overwriting a published file.
