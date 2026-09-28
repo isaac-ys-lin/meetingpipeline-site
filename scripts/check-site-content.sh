@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 MODE="${1:-full}"
-CSS_VERSION="20260928-trace-home-polish"
+CSS_VERSION="20260928-trace-models-charts"
 
 if [[ "$MODE" != "full" && "$MODE" != "pages-only" ]]; then
   echo "usage: scripts/check-site-content.sh [full|pages-only]" >&2
@@ -210,6 +210,9 @@ require_match "en/index.html" 'iPhone, iPad, and Apple Watch'
 require_file "404.html"
 for file in "models/index.html" "en/models/index.html"; do
   require_match "$file" 'id="free-tier"'
+  require_count "$file" 'class="bar-row"' 11
+  require_match "$file" '<details class="method-details" id="method">'
+  require_count "$file" 'class="model-card"' 3
 done
 for file in "gemini-api-key/index.html" "en/gemini-api-key/index.html" "index.html" "en/index.html"; do
   require_match "$file" 'models/#free-tier"'

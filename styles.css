@@ -735,6 +735,123 @@ code {
   font-size: 15px;
 }
 
+.model-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.model-code {
+  margin-top: 14px;
+}
+
+.bar-chart {
+  display: grid;
+  gap: 12px;
+  margin: 20px 0 0;
+  max-width: 840px;
+}
+
+.bar-row {
+  align-items: center;
+  column-gap: 16px;
+  display: grid;
+  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) minmax(0, 10rem);
+}
+
+.bar-label {
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.bar-badge {
+  background: var(--teal-soft);
+  border-radius: 6px;
+  color: var(--teal);
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  margin-inline-start: 8px;
+  padding: 1px 8px;
+}
+
+.bar-track {
+  background: color-mix(in srgb, var(--line) 45%, transparent);
+  border-radius: 0 4px 4px 0;
+  display: flex;
+  gap: 2px;
+  height: 12px;
+}
+
+.bar {
+  background: var(--teal);
+  border-radius: 0 4px 4px 0;
+  height: 100%;
+}
+
+.bar--range,
+.bar-swatch {
+  background: color-mix(in srgb, var(--teal) 35%, var(--panel));
+}
+
+.bar-value {
+  color: var(--ink);
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  text-align: right;
+}
+
+.bar-value small {
+  color: var(--muted);
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.bar-legend {
+  align-items: center;
+  display: flex;
+  font-size: 13px;
+  gap: 8px;
+  margin: 0;
+}
+
+.bar-swatch {
+  border-radius: 2px;
+  display: inline-block;
+  height: 10px;
+  width: 18px;
+}
+
+.bar-chart figcaption {
+  color: var(--muted);
+  font-size: 14px;
+  max-width: var(--reading-width);
+}
+
+.method-details {
+  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  margin-top: 40px;
+  padding-bottom: 16px;
+}
+
+.method-details > summary {
+  color: var(--ink);
+  cursor: pointer;
+  font-size: clamp(20px, 2.2vw, 24px);
+  font-weight: 600;
+  padding: 14px 0 6px;
+}
+
+.method-details > summary:hover {
+  color: var(--teal);
+}
+
+.method-details > summary:active {
+  background: var(--teal-soft);
+}
+
 .model-kicker {
   color: var(--teal);
   font-family: var(--font-mono);
@@ -1063,6 +1180,15 @@ code {
   .link-card {
     grid-template-columns: minmax(0, 1fr);
     row-gap: 6px;
+  }
+
+  .bar-row {
+    grid-template-columns: minmax(0, 1fr) 9.5rem;
+    row-gap: 6px;
+  }
+
+  .bar-label {
+    grid-column: 1 / -1;
   }
 
   .content,
