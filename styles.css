@@ -421,6 +421,10 @@ code {
   background: var(--ink);
 }
 
+.store-link:active {
+  transform: translateY(1px);
+}
+
 .store-note {
   color: var(--muted);
   font-size: 15px;
@@ -438,14 +442,16 @@ code {
 }
 
 .feature {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-panel);
+  border-top: 1px solid var(--line);
   min-width: 0;
-  padding: 16px;
+  padding-top: 14px;
 }
 
 .feature h3 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.012em;
   margin-top: 0;
 }
 
@@ -460,23 +466,26 @@ code {
 }
 
 .link-grid {
+  border-top: 1px solid var(--line);
   display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: 32px;
+  margin-top: 20px;
   max-width: 840px;
 }
 
 .link-card {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-panel);
+  align-items: baseline;
+  border-bottom: 1px solid var(--line);
   color: var(--ink);
-  display: block;
-  min-height: 136px;
+  column-gap: 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
   min-width: 0;
-  padding: 16px;
+  padding: 16px 8px;
   text-decoration: none;
+}
+
+.link-card:active {
+  background: var(--teal-soft);
 }
 
 .link-card strong {
@@ -492,7 +501,6 @@ code {
   display: block;
   font-size: 15px;
   line-height: 1.55;
-  margin-top: 10px;
 }
 
 .content {
@@ -934,9 +942,10 @@ code {
 @media (hover: hover) {
   .link-card:hover {
     background: var(--ivory);
-    border-color: var(--teal);
-    color: var(--ink);
-    transform: translateY(-2px);
+  }
+
+  .link-card:hover strong {
+    color: var(--teal);
   }
 }
 
@@ -1052,7 +1061,8 @@ code {
   }
 
   .link-card {
-    min-height: 0;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 6px;
   }
 
   .content,

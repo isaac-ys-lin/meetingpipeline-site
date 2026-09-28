@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 MODE="${1:-full}"
-CSS_VERSION="20260928-trace-site-launch"
+CSS_VERSION="20260928-trace-home-polish"
 
 if [[ "$MODE" != "full" && "$MODE" != "pages-only" ]]; then
   echo "usage: scripts/check-site-content.sh [full|pages-only]" >&2
@@ -204,12 +204,12 @@ require_match "404.html" "href=\"/meetingpipeline-site/styles.css?v=${CSS_VERSIO
 # must ship under a new name instead of overwriting a published file.
 for locale in zh-Hant en-US; do
   require_file "assets/video/trace-launch-${locale}-20260928-music.mp4"
-  require_file "assets/video/trace-launch-${locale}-20260928.jpg"
+  require_file "assets/video/trace-launch-${locale}-20260928-product.jpg"
 done
 require_match "index.html" 'src="./assets/video/trace-launch-zh-Hant-20260928-music.mp4"'
-require_match "index.html" 'poster="./assets/video/trace-launch-zh-Hant-20260928.jpg"'
+require_match "index.html" 'poster="./assets/video/trace-launch-zh-Hant-20260928-product.jpg"'
 require_match "en/index.html" 'src="../assets/video/trace-launch-en-US-20260928-music.mp4"'
-require_match "en/index.html" 'poster="../assets/video/trace-launch-en-US-20260928.jpg"'
+require_match "en/index.html" 'poster="../assets/video/trace-launch-en-US-20260928-product.jpg"'
 for file in "index.html" "en/index.html"; do
   require_match "$file" '<video controls playsinline preload="metadata"'
   require_no_regex "$file" '<video[^>]*autoplay'
