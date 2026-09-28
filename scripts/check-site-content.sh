@@ -127,6 +127,24 @@ done
 require_file "styles.css"
 require_file "app-icon.png"
 require_file "brand-icon.png"
+# Pages load small icons derived from the synced 1024px masters with sips.
+# GitHub Pages serves large files slowly, so a 42px logo must not pull 450KB.
+require_png_size() {
+  local file="$1" expected="$2"
+  local w h
+  w="$(sips -g pixelWidth "$file" | awk '/pixelWidth/{print $2}')"
+  h="$(sips -g pixelHeight "$file" | awk '/pixelHeight/{print $2}')"
+  [[ "${w}x${h}" == "$expected" ]] || { echo "Unexpected size for $file: ${w}x${h}" >&2; exit 1; }
+}
+if command -v sips >/dev/null 2>&1; then
+  require_png_size "brand-icon-126.png" "126x126"
+  require_png_size "favicon-64.png" "64x64"
+  require_png_size "apple-touch-icon-180.png" "180x180"
+fi
+for file in "${required_files[@]}"; do
+  require_no_regex "$file" 'src="[./]*brand-icon\.png"|href="[./]*app-icon\.png"'
+  require_match "$file" 'rel="apple-touch-icon"'
+done
 require_file "model-catalog.json"
 require_match "model-catalog.json" '"updatedAt": "2026-09-03"'
 require_match "model-catalog.json" '"schemaVersion": 2'
@@ -168,7 +186,7 @@ for file in "gemini-api-key/index.html" "en/gemini-api-key/index.html"; do
 done
 
 require_match "index.html" "href=\"./styles.css?v=${CSS_VERSION}\""
-require_match "index.html" 'src="./brand-icon.png"'
+require_match "index.html" 'src="./brand-icon-126.png"'
 
 # App Store listing, share previews and language alternates on every page.
 for file in "${required_files[@]}"; do
@@ -203,12 +221,12 @@ require_match "404.html" "href=\"/meetingpipeline-site/styles.css?v=${CSS_VERSIO
 # Homepage promo videos: dated filenames act as the cache key, so a re-render
 # must ship under a new name instead of overwriting a published file.
 for locale in zh-Hant en-US; do
-  require_file "assets/video/trace-launch-${locale}-20260928-music.mp4"
+  require_file "assets/video/trace-launch-${locale}-20260928-web.mp4"
   require_file "assets/video/trace-launch-${locale}-20260928-product.jpg"
 done
-require_match "index.html" 'src="./assets/video/trace-launch-zh-Hant-20260928-music.mp4"'
+require_match "index.html" 'src="./assets/video/trace-launch-zh-Hant-20260928-web.mp4"'
 require_match "index.html" 'poster="./assets/video/trace-launch-zh-Hant-20260928-product.jpg"'
-require_match "en/index.html" 'src="../assets/video/trace-launch-en-US-20260928-music.mp4"'
+require_match "en/index.html" 'src="../assets/video/trace-launch-en-US-20260928-web.mp4"'
 require_match "en/index.html" 'poster="../assets/video/trace-launch-en-US-20260928-product.jpg"'
 for file in "index.html" "en/index.html"; do
   require_match "$file" '<video controls playsinline preload="metadata"'
@@ -251,7 +269,7 @@ require_count "en/gemini-api-key/index.html" 'class="guide-figure guide-figure--
 zh_nested_pages=(gemini-api-key/index.html models/index.html speaker-analysis/index.html privacy/index.html support/index.html)
 for file in "${zh_nested_pages[@]}"; do
   require_match "$file" "href=\"../styles.css?v=${CSS_VERSION}\""
-  require_match "$file" 'src="../brand-icon.png"'
+  require_match "$file" 'src="../brand-icon-126.png"'
 done
 
 require_match "gemini-api-key/index.html" 'class="language-switch" href="../en/gemini-api-key/"'
@@ -277,12 +295,12 @@ for file in "${en_pages[@]}"; do
 done
 
 require_match "en/index.html" "href=\"../styles.css?v=${CSS_VERSION}\""
-require_match "en/index.html" 'src="../brand-icon.png"'
+require_match "en/index.html" 'src="../brand-icon-126.png"'
 
 en_nested_pages=(en/gemini-api-key/index.html en/models/index.html en/speaker-analysis/index.html en/privacy/index.html en/support/index.html)
 for file in "${en_nested_pages[@]}"; do
   require_match "$file" "href=\"../../styles.css?v=${CSS_VERSION}\""
-  require_match "$file" 'src="../../brand-icon.png"'
+  require_match "$file" 'src="../../brand-icon-126.png"'
 done
 
 require_match "index.html" 'href="./speaker-analysis/"'

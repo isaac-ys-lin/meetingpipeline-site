@@ -16,6 +16,8 @@
 - 網站的獨立品牌 lockup 依 App HTML export 使用 Baskerville `Trace`，並在同一基線接上較小的 system sans、teal `Audio Notes & Insights`，視覺上不顯示冒號；教學、支援、隱私與模型內文仍使用短名 `Trace`。
 - 同步品牌資產時，直接從 App asset catalog 複製，並用 `shasum -a 256` 比對網站檔與 App source；兩邊 SHA-256 必須完全相同才算同步完成。
 - 不得依 PNG 自行描摹、重畫或產生替代 SVG。若未來取得正式 vector source，須另行驗收後才能取代。
+- 頁面實際載入的是由 1024px 原檔用 `sips -Z` 機械縮圖的衍生檔：`brand-icon-126.png`（頁首 42px 的 3 倍）、`favicon-64.png`、`apple-touch-icon-180.png`。原檔保持與 App 相同的 SHA-256，是唯一來源；同步原檔後要重新產生衍生檔。GitHub Pages 傳輸大檔很慢，頁面不直接引用 1024px 原檔。
+- 首頁影片以 H.264 CRF 30、`-tune stillimage`、AAC 64 kbps 輸出（約 400 kbps），讓慢速連線也能順播；重新輸出時換新檔名。
 - 網站維持原生靜態 HTML／CSS，不載入第三方 web font、第三方 JavaScript，也不加入手動 theme toggle；light／dark 只跟隨系統 `prefers-color-scheme`。
 
 ## Gemini API Key 教學頁
