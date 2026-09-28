@@ -22,7 +22,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="../favicon-64.png" type="image/png" sizes="64x64">
     <link rel="apple-touch-icon" href="../apple-touch-icon-180.png">
-    <link rel="stylesheet" href="../styles.css?v=20260928-trace-cleanup">
+    <link rel="stylesheet" href="../styles.css?v=20260928-trace-app-type">
   </head>
   <body>
     <a class="skip-link" href="#main-content">跳到主要內容</a>
@@ -75,27 +75,41 @@
 
             <h2>為了 app 功能而處理的資料</h2>
             <p>為了完成 app 功能，Trace 可能處理下列使用者提供或產生的內容：</p>
-            <ul>
+            <ul class="data-list">
               <li>錄製、由 Apple Watch 傳入或匯入的音檔。</li>
               <li>逐字稿。</li>
               <li>使用者輸入的會議背景。</li>
               <li>使用者選擇或編輯的模板指示。</li>
               <li>Gemini 產生或 app 整理出的生成結果，例如會議紀錄、待辦、決策、風險與事實檢核內容。</li>
             </ul>
+
+            <h3>何時送出、送給誰</h3>
             <p>
               Trace 會從使用者的裝置收集上述內容，並只在完成使用者要求的功能時，傳送給第三方服務 Google Gemini API，用來完成轉錄、會議紀錄整理、分析與事實檢核。Trace 不會把這些內容用於廣告或跨 app／網站 tracking。
             </p>
             <p>
               在第一次傳送前，Trace 會在 app 內列出資料類型、接收方與用途，並取得使用者的明確同意。未同意或撤回同意後，Trace 不會開始新的 Gemini 轉錄，也不會在背景自動重試傳送。使用者可隨時在「設定」撤回同意；若日後揭露內容有實質變更，Trace 會再次取得同意。
             </p>
-            <p>
-              Google 對 Gemini API 資料的使用取決於 API key 所屬專案適用的服務層級。依 Google 目前條款，使用免費服務時，Google 可能使用送出的內容與回覆來提供、改善及開發產品與機器學習技術，且人工審查員可能處理輸入與輸出；Google 因此要求免費服務不要送出敏感、機密或個人資料。使用付費服務時，Google 表示不會使用 prompts、檔案或回覆改善其產品，並依其資料處理附約處理；仍可能為安全、濫用防制及法律義務有限期記錄資料。
-            </p>
-            <p>
-              較長的音檔會分段處理；處理時音檔會上傳到 Google，並在處理期間暫時存放在他們的伺服器上。處理完成、被你取消，或最終失敗之後，Trace 會盡力刪除這些暫存的資料；如果遇到網路或服務異常而沒有刪成功，資料仍可能依 Google 的設定與保留政策繼續存在。Google 目前說明，為了偵測違反使用政策的行為，可能保留送出的內容、相關脈絡與回覆最多 55 天。
-            </p>
+
+            <h3>Google 如何使用</h3>
+            <p>Google 對 Gemini API 資料的使用取決於 API key 所屬專案適用的服務層級。依 Google 目前條款：</p>
+            <div class="comparison-grid">
+              <section>
+                <h4>免費服務</h4>
+                <p>Google 可能使用送出的內容與回覆來提供、改善及開發產品與機器學習技術，且人工審查員可能處理輸入與輸出；Google 因此要求免費服務不要送出敏感、機密或個人資料。</p>
+              </section>
+              <section>
+                <h4>付費服務</h4>
+                <p>Google 表示不會使用 prompts、檔案或回覆改善其產品，並依其資料處理附約處理；仍可能為安全、濫用防制及法律義務有限期記錄資料。</p>
+              </section>
+            </div>
             <p>
               Trace 僅依上述目的將資料交由 Google Gemini API 處理，並依賴 Google 適用的 API 條款、隱私政策及付費服務資料處理承諾，對受託處理的資料提供與本政策一致的保護。Trace 不另行授權 Google 將資料用於本政策未揭露的 Trace 目的。
+            </p>
+
+            <h3>暫存與刪除</h3>
+            <p>
+              較長的音檔會分段處理；處理時音檔會上傳到 Google，並在處理期間暫時存放在他們的伺服器上。處理完成、被你取消，或最終失敗之後，Trace 會盡力刪除這些暫存的資料；如果遇到網路或服務異常而沒有刪成功，資料仍可能依 Google 的設定與保留政策繼續存在。Google 目前說明，為了偵測違反使用政策的行為，可能保留送出的內容、相關脈絡與回覆最多 55 天。
             </p>
 
             <h2>Gemini API key</h2>

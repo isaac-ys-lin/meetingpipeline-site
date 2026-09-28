@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 MODE="${1:-full}"
-CSS_VERSION="20260928-trace-cleanup"
+CSS_VERSION="20260928-trace-app-type"
 
 if [[ "$MODE" != "full" && "$MODE" != "pages-only" ]]; then
   echo "usage: scripts/check-site-content.sh [full|pages-only]" >&2
@@ -361,8 +361,12 @@ require_match "styles.css" 'background: var(--paper);'
 require_regex "styles.css" '(?s)\.brand \{.*?font-family: var\(--font-brand\);.*?font-size: 28px;.*?gap: 12px;'
 require_regex "styles.css" '(?s)\.brand-lockup \{.*?align-items: baseline;.*?display: inline-flex;.*?white-space: nowrap;'
 require_regex "styles.css" '(?s)\.brand-descriptor \{.*?color: var\(--teal\);.*?font-family: var\(--font-sans\);.*?font-weight: 600;.*?margin-inline-start: 0\.15em;'
-require_regex "styles.css" '(?s)\.content h1 \{.*?font-family: var\(--font-sans\);'
-require_regex "styles.css" '(?s)h2 \{.*?border-inline-start: 2px solid var\(--teal\);.*?font-family: var\(--font-sans\);'
+# Headings follow the app's SwiftUI title tokens (system serif, semibold);
+# small labels follow its pageSubtitle token (sans semibold), so only code uses mono.
+require_regex "styles.css" '(?s)h3 \{.*?font-family: var\(--font-serif\);.*?font-weight: 600;'
+require_count "styles.css" 'font-family: var(--font-mono);' 1
+require_regex "styles.css" '(?s)\.content h1 \{.*?font-family: var\(--font-serif\);'
+require_regex "styles.css" '(?s)h2 \{.*?border-inline-start: 2px solid var\(--teal\);.*?font-family: var\(--font-serif\);'
 require_no_regex "styles.css" '\.trace-rail::before|\.trace-rail::after'
 require_match "styles.css" '@media (prefers-color-scheme: dark)'
 for token in \

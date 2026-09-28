@@ -270,11 +270,10 @@ main {
 
 .eyebrow {
   color: var(--teal);
-  font-family: var(--font-mono);
-  font-size: 12px;
+  font-family: var(--font-sans);
+  font-size: 13px;
   font-variant-numeric: tabular-nums;
-  font-weight: 650;
-  letter-spacing: 0.025em;
+  font-weight: 600;
   margin: 0 0 18px;
 }
 
@@ -288,7 +287,7 @@ h3,
 }
 
 h1 {
-  font-family: var(--font-sans);
+  font-family: var(--font-serif);
   font-size: clamp(36px, 4.5vw, 48px);
   font-weight: 600;
   letter-spacing: -0.015em;
@@ -298,8 +297,8 @@ h1 {
 }
 
 .content h1 {
-  font-family: var(--font-sans);
-  font-size: clamp(32px, 4vw, 40px);
+  font-family: var(--font-serif);
+  font-size: clamp(30px, 3.6vw, 38px);
   line-height: 1.15;
 }
 
@@ -314,8 +313,8 @@ h1 {
 
 h2 {
   border-inline-start: 2px solid var(--teal);
-  font-family: var(--font-sans);
-  font-size: clamp(22px, 2.5vw, 28px);
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 2.4vw, 26px);
   font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1.2;
@@ -324,9 +323,9 @@ h2 {
 }
 
 h3 {
-  font-family: var(--font-sans);
-  font-size: 18px;
-  font-weight: 700;
+  font-family: var(--font-serif);
+  font-size: 19px;
+  font-weight: 600;
   line-height: 1.3;
   margin-top: 24px;
 }
@@ -470,6 +469,54 @@ code {
   margin-top: 8px;
 }
 
+.free-lead {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-top: 16px;
+  max-width: 840px;
+}
+
+.free-amount {
+  color: var(--teal);
+  font-size: clamp(36px, 5vw, 48px);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.free-lead span {
+  color: var(--ink);
+  flex: 1 1 18rem;
+}
+
+.feature--caution h3 {
+  color: var(--warning);
+}
+
+.fine-print {
+  font-size: 14px;
+  margin-top: 18px;
+}
+
+.data-list {
+  column-gap: 32px;
+  columns: 2;
+}
+
+.data-list li {
+  break-inside: avoid;
+}
+
+.comparison-grid h4 {
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: 17px;
+  margin: 0;
+}
+
 .link-grid-title {
   max-width: 840px;
 }
@@ -584,7 +631,8 @@ code {
   color: var(--teal);
   content: counter(guide-step, decimal-leading-zero);
   display: inline-flex;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
   font-size: 12px;
   font-weight: 750;
   height: 30px;
@@ -710,10 +758,9 @@ code {
 .support-table th {
   background: var(--teal-soft);
   color: var(--ink);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 750;
-  letter-spacing: 0.01em;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .cost-table td,
@@ -957,12 +1004,10 @@ code {
 
 .model-kicker {
   color: var(--teal);
-  font-family: var(--font-mono);
-  font-size: 12px !important;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-family: var(--font-sans);
+  font-size: 13px !important;
+  font-weight: 600;
   margin-top: 0;
-  text-transform: uppercase;
 }
 
 .model-card dl,
@@ -978,9 +1023,9 @@ code {
 
 .model-card dt {
   color: var(--teal);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 700;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .model-card dd {
@@ -1013,9 +1058,9 @@ code {
 .cost-flow span {
   color: var(--teal);
   display: block;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 700;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
   margin-bottom: 8px;
 }
 
@@ -1055,7 +1100,8 @@ code {
   content: counter(cost-step, decimal-leading-zero);
   counter-increment: cost-step;
   display: inline-flex;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
   font-size: 11px;
   font-weight: 800;
   height: 28px;
@@ -1110,7 +1156,6 @@ code {
 }
 
 .support-callout {
-  border-inline-start: 4px solid var(--teal);
   margin-top: 18px;
 }
 
@@ -1224,9 +1269,9 @@ code {
   .support-table td::before {
     color: var(--teal);
     content: attr(data-label);
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 750;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 600;
     line-height: 1.35;
   }
 }
@@ -1292,6 +1337,10 @@ code {
 
   .bar-label {
     grid-column: 1 / -1;
+  }
+
+  .data-list {
+    columns: 1;
   }
 
   .flow-steps {

@@ -22,7 +22,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="../../favicon-64.png" type="image/png" sizes="64x64">
     <link rel="apple-touch-icon" href="../../apple-touch-icon-180.png">
-    <link rel="stylesheet" href="../../styles.css?v=20260928-trace-cleanup">
+    <link rel="stylesheet" href="../../styles.css?v=20260928-trace-app-type">
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -46,7 +46,7 @@
             <p class="eyebrow">Last updated: September 3, 2026</p>
             <h1>Trace Models &amp; Costs.</h1>
             <p class="lede">
-              A one-hour meeting costs about USD 0.12 with the combination Trace recommends, and nothing in API charges within Google's free tier.
+              A one-hour meeting costs about USD 0.32 with the recommended Transcribe + Flash-Lite combination, or about USD 0.11 with all Flash-Lite for a text draft. Nothing in API charges within Google's free tier.
             </p>
 
 
@@ -63,30 +63,44 @@
                   <span class="bar-value">About USD 0.105<small>NTD 3.2 to 3.5</small></span>
                 </div>
                 <div class="bar-row">
-                  <span class="bar-label">Flash-Lite transcription + 3.8 Flash notes<span class="bar-badge">Recommended in Trace</span></span>
+                  <span class="bar-label">Flash-Lite transcription + 3.8 Flash notes</span>
                   <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 36.1%"></span></span>
                   <span class="bar-value">About USD 0.122<small>NTD 3.7 to 4.0</small></span>
+                </div>
+                <div class="bar-row">
+                  <span class="bar-label">Transcribe transcription + Flash-Lite notes<span class="bar-badge">Recommended</span></span>
+                  <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 95.0%"></span></span>
+                  <span class="bar-value">About USD 0.321<small>NTD 9.6 to 10.6</small></span>
                 </div>
                 <div class="bar-row">
                   <span class="bar-label">Transcribe transcription + 3.8 Flash notes</span>
                   <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 100%"></span></span>
                   <span class="bar-value">About USD 0.338<small>NTD 10.1 to 11.2</small></span>
                 </div>
-                <figcaption>Estimated for a one-hour meeting at Google paid-tier prices, including cached audio input. NTD uses about NTD 30 to 33 per USD. Google pricing, free quota, and rate limits change; your Google bill is what counts.</figcaption>
+                <figcaption>Estimated for a one-hour meeting at Google paid-tier prices. NTD uses about NTD 30 to 33 per USD. Google pricing, free quota, and rate limits change; your Google bill is what counts.</figcaption>
               </figure>
 
             <h2 id="free-tier">Most people start with a free API key</h2>
-            <div class="support-callout">
-              <p><strong>Within Google's free tier, all three models Trace uses are free of API charges.</strong> The amounts on this page show what a project pays once billing is enabled. On the free tier, read them as a rough guide to what you would pay after moving to paid usage.</p>
-              <ul>
-                <li>Limits apply per <strong>project</strong>, not per key. Several keys in the same project share one allowance.</li>
-                <li>Requests per day (RPD) reset at midnight Pacific time.</li>
-                <li>Long recordings are sent in sections, and every section and every retry counts as a request. When a rate limit is hit, Trace waits as Google's response indicates and retries. Finished sections are kept, so once your allowance is back you can tap Continue transcription to process only the unfinished parts.</li>
-                <li>On the free tier, Google may use what you send to improve its products, and human reviewers may process it, so Google asks you not to send sensitive, confidential, or personal information. For those meetings, use a project with billing enabled. See the <a href="../privacy/">Privacy Policy</a>.</li>
-                <li>Once a project has billing enabled, it moves to a paid tier and is charged at paid rates.</li>
-              </ul>
-              <p>Google does not publish fixed free-tier numbers; actual limits vary by account, project, and model. Check the Rate Limit page in Google AI Studio. Need a key? See the <a href="../gemini-api-key/">Gemini API Key Guide</a>.</p>
+            <p class="free-lead"><strong class="free-amount">USD 0</strong><span>Within Google's free tier, all three models are free of API charges. The amounts above apply once you exceed the allowance or enable billing.</span></p>
+            <div class="feature-grid">
+              <div class="feature">
+                <h3>Limits follow the project, not the key</h3>
+                <p>Several keys in the same project share one allowance.</p>
+              </div>
+              <div class="feature">
+                <h3>Resets daily</h3>
+                <p>Requests per day reset at midnight Pacific time.</p>
+              </div>
+              <div class="feature">
+                <h3>Pick up where you left off</h3>
+                <p>Every section and every retry counts as a request. Finished sections are kept, so once your allowance is back, tap Continue transcription to process only what is left.</p>
+              </div>
+              <div class="feature feature--caution">
+                <h3>Use a paid project for sensitive meetings</h3>
+                <p>Content sent on the free tier may be used by Google to improve its products and may be seen by human reviewers. See the <a href="../privacy/">Privacy Policy</a>.</p>
+              </div>
             </div>
+            <p class="fine-print">Once billing is enabled, the project is charged at paid rates. Google does not publish fixed free-tier numbers; check the Rate Limit page in Google AI Studio. Need a key? See the <a href="../gemini-api-key/">Gemini API Key Guide</a>.</p>
 
             <h2 id="choose-model">Which model should you choose?</h2>
             <div class="model-grid model-grid--three">
@@ -162,47 +176,41 @@
             <h2 id="cost-breakdown">Where does the money go?</h2>
               <figure class="bar-chart">
                 <div class="bar-row">
-                  <span class="bar-label">Transcript output</span>
+                  <span class="bar-label">Audio input (Transcribe)</span>
                   <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 100%"></span></span>
-                  <span class="bar-value">USD 0.045<small>About 18,000 output tokens</small></span>
+                  <span class="bar-value">USD 0.18<small>About USD 0.003 / minute</small></span>
                 </div>
                 <div class="bar-row">
-                  <span class="bar-label">Audio input</span>
-                  <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 84.4%"></span></span>
-                  <span class="bar-value">USD 0.038<small>Includes cached audio input</small></span>
+                  <span class="bar-label">Transcript output (Transcribe)</span>
+                  <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 66.7%"></span></span>
+                  <span class="bar-value">USD 0.12<small>About USD 0.002 / minute</small></span>
                 </div>
                 <div class="bar-row">
-                  <span class="bar-label">Meeting notes</span>
-                  <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 84.4%"></span></span>
-                  <span class="bar-value">USD 0.038<small>3.8 Flash</small></span>
+                  <span class="bar-label">Meeting notes (Flash-Lite)</span>
+                  <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 11.7%"></span></span>
+                  <span class="bar-value">USD 0.021<small>20,000 / 6,000 tokens</small></span>
                 </div>
-                <div class="bar-row">
-                  <span class="bar-label">Transcript text input</span>
-                  <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 2.2%"></span></span>
-                  <span class="bar-value">USD 0.001<small>Background and section context</small></span>
-                </div>
-                <figcaption>One hour with the recommended combination, about USD 0.122 in total. Transcript output costs the most: output tokens are priced far above input, and the transcript writes out everything said in the meeting.</figcaption>
+                <figcaption>One hour with the recommended combination, about USD 0.321 in total. Transcribe is billed by audio duration and makes up more than 90 percent, in exchange for speaker labels and seekable timestamps; Flash-Lite notes add only about USD 0.02.</figcaption>
               </figure>
 
             <h2 id="cost-by-length">Longer meetings cost proportionally more</h2>
               <figure class="bar-chart">
                 <div class="bar-row">
                   <span class="bar-label">30 minutes</span>
-                  <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 19.7%"></span></span>
-                  <span class="bar-value">About USD 0.060<small>NTD 1.8 to 2.0</small></span>
+                  <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 25.1%"></span></span>
+                  <span class="bar-value">About USD 0.161<small>NTD 4.8 to 5.3</small></span>
                 </div>
                 <div class="bar-row">
                   <span class="bar-label">60 minutes</span>
-                  <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 40.1%"></span><span class="bar bar--range" style="width: 10.2%"></span></span>
-                  <span class="bar-value">About USD 0.122 to 0.153<small>NTD 3.7 to 5.0</small></span>
+                  <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 50.1%"></span></span>
+                  <span class="bar-value">About USD 0.321<small>NTD 9.6 to 10.6</small></span>
                 </div>
                 <div class="bar-row">
                   <span class="bar-label">120 minutes</span>
-                  <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 79.6%"></span><span class="bar bar--range" style="width: 20.4%"></span></span>
-                  <span class="bar-value">About USD 0.242 to 0.304<small>NTD 7.3 to 10.0</small></span>
+                  <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 100%"></span></span>
+                  <span class="bar-value">About USD 0.641<small>NTD 19.2 to 21.2</small></span>
                 </div>
-                <p class="bar-legend"><span class="bar-swatch" aria-hidden="true"></span>Lighter extension: conservative upper bound when cached audio input does not apply</p>
-                <figcaption>Recommended combination. Cost scales roughly with meeting length.</figcaption>
+                <figcaption>Recommended combination. Transcribe is billed per minute, so cost scales with meeting length.</figcaption>
               </figure>
 
             <h2>Other costs: meeting background and review</h2>
@@ -388,6 +396,12 @@
                       <td>3.5 Flash-Lite transcription, 3.8 Flash analysis</td>
                       <td>About USD 0.122 (NTD 3.7-4.0)</td>
                       <td>Keeps transcription low-cost while using a stronger model for meeting-note organization.</td>
+                    </tr>
+                    <tr>
+                      <td>Recommended combination</td>
+                      <td>Transcription uses <code>gemini-3.5-transcribe</code> (billed per minute); notes use <code>gemini-3.5-flash-lite</code></td>
+                      <td>About USD 0.321 (NTD 9.6-10.6)</td>
+                      <td>Keeps speaker labels and locatable timestamps while notes use the low-cost model.</td>
                     </tr>
                     <tr>
                       <td>3.5 Transcribe transcription + 3.8 Flash analysis</td>

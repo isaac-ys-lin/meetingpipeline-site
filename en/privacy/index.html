@@ -22,7 +22,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="../../favicon-64.png" type="image/png" sizes="64x64">
     <link rel="apple-touch-icon" href="../../apple-touch-icon-180.png">
-    <link rel="stylesheet" href="../../styles.css?v=20260928-trace-cleanup">
+    <link rel="stylesheet" href="../../styles.css?v=20260928-trace-app-type">
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -75,27 +75,41 @@
 
             <h2>Data processed for app functionality</h2>
             <p>To provide app functionality, Trace may process content you provide or generate, including:</p>
-            <ul>
+            <ul class="data-list">
               <li>Audio recorded, transferred from Apple Watch, or imported.</li>
               <li>Transcripts.</li>
               <li>Meeting background you enter.</li>
               <li>Template instructions you select or edit.</li>
               <li>Generated results such as meeting notes, action items, decisions, risks, and fact-checking drafts.</li>
             </ul>
+
+            <h3>When data is sent, and to whom</h3>
             <p>
               Trace collects this content from your device and sends it only to the third-party Google Gemini API when needed to provide transcription, organization, analysis, meeting-note generation, and fact-checking that you request. Trace does not use this content for advertising or cross-app or cross-website tracking.
             </p>
             <p>
               Before the first transmission, Trace identifies the data types, recipient, and purposes in the app and asks for your explicit permission. If you decline or later withdraw consent, Trace will not start new Gemini transcription or automatically retry transmissions in the background. You can withdraw consent in Settings. Trace will ask again if this disclosure materially changes.
             </p>
-            <p>
-              Google's use of Gemini API data depends on the service tier for the project associated with your API key. Under Google's current terms for unpaid services, Google may use submitted content and responses to provide, improve, and develop its products and machine-learning technologies, and human reviewers may process API inputs and outputs; Google therefore advises not to submit sensitive, confidential, or personal information to unpaid services. For paid services, Google states that it does not use prompts, files, or responses to improve its products and processes them under its data processing addendum, while limited logging may still occur for safety, abuse prevention, and legal obligations.
-            </p>
-            <p>
-              Longer recordings are processed in sections; the audio is uploaded to Google and held temporarily on its servers while that happens. After processing finishes, is cancelled, or fails for good, Trace makes a best-effort attempt to delete that temporary data. If a network or service failure prevents this, the data may remain under Google's settings and retention policies. Google currently states that submitted content, related context, and replies may be kept for up to 55 days to detect violations of its usage policies.
-            </p>
+
+            <h3>How Google uses it</h3>
+            <p>Google's use of Gemini API data depends on the service tier for the project associated with your API key. Under Google's current terms:</p>
+            <div class="comparison-grid">
+              <section>
+                <h4>Unpaid services</h4>
+                <p>Google may use submitted content and responses to provide, improve, and develop its products and machine-learning technologies, and human reviewers may process API inputs and outputs; Google therefore advises not to submit sensitive, confidential, or personal information to unpaid services.</p>
+              </section>
+              <section>
+                <h4>Paid services</h4>
+                <p>Google states that it does not use prompts, files, or responses to improve its products and processes them under its data processing addendum, while limited logging may still occur for safety, abuse prevention, and legal obligations.</p>
+              </section>
+            </div>
             <p>
               Trace shares data with the Google Gemini API only for the purposes described above and relies on Google's applicable API terms, privacy policy, and paid-service data processing commitments to provide protection consistent with this policy for data processed on Trace's behalf. Trace does not separately authorize Google to use data for any undisclosed Trace purpose.
+            </p>
+
+            <h3>Temporary storage and deletion</h3>
+            <p>
+              Longer recordings are processed in sections; the audio is uploaded to Google and held temporarily on its servers while that happens. After processing finishes, is cancelled, or fails for good, Trace makes a best-effort attempt to delete that temporary data. If a network or service failure prevents this, the data may remain under Google's settings and retention policies. Google currently states that submitted content, related context, and replies may be kept for up to 55 days to detect violations of its usage policies.
             </p>
 
             <h2>Gemini API key</h2>

@@ -61,6 +61,7 @@ App 端設計真相依序以以下檔案為準：
 - **Confirmed** — 現有 Google AI Studio 截圖不是不可變資產；使用者接受重拍。新版本以當前 UI、任務聚焦裁切與最小必要遮蔽取代大面積黑塊／全頁模糊。
 - **Confirmed** — 公開網站以 App `MeetingTemplate.htmlStyles` 的 HTML export 作主要版面語法：canvas／parchment、Baskerville signature、sans 文件標題與 2px teal section rail；SwiftUI 畫面則提供 panel、button、spacing、radius 與 semantic color role。網站不逐像素複製 iPhone 構圖。
 - **Superseded** — 網站自行放大的 60–72px Serif 文件標題與帶裝飾短線的首頁 Trace rail 不屬於 App／HTML export 現行語法；第二輪改為較緊湊的文件尺度與單純 section rail。
+- **Superseded 2026-09-28** — 「文件 H1／H2 用 system sans、日期與標籤用 monospace」改為對齊 App SwiftUI 字體 token：頁面標題、區段標題與面板標題（h1／h2／h3、對照欄標題）使用 system serif semibold，對應 `MeetingPipelineStyle.Typography.pageTitle／sectionTitle／panelTitle`；日期、欄位名稱、表頭與步驟編號改用 sans semibold，對應 `pageSubtitle`；monospace 只保留給 `code`。內文維持 system sans，品牌 signature 維持 Baskerville。依據是使用者要求網站字體與 App 一致，並以 App 畫面（非 HTML export）為準。
 - **Confirmed** — Header、首頁 hero 與 footer 的獨立品牌 lockup 以 `Trace Audio Notes & Insights` 呈現，視覺上省略 App Store 名稱中的冒號：`Trace` 維持 Baskerville signature，descriptor 使用同一基線的小字 teal system sans。一般內容仍使用短名 `Trace`，不做全站機械替換。
 
 ## Visual direction

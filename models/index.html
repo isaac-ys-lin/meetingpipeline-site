@@ -22,7 +22,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="../favicon-64.png" type="image/png" sizes="64x64">
     <link rel="apple-touch-icon" href="../apple-touch-icon-180.png">
-    <link rel="stylesheet" href="../styles.css?v=20260928-trace-cleanup">
+    <link rel="stylesheet" href="../styles.css?v=20260928-trace-app-type">
   </head>
   <body>
     <a class="skip-link" href="#main-content">跳到主要內容</a>
@@ -46,7 +46,7 @@
             <p class="eyebrow">最後更新：2026 年 9 月 3 日</p>
             <h1>Trace 模型與成本。</h1>
             <p class="lede">
-              一小時會議，用 App 推薦組合大約 NT$4；在 Google 免費額度內不收 API 費用。
+              一小時會議，用推薦的 Transcribe＋Flash-Lite 組合約 NT$10；只要文字草稿，全部用 Flash-Lite 約 NT$3。在 Google 免費額度內不收 API 費用。
             </p>
 
             <h2 id="cost-per-hour">一小時會議，大約多少錢？</h2>
@@ -62,30 +62,44 @@
                   <span class="bar-value">約 NT$3.2～3.5<small>USD 0.105</small></span>
                 </div>
                 <div class="bar-row">
-                  <span class="bar-label">Flash-Lite 轉錄＋3.8 Flash 整理<span class="bar-badge">App 推薦組合</span></span>
+                  <span class="bar-label">Flash-Lite 轉錄＋3.8 Flash 整理</span>
                   <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 36.1%"></span></span>
                   <span class="bar-value">約 NT$3.7～4.0<small>USD 0.122</small></span>
+                </div>
+                <div class="bar-row">
+                  <span class="bar-label">Transcribe 轉錄＋Flash-Lite 整理<span class="bar-badge">推薦組合</span></span>
+                  <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 95.0%"></span></span>
+                  <span class="bar-value">約 NT$9.6～10.6<small>USD 0.321</small></span>
                 </div>
                 <div class="bar-row">
                   <span class="bar-label">Transcribe 轉錄＋3.8 Flash 整理</span>
                   <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 100%"></span></span>
                   <span class="bar-value">約 NT$10.1～11.2<small>USD 0.338</small></span>
                 </div>
-                <figcaption>以 Google 付費層級價格估算一小時會議（含 cached audio input），NTD 以 1 USD 約 30～33 元換算。Google 價格、免費額度與速率限制會調整，實際以你的 Google 帳單為準。</figcaption>
+                <figcaption>以 Google 付費層級價格估算一小時會議，NTD 以 1 USD 約 30～33 元換算。Google 價格、免費額度與速率限制會調整，實際以你的 Google 帳單為準。</figcaption>
               </figure>
 
             <h2 id="free-tier">多數人從免費 API key 開始</h2>
-            <div class="support-callout">
-              <p><strong>在 Google 免費額度內，Trace 使用的三個模型都不收 API 費用。</strong>本頁的金額是專案開通付費後的量級；免費使用時，可以把它當成「超過額度、改用付費時大約要付多少」的參考。</p>
-              <ul>
-                <li>額度以<strong>專案</strong>計算，不是以 key 計算；同一個專案建立多把 key，會共用同一份額度。</li>
-                <li>每日請求數（RPD）在美國太平洋時間午夜重置，約為台灣時間下午 3 點（美國夏令時間期間）或下午 4 點。</li>
-                <li>長錄音會分段送出，每一段、每一次重試都算一次請求。遇到速率限制時，Trace 會依 Google 的回應等待後重試；已完成的段落會保留，額度恢復後可以按「繼續轉錄」，只處理未完成的部分。</li>
-                <li>免費層級送出的內容，Google 可能用來改善產品，也可能經人工審查，因此 Google 要求免費服務不要送出敏感、機密或個人資料。這類會議建議改用已開通付費的專案；詳見<a href="../privacy/">隱私政策</a>。</li>
-                <li>專案開通帳單後會升級為付費層級，改依付費價格計費。</li>
-              </ul>
-              <p>Google 沒有公開免費額度的固定數字，實際限制依帳號、專案與模型而不同，請到 Google AI Studio 的 Rate Limit 頁查看。還沒有 key？請看 <a href="../gemini-api-key/">Gemini API Key 教學</a>。</p>
+            <p class="free-lead"><strong class="free-amount">NT$0</strong><span>在 Google 免費額度內，三個模型都不收 API 費用。上方金額是超過額度、或專案開通付費後的參考。</span></p>
+            <div class="feature-grid">
+              <div class="feature">
+                <h3>額度看專案，不看 key</h3>
+                <p>同一個專案建立多把 key，會共用同一份額度。</p>
+              </div>
+              <div class="feature">
+                <h3>每天下午重置</h3>
+                <p>每日請求數在美國太平洋時間午夜重置，約台灣時間下午 3 點（美國夏令時間期間）或下午 4 點。</p>
+              </div>
+              <div class="feature">
+                <h3>用完可以接著做</h3>
+                <p>每一段、每次重試都算一次請求。已完成的段落會保留，額度恢復後按「繼續轉錄」，只補未完成的部分。</p>
+              </div>
+              <div class="feature feature--caution">
+                <h3>敏感會議改用付費</h3>
+                <p>免費層級送出的內容可能被 Google 用來改善產品，也可能經人工審查。詳見<a href="../privacy/">隱私政策</a>。</p>
+              </div>
             </div>
+            <p class="fine-print">專案開通帳單後改依付費價格計費。Google 沒有公開免費額度的固定數字，實際限制請到 Google AI Studio 的 Rate Limit 頁查看。還沒有 key？請看 <a href="../gemini-api-key/">Gemini API Key 教學</a>。</p>
 
             <h2 id="choose-model">要選哪個模型？</h2>
             <div class="model-grid model-grid--three">
@@ -161,47 +175,41 @@
             <h2 id="cost-breakdown">錢花在哪裡？</h2>
               <figure class="bar-chart">
                 <div class="bar-row">
-                  <span class="bar-label">逐字稿輸出</span>
+                  <span class="bar-label">音訊輸入（Transcribe）</span>
                   <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 100%"></span></span>
-                  <span class="bar-value">USD 0.045<small>約 18,000 output tokens</small></span>
+                  <span class="bar-value">USD 0.18<small>約 USD 0.003 / 分鐘</small></span>
                 </div>
                 <div class="bar-row">
-                  <span class="bar-label">音訊輸入</span>
-                  <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 84.4%"></span></span>
-                  <span class="bar-value">USD 0.038<small>含 cached audio input</small></span>
+                  <span class="bar-label">逐字稿輸出（Transcribe）</span>
+                  <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 66.7%"></span></span>
+                  <span class="bar-value">USD 0.12<small>約 USD 0.002 / 分鐘</small></span>
                 </div>
                 <div class="bar-row">
-                  <span class="bar-label">會議紀錄整理</span>
-                  <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 84.4%"></span></span>
-                  <span class="bar-value">USD 0.038<small>3.8 Flash</small></span>
+                  <span class="bar-label">會議紀錄整理（Flash-Lite）</span>
+                  <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 11.7%"></span></span>
+                  <span class="bar-value">USD 0.021<small>20,000 / 6,000 tokens</small></span>
                 </div>
-                <div class="bar-row">
-                  <span class="bar-label">逐字稿文字輸入</span>
-                  <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 2.2%"></span></span>
-                  <span class="bar-value">USD 0.001<small>會議背景與分段上下文</small></span>
-                </div>
-                <figcaption>App 推薦組合的一小時成本組成，合計約 USD 0.122。逐字稿輸出最貴：輸出單價比輸入高很多，而逐字稿要把整場會議的話全部寫出來。</figcaption>
+                <figcaption>推薦組合的一小時成本組成，合計約 USD 0.321。Transcribe 依音訊時間計費，佔了九成以上，換來說話者標籤和可定位的時間戳；整理用 Flash-Lite 只要約 USD 0.02。</figcaption>
               </figure>
 
             <h2 id="cost-by-length">會議越長，成本跟著增加</h2>
               <figure class="bar-chart">
                 <div class="bar-row">
                   <span class="bar-label">30 分鐘</span>
-                  <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 19.7%"></span></span>
-                  <span class="bar-value">約 NT$1.8～2.0<small>USD 0.060</small></span>
+                  <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 25.1%"></span></span>
+                  <span class="bar-value">約 NT$4.8～5.3<small>USD 0.161</small></span>
                 </div>
                 <div class="bar-row">
                   <span class="bar-label">60 分鐘</span>
-                  <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 40.1%"></span><span class="bar bar--range" style="width: 10.2%"></span></span>
-                  <span class="bar-value">約 NT$3.7～5.0<small>USD 0.122～0.153</small></span>
+                  <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 50.1%"></span></span>
+                  <span class="bar-value">約 NT$9.6～10.6<small>USD 0.321</small></span>
                 </div>
                 <div class="bar-row">
                   <span class="bar-label">120 分鐘</span>
-                  <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 79.6%"></span><span class="bar bar--range" style="width: 20.4%"></span></span>
-                  <span class="bar-value">約 NT$7.3～10.0<small>USD 0.242～0.304</small></span>
+                  <span class="bar-track" aria-hidden="true"><span class="bar" style="width: 100%"></span></span>
+                  <span class="bar-value">約 NT$19.2～21.2<small>USD 0.641</small></span>
                 </div>
-                <p class="bar-legend"><span class="bar-swatch" aria-hidden="true"></span>淺色延伸：沒有命中 cached audio input 時的保守上限</p>
-                <figcaption>App 推薦組合，成本大致和會議長度成正比。</figcaption>
+                <figcaption>推薦組合。Transcribe 按分鐘計費，成本和會議長度成正比。</figcaption>
               </figure>
 
             <h2>其他成本：會議背景與檢核</h2>
@@ -387,6 +395,12 @@
                       <td>3.5 Flash-Lite 轉錄，3.8 Flash 分析</td>
                       <td>約 USD 0.122 (NTD 3.7～4.0 元)</td>
                       <td>保留低成本轉錄，同時讓會議紀錄整理使用較強模型。</td>
+                    </tr>
+                    <tr>
+                      <td>推薦組合</td>
+                      <td>轉錄用 <code>gemini-3.5-transcribe</code>（按分鐘計費），整理用 <code>gemini-3.5-flash-lite</code></td>
+                      <td>約 USD 0.321 (NTD 9.6～10.6 元)</td>
+                      <td>保留說話者標籤與可定位的時間戳，整理改用低成本模型。</td>
                     </tr>
                     <tr>
                       <td>3.5 Transcribe 轉錄 + 3.8 Flash 分析</td>
