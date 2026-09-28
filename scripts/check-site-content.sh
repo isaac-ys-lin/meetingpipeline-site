@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 MODE="${1:-full}"
-CSS_VERSION="20260715-trace-brand-lockup2"
+CSS_VERSION="20260928-trace-promo-video"
 
 if [[ "$MODE" != "full" && "$MODE" != "pages-only" ]]; then
   echo "usage: scripts/check-site-content.sh [full|pages-only]" >&2
@@ -169,6 +169,21 @@ done
 
 require_match "index.html" "href=\"./styles.css?v=${CSS_VERSION}\""
 require_match "index.html" 'src="./brand-icon.png"'
+
+# Homepage promo videos: dated filenames act as the cache key, so a re-render
+# must ship under a new name instead of overwriting a published file.
+for locale in zh-Hant en-US; do
+  require_file "assets/video/trace-launch-${locale}-20260928.mp4"
+  require_file "assets/video/trace-launch-${locale}-20260928.jpg"
+done
+require_match "index.html" 'src="./assets/video/trace-launch-zh-Hant-20260928.mp4"'
+require_match "index.html" 'poster="./assets/video/trace-launch-zh-Hant-20260928.jpg"'
+require_match "en/index.html" 'src="../assets/video/trace-launch-en-US-20260928.mp4"'
+require_match "en/index.html" 'poster="../assets/video/trace-launch-en-US-20260928.jpg"'
+for file in "index.html" "en/index.html"; do
+  require_match "$file" '<video controls muted playsinline preload="metadata"'
+  require_no_regex "$file" '<video[^>]*autoplay'
+done
 
 for file in "${required_files[@]}"; do
   brand_lockup_count=2

@@ -375,6 +375,27 @@ code {
   padding: 0.14em 0.36em;
 }
 
+.promo-video {
+  margin-top: 32px;
+  max-width: 840px;
+}
+
+.promo-video video {
+  aspect-ratio: 16 / 9;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.promo-video > p {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 10px 0 0;
+}
+
 .link-grid {
   display: grid;
   gap: 16px;
