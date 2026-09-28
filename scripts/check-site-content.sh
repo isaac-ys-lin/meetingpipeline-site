@@ -190,6 +190,8 @@ done
 require_match "index.html" 'iPhone、iPad 與 Apple Watch'
 require_match "en/index.html" 'iPhone, iPad, and Apple Watch'
 require_file "404.html"
+require_file "sitemap.xml"
+require_count "sitemap.xml" '<loc>' 12
 require_match "404.html" "href=\"/meetingpipeline-site/styles.css?v=${CSS_VERSION}\""
 
 # Homepage promo videos: dated filenames act as the cache key, so a re-render
