@@ -190,6 +190,12 @@ done
 require_match "index.html" 'iPhone、iPad 與 Apple Watch'
 require_match "en/index.html" 'iPhone, iPad, and Apple Watch'
 require_file "404.html"
+for file in "models/index.html" "en/models/index.html"; do
+  require_match "$file" 'id="free-tier"'
+done
+for file in "gemini-api-key/index.html" "en/gemini-api-key/index.html" "index.html" "en/index.html"; do
+  require_match "$file" 'models/#free-tier"'
+done
 require_file "sitemap.xml"
 require_count "sitemap.xml" '<loc>' 12
 require_match "404.html" "href=\"/meetingpipeline-site/styles.css?v=${CSS_VERSION}\""

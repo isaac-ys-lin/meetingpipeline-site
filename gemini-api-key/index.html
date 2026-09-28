@@ -87,8 +87,9 @@
               Google AI Studio 通常可以先建立免費 API key，部分模型也會提供免費層級或試用額度。不過免費額度、每日請求數、每分鐘請求數、區域與模型可用性都可能調整；請以 Google 的官方價格與限制頁面為準。
             </p>
             <p>
-              Trace 可使用的模型會隨公開 model catalog 更新，免費額度也會依帳號、專案、模型、區域與 Google 政策而不同，因此無法保證固定的會議時數。建議先用短音檔確認 key 與額度可用，再處理較長錄音；付費成本估算請看 <a href="../models/">Trace 模型與成本</a>，實際限制則以 Google AI Studio 的 Rate Limit 頁面為準。遇到速率限制時，Trace 會依服務回應等待後重試。
+              Trace 可使用的模型會隨公開 model catalog 更新，免費額度也會依帳號、專案、模型、區域與 Google 政策而不同，因此無法保證固定的會議時數。額度以專案計算，同一個專案的多把 key 共用同一份額度；每日請求數在美國太平洋時間午夜重置（約台灣時間下午 3 或 4 點）。建議先用短音檔確認 key 與額度可用，再處理較長錄音；付費成本估算請看 <a href="../models/">Trace 模型與成本</a>，實際限制則以 Google AI Studio 的 Rate Limit 頁面為準。遇到速率限制時，Trace 會依服務回應等待後重試。
             </p>
+            <div class="support-callout"><p><strong>免費層級的資料使用：</strong>Google 可能使用免費層級送出的內容改善產品，也可能經人工審查，並要求免費服務不要送出敏感、機密或個人資料。這類會議建議改用已開通付費的專案。完整說明請看<a href="../models/#free-tier">免費 API key 重點</a>與<a href="../privacy/">隱私政策</a>。</p></div>
 
             <figure class="guide-figure">
               <img src="../assets/gemini-api-key/03-active-limits-redacted.png?v=20260715-safe-crop" alt="Google AI Studio Rate Limit 頁面的模型、分類、RPM、TPM 與 RPD 欄位；專案、帳務與實際用量資料未入鏡">

@@ -48,10 +48,23 @@
               Trace 目前提供 Gemini 3.5 Flash-Lite、Gemini 3.5 Transcribe 與 Gemini 3.8 Flash。這頁提供適合情境、音訊 token 算法、逐字稿輸出與會議紀錄分析成本的完整分析。
             </p>
 
+            <h2 id="free-tier">多數人從免費 API key 開始</h2>
+            <div class="support-callout">
+              <p><strong>在 Google 免費額度內，Trace 使用的三個模型都不收 API 費用。</strong>本頁的金額是專案開通付費後的量級；免費使用時，可以把它當成「超過額度、改用付費時大約要付多少」的參考。</p>
+              <ul>
+                <li>額度以<strong>專案</strong>計算，不是以 key 計算；同一個專案建立多把 key，會共用同一份額度。</li>
+                <li>每日請求數（RPD）在美國太平洋時間午夜重置，約為台灣時間下午 3 點（美國夏令時間期間）或下午 4 點。</li>
+                <li>長錄音會分段送出，每一段、每一次重試都算一次請求。遇到速率限制時，Trace 會依 Google 的回應等待後重試；已完成的段落會保留，額度恢復後可以按「繼續轉錄」，只處理未完成的部分。</li>
+                <li>免費層級送出的內容，Google 可能用來改善產品，也可能經人工審查，因此 Google 要求免費服務不要送出敏感、機密或個人資料。這類會議建議改用已開通付費的專案；詳見<a href="../privacy/">隱私政策</a>。</li>
+                <li>專案開通帳單後會升級為付費層級，改依付費價格計費。</li>
+              </ul>
+              <p>Google 沒有公開免費額度的固定數字，實際限制依帳號、專案與模型而不同，請到 Google AI Studio 的 Rate Limit 頁查看。還沒有 key？請看 <a href="../gemini-api-key/">Gemini API Key 教學</a>。</p>
+            </div>
+
             <div class="meta-box" aria-label="重點摘要">
               <p><strong>目前模型：</strong><span>轉錄可選 Gemini 3.5 Flash-Lite 或 Gemini 3.5 Transcribe，會議紀錄整理可選 Gemini 3.5 Flash-Lite 或 Gemini 3.8 Flash；實際選用哪個模型由使用者依會議情境決定。</span></p>
               <p><strong>時間戳限制：</strong><span>使用 Gemini 3.5 Flash-Lite 轉錄時，逐字稿的時間戳由模型依音訊內容生成，可能與播放器實際秒數有落差；這通常是模型輸出限制，非 Trace 發生錯誤，需要精準定位時建議在時間戳前後幾分鐘找尋正確時間。Gemini 3.5 Transcribe 提供原生時間資訊；Trace 會驗證後才用於定位，未通過驗證的片段仍會標示為估算時間。</span></p>
-              <p><strong>估算限制：</strong><span>若使用免費 API key 並仍在 Google 免費額度內，通常不會產生 API 費用；本頁用公開 paid tier 數字抓付費量級。Google 價格、免費額度與速率限制會調整，並非保證費用。</span></p>
+              <p><strong>估算限制：</strong><span>本頁金額用 Google 公開的付費層級價格估算；在免費額度內使用不收 API 費用，見上方<a href="#free-tier">免費 API key</a> 說明。Google 價格、免費額度與速率限制會調整，並非保證費用。</span></p>
             </div>
 
             <h2>Trace 使用的三個模型</h2>
