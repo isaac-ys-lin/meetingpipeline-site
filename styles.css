@@ -375,6 +375,15 @@ code {
   padding: 0.14em 0.36em;
 }
 
+.visually-hidden {
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
 .promo-video {
   margin-top: 32px;
   max-width: 840px;
