@@ -43,7 +43,7 @@
         </header>
         <main id="main-content">
           <article class="content">
-            <p class="eyebrow">Last updated: September 5, 2026</p>
+            <p class="eyebrow">Last updated: October 8, 2026</p>
             <h1>Trace Support.</h1>
             <p class="lede">
               If transcription or analysis fails, first check your Gemini API key, project quota, audio format, and foreground processing state.
@@ -62,6 +62,14 @@
               <a class="link-card" href="#gemini-incomplete">
                 <strong>Transcript stops partway</strong>
                 <span>Some sections finished and the rest have not been processed.</span>
+              </a>
+              <a class="link-card" href="#failed-job">
+                <strong>Not sure which button to press</strong>
+                <span>The Home card shows Process again, Retranscribe unfinished sections, or Return to preparation.</span>
+              </a>
+              <a class="link-card" href="#share-recordings">
+                <strong>Move recordings to a computer</strong>
+                <span>Share several recordings at once with AirDrop or Save to Files.</span>
               </a>
               <a class="link-card" href="#gemini-quota">
                 <strong>Quota used up or rate limited</strong>
@@ -103,9 +111,24 @@
               Trace can record locally on Apple Watch. When you finish, the recording transfers to its paired iPhone and appears in the Recording Inbox the next time Trace is active; the watch keeps its copy until the iPhone confirms durable receipt. If it has not appeared, confirm that both devices remain paired, unlocked, and connected, then open Trace on iPhone.
             </p>
 
+            <h2 id="failed-job">Which button after a failed run?</h2>
+            <p>The failure card on Home shows different buttons depending on what happened; this describes version 1.3.8. Saved sections are kept, and only Return to preparation discards this run’s result.</p>
+            <ul>
+              <li><strong>Process again</strong>: Google rejected the request (for example HTTP 400), so it did not process the audio and the rejected request is not billed. It resends only unfinished sections, up to 3 times per section in each round.</li>
+              <li><strong>Retranscribe unfinished sections</strong>: the last request was interrupted or its outcome is unknown, Google responded but the result was not saved, or this round’s retries are used up. Before sending, Trace lists the sections it will resend; if Google did process the earlier request, this adds API usage again.</li>
+              <li><strong>Continue transcription</strong>: picks up from the unfinished sections, typically after quota recovers.</li>
+              <li><strong>View partial transcript</strong>: read the saved text and preview the ranges not yet transcribed.</li>
+              <li><strong>Return to preparation</strong>: puts the audio and settings back for transcription and discards this unfinished result. Recordings made in Trace return to the Recordings list; original audio is not deleted.</li>
+            </ul>
+            <p>In 1.3.7 and earlier, Retranscribe unfinished sections was called “Start new Native round”, and a request Google rejected could appear as “Google responded, but the result was not saved.” Before resending, you can check the <a href="https://aistudio.google.com/status" rel="noreferrer">Google service status</a>.</p>
+
+            <h2 id="share-recordings">Move recordings to a computer</h2>
+            <p>Open Import → Live Recording to reach the Recordings list, tap Select, choose the recordings, then tap Share N Selected to AirDrop them to a Mac or save them to Files. In 1.3.7 and earlier, share one at a time: open a recording and tap Share Audio.</p>
+
             <h2 id="gemini-errors">Gemini API errors</h2>
             <p>Trace sends Gemini requests directly from your device to Google Gemini API using your own key. Use the app’s current job status to confirm what is saved, waiting or unfinished.</p>
             <div class="support-callout"><p>Find your symptom below. Keep the source audio and existing result while investigating; an error alone does not prove data loss or successful saving.</p></div>
+            <p>From 1.3.8, the failure card adds a line such as “Google replied (HTTP 400): …”. That is Google’s own wording and usually the most direct explanation; include it when you report a problem. Trace removes API keys from it first.</p>
             <ul>
               <li><a href="#recording-recovery">Recording could not finish</a></li>
               <li><a href="#gemini-incomplete">Transcript stops partway through</a></li>
@@ -162,7 +185,7 @@
               <h3 id="gemini-request">Request content or parameters rejected</h3>
               <p><strong>What happened:</strong> HTTP 400 means Google could not accept the request. A more specific message may identify a key, billing or feature restriction.</p>
               <p><strong>Current state:</strong> The request was rejected and cannot count as a completed transcription. Keep the source audio and existing result.</p>
-              <p><strong>What to do:</strong> Follow the specific message first. If the cause is unclear, check that the app is up to date and report the issue through an App Store review. Do not delete recording content just to experiment.</p>
+              <p><strong>What to do:</strong> Follow the specific message first. If every recording is rejected with the same sentence, it may be a temporary problem on Google’s side; try Process again later. If the cause is unclear, check that the app is up to date and report the issue through an App Store review. Do not delete recording content just to experiment.</p>
             </section>
             <p>Unknown error? Keep the code and approximate time, check the job status, and leave an App Store review without sharing keys or private audio.</p>
             <div class="support-table-wrap">

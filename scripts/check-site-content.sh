@@ -216,7 +216,9 @@ require_match "en/gemini-api-key/index.html" '04-trace-settings-en-US.png?v=2026
 for file in "support/index.html" "en/support/index.html"; do
   require_match "$file" 'id="symptoms"'
   require_match "$file" 'id="apple-watch"'
-  require_count "$file" 'class="link-card" href="#' 7
+  require_match "$file" 'id="failed-job"'
+  require_match "$file" 'id="share-recordings"'
+  require_count "$file" 'class="link-card" href="#' 9
 done
 for file in "speaker-analysis/index.html" "en/speaker-analysis/index.html"; do
   require_count "$file" '<li class="flow-step' 4
