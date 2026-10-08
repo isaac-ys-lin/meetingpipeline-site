@@ -114,8 +114,8 @@
             <h2 id="failed-job">Which button after a failed run?</h2>
             <p>The failure card on Home shows different buttons depending on what happened; this describes version 1.3.8. Saved segments are kept, and only Return to preparation discards this run’s result.</p>
             <ul>
-              <li><strong>Try again (N)</strong>: Google rejected the request (for example HTTP 400), so it did not process the audio and the rejected request is not billed. It resends only unfinished segments; the number on the button is how many. Each segment is sent up to 3 times per round.</li>
-              <li><strong>Retranscribe unfinished segments (N)</strong>: the last request was interrupted or its outcome is unknown, Google responded but the result was not saved, or this round’s retries are used up. Before sending, Trace lists the segments it will resend; if Google did process the earlier request, this adds API usage again.</li>
+              <li><strong>Try again</strong>: Google rejected the request (for example HTTP 400), so it did not process the audio and the rejected request is not billed. It resends only unfinished segments, each up to 3 times per round.</li>
+              <li><strong>Retranscribe unfinished segments</strong>: the last request was interrupted or its outcome is unknown, Google responded but the result was not saved, or this round’s retries are used up. Before sending, Trace lists the time ranges it will resend; if Google did process the earlier request, this adds API usage again.</li>
               <li><strong>Continue transcription</strong>: picks up from the unfinished segments, typically after quota recovers.</li>
               <li><strong>View partial transcript</strong>: read the saved text and preview the ranges not yet transcribed.</li>
               <li><strong>Return to preparation</strong>: puts the audio and settings back for transcription and discards this unfinished result. Recordings made in Trace return to the Recordings list; original audio is not deleted.</li>
